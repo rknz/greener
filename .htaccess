@@ -1,0 +1,74 @@
+# ==============================================================================
+# A Greener Tomorrow (greener2morow.org) — Apache Web Server Configuration
+# Optimized for cPanel, Shared Hosting, VPS & Portable PHP Deployments
+# ==============================================================================
+
+# 1. Charset & Default Document
+AddDefaultCharset UTF-8
+DirectoryIndex index.php index.html
+
+# 2. Prevent Directory Browsing & Hide Sensitive Files
+Options -Indexes -MultiViews
+<FilesMatch "^(\.env|\.git|\.sqlite|\.sql|\.log|composer\.(json|lock)|package(-lock)?\.json)$">
+    Order allow,deny
+    Deny from all
+</FilesMatch>
+
+# 3. PHP Shared Hosting Resource Directives (cPanel Fallback)
+<IfModule mod_php.c>
+    php_value upload_max_filesize 32M
+    php_value post_max_size 32M
+    php_value memory_limit 128M
+    php_value max_execution_time 120
+    php_value max_input_time 120
+    php_flag session.cookie_httponly on
+</IfModule>
+
+# 4. Gzip / Deflate Output Compression (Ultra-Fast Browsing)
+<IfModule mod_deflate.c>
+    AddOutputFilterByType DEFLATE text/plain text/html text/xml text/css application/xml application/xhtml+xml application/rss+xml application/javascript application/x-javascript application/json image/svg+xml
+</IfModule>
+
+# 5. Long-Term Browser Caching for Assets
+<IfModule mod_expires.c>
+    ExpiresActive On
+    ExpiresDefault "access plus 1 month"
+    ExpiresByType text/html "access plus 0 seconds"
+    ExpiresByType text/css "access plus 1 year"
+    ExpiresByType application/javascript "access plus 1 year"
+    ExpiresByType image/webp "access plus 1 year"
+    ExpiresByType image/jpeg "access plus 1 year"
+    ExpiresByType image/png "access plus 1 year"
+    ExpiresByType image/svg+xml "access plus 1 year"
+    ExpiresByType font/woff2 "access plus 1 year"
+    ExpiresByType application/pdf "access plus 1 month"
+</IfModule>
+
+# 6. Clean URL Routing Engine
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteBase /
+
+    # Security Headers
+    Header always set X-Content-Type-Options "nosniff"
+    Header always set X-Frame-Options "SAMEORIGIN"
+    Header always set X-XSS-Protection "1; mode=block"
+    Header always set Referrer-Policy "strict-origin-when-cross-origin"
+
+    # Allow direct access to real files and directories
+    RewriteCond %{REQUEST_FILENAME} -f [OR]
+    RewriteCond %{REQUEST_FILENAME} -d
+    RewriteRule ^ - [L]
+
+    # Clean URL Routes
+    RewriteRule ^activities/?$ activities.php [L,QSA]
+    RewriteRule ^activities/([a-zA-Z0-9_-]+)/?$ activities.php?slug=$1 [L,QSA]
+    RewriteRule ^researches/?$ researches.php [L,QSA]
+    RewriteRule ^researches/([a-zA-Z0-9_-]+)/?$ researches.php?slug=$1 [L,QSA]
+    RewriteRule ^blog/?$ blog.php [L,QSA]
+    RewriteRule ^blog/([a-zA-Z0-9_-]+)/?$ blog.php?slug=$1 [L,QSA]
+    RewriteRule ^gallery/?$ gallery.php [L,QSA]
+    RewriteRule ^contact/?$ contact.php [L,QSA]
+    RewriteRule ^join/?$ join.php [L,QSA]
+    RewriteRule ^sitemap\.xml$ sitemap.xml.php [L]
+</IfModule>

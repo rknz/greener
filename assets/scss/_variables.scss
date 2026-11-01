@@ -1,0 +1,49 @@
+// ==============================================================================
+// A Greener Tomorrow (greener2morow.org)
+// SASS Variables: Official 4-Color Palette & Golden Ratio (phi = 1.618) Tokens
+// ==============================================================================
+
+// 1. Official Brand Color Palette (from color templete.png)
+$color-primary: #2A7C13;       // rgb(42, 124, 19)   - Authority Forest Green
+$color-primary-dark: #1E5A0D;  // Deep Green Hover & Focus
+$color-secondary: #76C457;     // rgb(118, 196, 87)  - Fresh Leaf Green Accent
+$color-cream-light: #FFF8CF;   // rgb(255, 248, 207) - Soft Sunlight Cream
+$color-sand-warm: #FBE6C2;     // rgb(251, 230, 194) - Warm Earth Sand
+
+// Supporting Surface & Contrast Tokens (WCAG AAA Compliant)
+$color-surface: #FFFFFF;
+$color-bg-soft: #FAF8F2;
+$color-text-main: #14280D;     // High-contrast Dark Forest body text
+$color-text-muted: #4A5D43;    // Secondary metadata & dates
+$color-border: #E8E5DC;
+$color-urgent: #D9534F;        // Emergency Disaster & Relief Alert
+
+// 2. Golden Ratio Proportions & Spacing Scale (phi = 1.618)
+$phi: 1.618;
+$container-max-width: 1280px;
+
+$space-2xs: 0.382rem;          // ~6px
+$space-xs: 0.618rem;           // ~10px
+$space-sm: 1rem;               // 16px (Base body)
+$space-md: 1.618rem;           // ~26px
+$space-lg: 2.618rem;           // ~42px
+$space-xl: 4.236rem;           // ~68px
+
+// 3. Responsive Breakpoints (Android, iPhone & Desktop)
+$bp-mobile-sm: 360px;          // Compact Android
+$bp-mobile: 390px;             // iPhone Standard
+$bp-mobile-lg: 430px;          // iPhone Pro Max / Large Android
+$bp-tablet: 768px;             // iPad / Tablet
+$bp-desktop: 1024px;           // Standard Desktop
+$bp-wide: 1280px;              // Full Golden Ratio Desktop
+
+// 4. Border Radius & Shadows
+$radius-sm: 8px;
+$radius-md: 14px;
+$radius-lg: 20px;
+$radius-full: 9999px;
+
+$shadow-sm: 0 2px 6px rgba(20, 40, 13, 0.05);
+$shadow-md: 0 6px 18px rgba(20, 40, 13, 0.08);
+$shadow-lg: 0 14px 34px rgba(20, 40, 13, 0.12);
+

@@ -1,0 +1,490 @@
+// ==============================================================================
+// Reusable UI Components: Buttons, Badges, Slider, Cards & Responsive Layouts
+// ==============================================================================
+
+.container {
+  width: 100%;
+  max-width: $container-max-width;
+  margin-inline: auto;
+  @include container-safe-padding;
+}
+
+// 1. Emergency Disaster Alert Bar
+.emergency-banner {
+  background: linear-gradient(90deg, #A82824 0%, $color-urgent 100%);
+  color: #FFFFFF;
+  font-size: 0.8125rem;
+  padding: 0.5rem 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+
+  .alert-tag {
+    background: #FFFFFF;
+    color: #A82824;
+    font-size: 0.6875rem;
+    font-weight: 800;
+    padding: 0.15rem 0.5rem;
+    border-radius: 4px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-right: 0.5rem;
+  }
+}
+
+// 2. Buttons
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  font-weight: 700;
+  font-size: 0.9375rem;
+  padding: 0.75rem 1.5rem;
+  border-radius: $radius-md;
+  cursor: pointer;
+  @include smooth-transition;
+  text-decoration: none;
+
+  &:hover {
+    transform: translateY(-2px);
+  }
+
+  &.btn-primary {
+    background-color: $color-primary;
+    color: #FFFFFF;
+    box-shadow: 0 4px 14px rgba(42, 124, 19, 0.25);
+    &:hover {
+      background-color: $color-primary-dark;
+      box-shadow: 0 6px 20px rgba(42, 124, 19, 0.35);
+    }
+  }
+
+  &.btn-secondary {
+    background-color: $color-secondary;
+    color: $color-text-main;
+    &:hover {
+      background-color: darken($color-secondary, 8%);
+    }
+  }
+
+  &.btn-outline {
+    background-color: $color-surface;
+    color: $color-primary;
+    border: 1.5px solid $color-secondary;
+    &:hover {
+      background-color: $color-cream-light;
+      border-color: $color-primary;
+    }
+  }
+
+  &.btn-sm {
+    font-size: 0.8125rem;
+    padding: 0.45rem 1rem;
+    border-radius: $radius-sm;
+  }
+}
+
+// 3. Badges & Tags
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.75rem;
+  font-weight: 700;
+  padding: 0.25rem 0.65rem;
+  border-radius: $radius-full;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+
+  &.badge-climate {
+    background-color: rgba(255, 179, 0, 0.15);
+    color: #B26A00;
+    border: 1px solid rgba(255, 179, 0, 0.3);
+  }
+  &.badge-environment {
+    background-color: rgba(118, 196, 87, 0.2);
+    color: $color-primary;
+    border: 1px solid rgba(118, 196, 87, 0.4);
+  }
+  &.badge-deforestation {
+    background-color: rgba(42, 124, 19, 0.12);
+    color: $color-primary;
+    border: 1px solid rgba(42, 124, 19, 0.25);
+  }
+  &.badge-pollution {
+    background-color: rgba(33, 150, 243, 0.12);
+    color: #0D47A1;
+    border: 1px solid rgba(33, 150, 243, 0.3);
+  }
+  &.badge-disaster {
+    background-color: rgba(217, 83, 79, 0.12);
+    color: $color-urgent;
+    border: 1px solid rgba(217, 83, 79, 0.3);
+  }
+}
+
+// 4. Sticky Header & Smart Hamburger Navigation
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background-color: rgba(255, 255, 255, 0.96);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid $color-sand-warm;
+  padding-block: 0.75rem;
+
+  .header-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .brand-group {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+
+    .brand-logo-img {
+      width: 44px;
+      height: 44px;
+      object-fit: contain;
+      border-radius: $radius-full;
+      border: 1.5px solid rgba(118, 196, 87, 0.4);
+    }
+
+    .brand-title {
+      font-size: 1.15rem;
+      font-weight: 800;
+      color: $color-primary;
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+    }
+    .brand-subtitle {
+      font-size: 0.6875rem;
+      font-weight: 600;
+      color: $color-text-muted;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+  }
+
+  .nav-desktop {
+    display: none;
+    align-items: center;
+    gap: 1.5rem;
+
+    @include desktop-up {
+      display: flex;
+    }
+
+    a {
+      font-size: 0.875rem;
+      font-weight: 700;
+      color: $color-text-main;
+      @include smooth-transition;
+      &:hover, &.active {
+        color: $color-primary;
+      }
+    }
+  }
+
+  .header-actions {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+}
+
+// Smart Animated Hamburger Button
+.hamburger-btn {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 44px;
+  height: 44px;
+  gap: 5px;
+  cursor: pointer;
+  border-radius: $radius-sm;
+  background: transparent;
+
+  @include desktop-up {
+    display: none;
+  }
+
+  span {
+    display: block;
+    width: 22px;
+    height: 2.5px;
+    background-color: $color-primary;
+    border-radius: 2px;
+    @include smooth-transition;
+  }
+
+  &.active {
+    span:nth-child(1) {
+      transform: translateY(7.5px) rotate(45deg);
+    }
+    span:nth-child(2) {
+      opacity: 0;
+    }
+    span:nth-child(3) {
+      transform: translateY(-7.5px) rotate(-45deg);
+    }
+  }
+}
+
+// Mobile Slide Drawer
+.mobile-drawer {
+  position: fixed;
+  top: 65px;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(255, 248, 207, 0.98);
+  backdrop-filter: blur(16px);
+  z-index: 99;
+  display: none;
+  flex-direction: column;
+  padding: 1.5rem;
+  gap: 1.25rem;
+  border-top: 1px solid $color-sand-warm;
+  overflow-y: auto;
+
+  &.open {
+    display: flex;
+  }
+
+  .mobile-link {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: $color-text-main;
+    padding-block: 0.5rem;
+    border-bottom: 1px solid rgba(118, 196, 87, 0.2);
+    &:hover { color: $color-primary; }
+  }
+}
+
+// 5. Hero Initiative Slider
+.hero-slider-section {
+  background: linear-gradient(135deg, $color-cream-light 0%, #FFFFFF 50%, $color-sand-warm 100%);
+  padding-block: $space-lg;
+  border-bottom: 1px solid $color-sand-warm;
+  position: relative;
+  overflow: hidden;
+
+  .slide-container {
+    display: none;
+    @include golden-grid;
+    align-items: center;
+    &.active { display: grid; }
+  }
+
+  .slide-content {
+    h1 {
+      font-size: clamp(1.75rem, 4vw, 2.75rem);
+      font-weight: 800;
+      color: $color-text-main;
+      line-height: 1.18;
+      letter-spacing: -0.03em;
+      margin-block: 0.75rem;
+
+      span { color: $color-primary; }
+    }
+    p {
+      color: $color-text-muted;
+      font-size: 1rem;
+      line-height: 1.618;
+      margin-bottom: 1.5rem;
+    }
+  }
+
+  .slide-media-card {
+    background: $color-surface;
+    padding: 0.75rem;
+    border-radius: $radius-lg;
+    box-shadow: $shadow-lg;
+    border: 1px solid rgba(118, 196, 87, 0.3);
+
+    .media-wrap {
+      border-radius: $radius-md;
+      overflow: hidden;
+      aspect-ratio: 1.618 / 1; // Golden Ratio Aspect Ratio
+      position: relative;
+
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+    }
+  }
+
+  .slider-nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 1.5rem;
+    padding-top: 1rem;
+    border-top: 1px solid rgba(118, 196, 87, 0.2);
+
+    .dots {
+      display: flex;
+      gap: 0.5rem;
+      button {
+        width: 12px;
+        height: 12px;
+        border-radius: $radius-full;
+        background-color: rgba(42, 124, 19, 0.25);
+        @include smooth-transition;
+        &.active {
+          width: 28px;
+          background-color: $color-primary;
+        }
+      }
+    }
+  }
+}
+
+// 6. Impact Statistics Strip
+.impact-strip {
+  background-color: $color-primary;
+  color: #FFFFFF;
+  padding-block: $space-md;
+
+  .impact-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+    text-align: center;
+
+    @include tablet-up {
+      grid-template-columns: repeat(5, 1fr);
+    }
+
+    .stat-number {
+      font-size: 2rem;
+      font-weight: 800;
+      color: $color-cream-light;
+      line-height: 1;
+    }
+    .stat-label {
+      font-size: 0.75rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      opacity: 0.9;
+      margin-top: 0.35rem;
+    }
+  }
+}
+
+// 7. Cards & Layouts
+.post-card {
+  background: $color-surface;
+  border-radius: $radius-md;
+  border: 1px solid $color-border;
+  overflow: hidden;
+  box-shadow: $shadow-sm;
+  @include smooth-transition;
+  display: flex;
+  flex-direction: column;
+
+  &:hover {
+    transform: translateY(-4px);
+    box-shadow: $shadow-md;
+    border-color: rgba(118, 196, 87, 0.4);
+  }
+
+  .card-media {
+    aspect-ratio: 1.618 / 1;
+    overflow: hidden;
+    position: relative;
+    background-color: $color-cream-light;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      @include smooth-transition;
+    }
+  }
+  &:hover .card-media img {
+    transform: scale(1.03);
+  }
+
+  .card-body {
+    padding: 1.25rem;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+
+    .card-meta {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 0.65rem;
+      font-size: 0.75rem;
+      color: $color-text-muted;
+    }
+
+    .card-title {
+      font-size: 1.05rem;
+      font-weight: 800;
+      line-height: 1.35;
+      color: $color-text-main;
+      margin-bottom: 0.5rem;
+      @include smooth-transition;
+      &:hover { color: $color-primary; }
+    }
+
+    .card-excerpt {
+      font-size: 0.875rem;
+      color: $color-text-muted;
+      line-height: 1.5;
+      margin-bottom: 1rem;
+      flex: 1;
+    }
+
+    .card-footer {
+      border-top: 1px solid $color-border;
+      padding-top: 0.75rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 0.75rem;
+    }
+  }
+}
+
+// Contributor Profile Card
+.contributor-card {
+  background: $color-surface;
+  border-radius: $radius-md;
+  border: 1px solid rgba(118, 196, 87, 0.4);
+  padding: 1.25rem;
+  box-shadow: $shadow-sm;
+
+  .contributor-header {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+
+    .contributor-avatar {
+      width: 52px;
+      height: 52px;
+      border-radius: $radius-full;
+      object-fit: cover;
+      background-color: $color-primary;
+      color: #FFFFFF;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+      font-size: 1.2rem;
+    }
+  }
+}
+

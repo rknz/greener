@@ -1,0 +1,9 @@
+# Runtime SQLite database & WAL files (auto-created & seeded on first run)
+data/*.sqlite
+data/*.sqlite-shm
+data/*.sqlite-wal
+
+# OS & Editor temporary files
+.DS_Store
+Thumbs.db
+*.log

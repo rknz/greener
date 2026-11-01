@@ -1,0 +1,133 @@
+// ==============================================================================
+// User Mini-Dashboard & Admin Dashboard Shared Styles
+// ==============================================================================
+
+.dash-layout {
+  display: flex;
+  min-height: 100vh;
+  background-color: #F8F9FA;
+}
+
+.dash-sidebar {
+  width: 260px;
+  background-color: #14280D;
+  color: #FFFFFF;
+  padding: 1.5rem 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+
+  @include mobile-only {
+    display: none; // Toggleable drawer on mobile
+  }
+
+  .dash-brand {
+    display: flex;
+    align-items: center;
+    gap: 0.65rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+
+    img { width: 36px; height: 36px; border-radius: 50%; }
+    span { font-weight: 800; font-size: 1.05rem; color: #FFF8CF; }
+  }
+
+  .dash-nav {
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+
+    a {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      padding: 0.75rem 1rem;
+      font-size: 0.875rem;
+      font-weight: 600;
+      color: rgba(255, 255, 255, 0.75);
+      border-radius: $radius-sm;
+      @include smooth-transition;
+
+      &:hover, &.active {
+        background-color: $color-primary;
+        color: #FFFFFF;
+      }
+    }
+  }
+}
+
+.dash-main {
+  flex: 1;
+  padding: 1.5rem 2rem;
+  overflow-y: auto;
+}
+
+// KPI Counter Cards
+.kpi-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+
+  .kpi-card {
+    background: #FFFFFF;
+    padding: 1.25rem;
+    border-radius: $radius-md;
+    border: 1px solid $color-border;
+    box-shadow: $shadow-sm;
+
+    .kpi-title {
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      color: $color-text-muted;
+    }
+    .kpi-val {
+      font-size: 1.75rem;
+      font-weight: 800;
+      color: $color-primary;
+      margin-top: 0.25rem;
+    }
+    .kpi-sub {
+      font-size: 0.75rem;
+      color: $color-text-muted;
+      margin-top: 0.25rem;
+    }
+  }
+}
+
+// Data Tables
+.data-table-wrap {
+  background: #FFFFFF;
+  border-radius: $radius-md;
+  border: 1px solid $color-border;
+  overflow-x: auto;
+  box-shadow: $shadow-sm;
+  margin-bottom: 1.5rem;
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.875rem;
+    text-align: left;
+
+    th {
+      background-color: #FAF8F2;
+      padding: 0.875rem 1rem;
+      font-weight: 700;
+      color: $color-text-main;
+      border-bottom: 1px solid $color-border;
+    }
+
+    td {
+      padding: 0.875rem 1rem;
+      border-bottom: 1px solid #F0EFEA;
+      vertical-align: middle;
+    }
+
+    tr:hover td {
+      background-color: rgba(255, 248, 207, 0.4);
+    }
+  }
+}
+

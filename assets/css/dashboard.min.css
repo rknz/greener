@@ -1,0 +1,95 @@
+/* ==============================================================================
+   A Greener Tomorrow (greener2morow.org) — Dashboard & Admin Master CSS v2.2
+   ============================================================================== */
+body.dashboard-body{background-color:#F4F6F3;color:#14280D;min-height:100vh}
+
+.dash-topbar{background:linear-gradient(90deg,#14280D 0%,#1E5A0D 100%);color:#FFFFFF;padding:0.85rem 1.75rem;display:flex;align-items:center;justify-content:space-between;gap:1rem;position:sticky;top:0;z-index:100;box-shadow:0 4px 16px rgba(0,0,0,0.12);border-bottom:2.5px solid #76C457;flex-wrap:wrap}
+.dash-topbar-left,.dash-topbar-right{display:flex;align-items:center;gap:0.85rem;flex-wrap:wrap}
+.dash-brand-link{display:inline-flex;align-items:center;gap:0.5rem;color:#FFF8CF;font-size:1.1rem;font-weight:800;text-decoration:none}
+.dash-brand-link:hover{color:#76C457}
+.dash-env-badge{background:rgba(118,196,87,0.2);color:#FFF8CF;font-size:0.75rem;font-weight:700;padding:0.25rem 0.65rem;border-radius:9999px;border:1px solid rgba(118,196,87,0.4)}
+.dash-topbar .btn-outline{background:rgba(255,255,255,0.1);color:#FFFFFF;border-color:rgba(255,255,255,0.35)}
+.dash-topbar .btn-outline:hover{background:#FFF8CF;color:#14280D;border-color:#FFF8CF}
+
+.user-pill{display:flex;align-items:center;gap:0.5rem;background:rgba(255,255,255,0.14);padding:0.35rem 0.85rem;border-radius:9999px}
+.user-pill-name{font-weight:700;color:#FFFFFF;font-size:0.875rem}
+.badge-admin{background:#FFF8CF;color:#2A7C13;font-weight:800}
+.badge-sm{font-size:0.6875rem;padding:0.18rem 0.55rem}
+.badge-lg{font-size:1rem;padding:0.45rem 0.95rem}
+
+.dash-layout{display:block;width:100%}
+.dash-contributor-header{background:#FFFFFF;border-radius:18px;border:1px solid #E8E5DC;padding:1.5rem 2rem;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:1.5rem;box-shadow:0 4px 14px rgba(20,40,13,0.05)}
+.avatar-circle{width:64px;height:64px;border-radius:50%;object-fit:cover;border:2.5px solid #76C457}
+.avatar-circle-placeholder{width:64px;height:64px;border-radius:50%;background:#FFF8CF;color:#2A7C13;display:flex;align-items:center;justify-content:center;font-size:1.75rem;border:2px solid #76C457}
+.dash-header-actions{display:flex;gap:0.75rem;flex-wrap:wrap}
+
+/* Dashboard Stat Cards */
+.dashboard-body .stat-counter-card{background:#FFFFFF;border:1px solid #E8E5DC;box-shadow:0 4px 12px rgba(20,40,13,0.04)}
+.dashboard-body .stat-number{color:#2A7C13}
+.dashboard-body .stat-label{color:#4A5D43}
+.dashboard-body .stat-icon-wrap{color:#2A7C13}
+
+/* Admin 5-Tab Bar */
+.admin-tabs-nav{display:flex;gap:0.5rem;background:#FFFFFF;padding:0.5rem;border-radius:14px;border:1px solid #E8E5DC;overflow-x:auto;box-shadow:0 2px 8px rgba(20,40,13,0.04)}
+.tab-btn{display:inline-flex;align-items:center;gap:0.5rem;padding:0.7rem 1.25rem;font-size:0.9rem;font-weight:700;color:#4A5D43;border:none;background:transparent;border-radius:10px;cursor:pointer;white-space:nowrap;transition:all 0.2s}
+.tab-btn.active{background:#2A7C13;color:#FFFFFF;box-shadow:0 4px 12px rgba(42,124,19,0.2)}
+.tab-btn:hover:not(.active){background:#FAF8F2;color:#14280D}
+
+.admin-tab-pane{display:none}
+.admin-tab-pane.active{display:block}
+
+/* Grid Columns for Admin Layout */
+.row{display:grid;grid-template-columns:1fr;gap:1.5rem;align-items:start}
+@media (min-width:992px){
+    .row:has(.col-lg-8){grid-template-columns:1.85fr 1fr}
+    .row:has(.col-lg-7){grid-template-columns:1.45fr 1fr}
+    .row:has(.col-md-3){grid-template-columns:repeat(4,1fr)}
+}
+
+/* Cards & Tables */
+.card{background:#FFFFFF;border-radius:18px;border:1px solid #E8E5DC;box-shadow:0 4px 14px rgba(20,40,13,0.05);overflow:hidden}
+.card-header{padding:1.25rem 1.5rem;border-bottom:1px solid #E8E5DC}
+.p-2{padding:0.65rem}
+.p-3{padding:1rem}
+.p-4{padding:1.65rem}
+.pb-2{padding-bottom:0.5rem}
+.pb-3{padding-bottom:1rem}
+.border-bottom{border-bottom:1px solid #E8E5DC}
+.bg-light{background-color:#FAF8F2}
+.rounded{border-radius:12px}
+
+.table-responsive{width:100%;overflow-x:auto}
+table.table{width:100%;border-collapse:collapse;font-size:0.875rem;text-align:left}
+table.table th{background:#FAF8F2;padding:0.9rem 1.25rem;font-weight:800;color:#14280D;border-bottom:1.5px solid #E8E5DC;white-space:nowrap}
+table.table td{padding:0.9rem 1.25rem;border-bottom:1px solid #F0EFEA;vertical-align:middle}
+table.table tr:hover td{background:rgba(255,248,207,0.35)}
+
+.user-table-avatar{width:36px;height:36px;border-radius:50%;background:#FFF8CF;color:#2A7C13;display:flex;align-items:center;justify-content:center;font-size:1rem;flex-shrink:0}
+.table-thumb{border-radius:6px;object-fit:cover;flex-shrink:0}
+
+/* Action Button Variants */
+.btn-outline-danger{background:#FFFFFF;color:#D9534F;border:1.5px solid rgba(217,83,79,0.55)}
+.btn-outline-danger:hover{background:#D9534F;color:#FFFFFF;border-color:#D9534F}
+.btn-outline-success{background:#FFFFFF;color:#2A7C13;border:1.5px solid rgba(42,124,19,0.55)}
+.btn-outline-success:hover{background:#2A7C13;color:#FFFFFF;border-color:#2A7C13}
+.btn-outline-warning{background:#FFFFFF;color:#B26A00;border:1.5px solid rgba(255,179,0,0.65)}
+.btn-outline-warning:hover{background:#FFB300;color:#14280D;border-color:#FFB300}
+.btn-outline-secondary{background:#FFFFFF;color:#4A5D43;border:1.5px solid #E8E5DC}
+.btn-outline-secondary:hover{background:#FAF8F2;color:#14280D}
+
+/* Sliders & MCQ Matrix */
+.slider-group{background:#FAF8F2;padding:1.15rem;border-radius:14px;border:1px solid #E8E5DC}
+.slider-val-badge{font-size:0.875rem;font-weight:800;color:#2A7C13;background:#FFF8CF;padding:0.25rem 0.65rem;border-radius:6px;border:1px solid rgba(118,196,87,0.4)}
+.form-range{width:100%;accent-color:#2A7C13;cursor:pointer;margin-block:0.4rem}
+.mcq-checkbox-group{display:flex;flex-direction:column;gap:0.65rem}
+.logo-preview-box{width:76px;height:76px;border-radius:14px;background:#FAF8F2;border:1px solid #E8E5DC;display:flex;align-items:center;justify-content:center;padding:0.35rem;flex-shrink:0}
+.flex-grow-1{flex:1}
+.input-group{display:flex;gap:0.5rem}
+.radio-label{display:inline-flex;align-items:center;gap:0.45rem;font-weight:600;font-size:0.875rem;cursor:pointer}
+
+/* Bcrypt Password Modal */
+.modal{position:fixed;inset:0;z-index:9999;display:none;align-items:center;justify-content:center}
+.modal.is-open{display:flex}
+.modal-backdrop{position:absolute;inset:0;background:rgba(12,24,8,0.65);backdrop-filter:blur(4px)}
+.modal-dialog{position:relative;z-index:2;width:100%;max-width:480px;margin:1rem}
+.modal-content{background:#FFFFFF;border-radius:18px;border:1px solid #E8E5DC;box-shadow:0 16px 40px rgba(0,0,0,0.22)}

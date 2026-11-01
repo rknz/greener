@@ -1,0 +1,10 @@
+User-agent: *
+Allow: /
+Disallow: /admin/
+Disallow: /dashboard/
+Disallow: /api/
+Disallow: /data/
+Disallow: /config/
+Disallow: /includes/
+
+Sitemap: https://greener2morow.org/sitemap.xml
