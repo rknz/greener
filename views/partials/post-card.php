@@ -60,7 +60,7 @@ $pubDate = format_bangladesh_date($post['created_at'] ?? 'now');
     <div class="post-card-media">
         <a href="<?= $detailUrl ?>" aria-label="<?= htmlspecialchars($post['title'], ENT_QUOTES, 'UTF-8') ?>">
             <?= ImageOptimizer::renderLazy(
-                $post['featured_image'] ?? 'assets/brand/template-mockup.jpg',
+                $post['featured_image'] ?? 'assets/uploads/posts/post-climate-march.webp',
                 $post['title'],
                 'post-card-thumb',
                 400,

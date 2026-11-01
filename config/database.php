@@ -311,8 +311,8 @@ class Database {
         $adminHash = password_hash('Admin@1234', PASSWORD_BCRYPT, ['cost' => 12]);
 
         $stmt = $db->prepare("INSERT INTO users (
-            username, name, email, password_hash, designation, public_email, phone, institution, district, bio, role, control_mode, member_status
-        ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+            username, name, email, password_hash, designation, public_email, phone, institution, district, bio, avatar_url, avatar, role, control_mode, member_status
+        ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
         
         // Admin
         $stmt->execute([
@@ -326,6 +326,8 @@ class Database {
             'Dhaka University Climate Consortium',
             'Dhaka',
             'Overseeing youth mobilization programs, independent environmental research publications, and nationwide advocacy.',
+            'avatar-admin.webp',
+            'avatar-admin.webp',
             'ADMIN',
             'FULL_ACCESS',
             'APPROVED'
@@ -344,6 +346,8 @@ class Database {
             'Institute of Water & Flood Management (BUET)',
             'Dhaka',
             'Focusing on river ecological surveys, industrial waste mitigation, and flood disaster relief coordination in Bangladesh.',
+            'avatar-researcher.webp',
+            'avatar-researcher.webp',
             'USER',
             'AUTO',
             'APPROVED'
@@ -366,8 +370,8 @@ class Database {
             1,
             'Mobilizing over 1,420 youth advocates across Dhaka, Khulna, and Bagerhat to raise awareness on rising sea levels and demand sustainable coastal protection policies.',
             "<h3>Program Overview</h3><p>The Youth Climate March mobilized university and college students from across Bangladesh to deliver a unified message on climate resilience. Organized by A Greener Tomorrow from our Hatirpool headquarters, the campaign brought together grassroots advocates, scientific researchers, and local coastal communities.</p><h4>Objectives & Field Execution</h4><ul><li>Independent documentation of coastal erosion along the Pashur river basin.</li><li>Educational seminars in 14 secondary schools on climate change adaptation.</li><li>Distribution of 5,000 mangrove saplings to local youth volunteers in Satkhira and Khulna.</li></ul><p>The initiative generated widespread public discourse and submitted a comprehensive 40-page policy brief to national environmental authorities.</p>",
-            '/assets/brand/template-mockup.jpg',
-            '/assets/brand/template-mockup.jpg',
+            '/assets/uploads/posts/post-climate-march.webp',
+            '/assets/uploads/posts/post-climate-march.webp',
             'NONE',
             null,
             'Hatirpool, Dhaka & Khulna Region',
@@ -389,8 +393,8 @@ class Database {
             1,
             'A grassroots mobilization removing 12.5 tons of non-biodegradable industrial and plastic waste from 8 high-density points along the Buriganga riverbank.',
             "<h3>Community Mobilization Report</h3><p>Urban river pollution represents one of the most critical public health and environmental hazards in the Greater Dhaka metropolitan area. On October 22, 2026, over 350 youth volunteers equipped with protective gear and waste-sorting equipment participated in the Buriganga Clean Movement.</p><h4>Impact Summary</h4><ul><li>12.5 tons of plastic and toxic fabric waste safely extracted and transferred to municipal recycling facilities.</li><li>Installed 20 permanent bio-degradable collection bins along Sadarghat, Kamrangirchar, and Hatirpool canal intersections.</li><li>Water testing conducted simultaneously to assess pH and dissolved oxygen levels.</li></ul>",
-            '/assets/brand/template-mockup.jpg',
-            '/assets/brand/template-mockup.jpg',
+            '/assets/uploads/posts/post-river-cleanup.webp',
+            '/assets/uploads/posts/post-river-cleanup.webp',
             'NONE',
             null,
             'Buriganga Riverbank, Dhaka',
@@ -402,7 +406,29 @@ class Database {
             $contributorId
         ]);
 
-        // Slide 3 / Research Post: Industrial Runoff Water Sampling
+        // Activity 3: Urban Reforestation & Native Saplings
+        $stmtPost->execute([
+            'Dhaka Urban Reforestation & 10,000 Native Saplings Drive',
+            'dhaka-urban-reforestation-native-saplings-drive',
+            'ACTIVITY',
+            'DEFORESTATION',
+            0,
+            'Planting indigenous Neem, Mahogany, and Krishnachura trees across school campuses and urban heat islands in Hatirpool, Dhanmondi, and Mirpur.',
+            "<h3>Reforestation Field Report</h3><p>Urban heat islands in Dhaka have intensified due to rapid loss of green cover. A Greener Tomorrow partnered with 28 local schools and community youth clubs to plant 10,000 native saplings with 92% survival tracking.</p><h4>Ecological Highlights</h4><ul><li>Prioritized indigenous monsoon-resilient species over invasive trees.</li><li>Assigned student Tree Guardians at every school campus for weekly watering and growth monitoring.</li></ul>",
+            '/assets/uploads/posts/post-tree-planting.webp',
+            '/assets/uploads/posts/post-tree-planting.webp',
+            'NONE',
+            null,
+            'Hatirpool & Dhanmondi, Dhaka',
+            '2026-10-25 08:30:00',
+            'COMPLETED',
+            2110,
+            1650,
+            4,
+            $adminId
+        ]);
+
+        // Slide 3 / Research Post 1: Industrial Runoff Water Sampling
         $stmtPost->execute([
             'Assessing Industrial Heavy Metal Runoff into the Buriganga River: A Youth-Led Water Sampling Survey',
             'buriganga-heavy-metal-runoff-survey-2026',
@@ -411,8 +437,8 @@ class Database {
             1,
             'Independent laboratory analysis measuring biological oxygen demand (BOD) and chemical pollutants across 14 sampling points in Hatirpool, Kamrangirchar, and Sadarghat.',
             "<h3>Abstract & Study Scope</h3><p>This independent research study evaluates heavy metal concentrations and biochemical oxygen demand (BOD) across key urban effluent discharge channels leading into the Buriganga River. Conducted between August and October 2026 by researchers at A Greener Tomorrow, the study provides open-access environmental datasets for civic advocacy.</p><h4>Key Findings</h4><p>Dissolved oxygen (DO) levels fell below 1.2 mg/L at 9 out of 14 testing sites, well beneath the threshold required to sustain aquatic life. The full analytical report with laboratory graphs and geographic coordinate plots is available in the downloadable PDF document attached below.</p>",
-            '/assets/brand/template-mockup.jpg',
-            '/assets/brand/template-mockup.jpg',
+            '/assets/uploads/posts/post-water-research.webp',
+            '/assets/uploads/posts/post-water-research.webp',
             'NONE',
             null,
             'Hatirpool & Buriganga Basin, Dhaka',
@@ -425,17 +451,39 @@ class Database {
         ]);
         $researchPostId = $db->lastInsertId();
 
-        // Attach Document to Research Post
+        // Attach Document to Research Post 1
         $stmtAttach = $db->prepare("INSERT INTO post_attachments (post_id, file_name, file_path, file_type, file_size_kb) VALUES (?, ?, ?, ?, ?)");
         $stmtAttach->execute([
             $researchPostId,
             'buriganga-water-survey-report-2026.pdf',
-            '/assets/brand/template-mockup.jpg',
+            '/assets/uploads/posts/post-water-research.webp',
             'PDF',
             2450
         ]);
 
-        // Post 4: Research-Based Blog & Vlog
+        // Research Post 2: Solar Micro-Grids & Clean Energy
+        $stmtPost->execute([
+            'Decentralized Solar Micro-Grids for Cyclone Shelters in Coastal Bangladesh',
+            'solar-micro-grids-cyclone-shelters-coastal-bangladesh',
+            'RESEARCH',
+            'CLIMATE',
+            0,
+            'Technical feasibility study evaluating community-managed solar micro-grids and battery storage across 32 coastal cyclone shelters in Khulna and Barishal.',
+            "<h3>Executive Summary</h3><p>During severe cyclonic events in the Bay of Bengal, grid power outages leave coastal shelters without emergency lighting, water purification, or medical refrigeration. Our engineering and environmental research team evaluated 32 multipurpose cyclone shelters.</p><h4>Policy Recommendations</h4><p>Transitioning coastal shelters to hybrid 15kW solar photovoltaic arrays with lithium-iron-phosphate storage ensures 72-hour uninterrupted emergency power while cutting diesel emissions by 88%.</p>",
+            '/assets/uploads/posts/post-solar-energy.webp',
+            '/assets/uploads/posts/post-solar-energy.webp',
+            'NONE',
+            null,
+            'Khulna & Barishal Coastal Belt',
+            '2026-10-30 14:00:00',
+            'COMPLETED',
+            1980,
+            1490,
+            6,
+            $adminId
+        ]);
+
+        // Post 6: Research-Based Blog & Vlog
         $stmtPost->execute([
             'Coastal Embankment Erosion in Satkhira: Why Mangrove Buffer Zones Outperform Concrete Sea Walls',
             'satkhira-coastal-embankment-mangrove-vs-concrete',
@@ -444,8 +492,8 @@ class Database {
             0,
             'Field observations and ecological data demonstrating that community-planted mangrove belts reduce storm-surge wave impact by 66% compared to bare earthen embankments.',
             "<h3>Field Commentary & Research Insights</h3><p>Coastal Bangladesh faces intensified cyclone frequencies and tidal flooding. Drawing from comparative surveys conducted in Shyamnagar, Satkhira, this research-based blog analyzes why natural mangrove buffer zones provide superior long-term flood resilience compared to costly concrete sea walls.</p><p>Watch the on-the-ground video documentation below where local community elders and youth forestry teams share empirical evidence from the 2026 cyclone season.</p>",
-            '/assets/brand/template-mockup.jpg',
-            '/assets/brand/template-mockup.jpg',
+            '/assets/uploads/posts/post-coastal-mangrove.webp',
+            '/assets/uploads/posts/post-coastal-mangrove.webp',
             'YOUTUBE',
             'https://www.youtube.com/watch?v=dQw4w9WgXcQ',
             'Satkhira Coastal Belt, Bangladesh',
@@ -457,20 +505,22 @@ class Database {
             $contributorId
         ]);
 
-        // 4. Seed Gallery Photos
+        // 4. Seed Gallery Photos (6 category-specific online photos)
         $stmtGallery = $db->prepare("INSERT INTO gallery_items (title, image_url, thumb_url, image_path, thumbnail_path, pillar, category, caption) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
-        $stmtGallery->execute(['Hatirpool Youth Clean Movement', '/assets/brand/template-mockup.jpg', '/assets/brand/template-mockup.jpg', 'assets/brand/template-mockup.jpg', 'assets/brand/template-mockup.jpg', 'POLLUTION', 'Pollution Control', 'Mobilizing youth in Hatirpool, Dhaka for community waste segregation.']);
-        $stmtGallery->execute(['School Tree Plantation Drive', '/assets/brand/template-mockup.jpg', '/assets/brand/template-mockup.jpg', 'assets/brand/template-mockup.jpg', 'assets/brand/template-mockup.jpg', 'DEFORESTATION', 'Reforestation', 'Planting indigenous timber and fruit saplings in secondary schools across Dhaka district.']);
-        $stmtGallery->execute(['Coastal Mangrove Afforestation', '/assets/brand/template-mockup.jpg', '/assets/brand/template-mockup.jpg', 'assets/brand/template-mockup.jpg', 'assets/brand/template-mockup.jpg', 'ENVIRONMENT', 'Climate Adaptation', 'Community volunteers planting Sundari and Gewa saplings along tidal channels in Khulna.']);
-        $stmtGallery->execute(['Buriganga Water Quality Sampling', '/assets/brand/template-mockup.jpg', '/assets/brand/template-mockup.jpg', 'assets/brand/template-mockup.jpg', 'assets/brand/template-mockup.jpg', 'RESEARCH', 'Youth Mobilization', 'Field testing team recording pH and chemical oxygen demand in urban waterways.']);
+        $stmtGallery->execute(['Hatirpool Youth Clean Movement', '/assets/uploads/gallery/gallery-pollution-cleanup.webp', '/assets/uploads/gallery/gallery-pollution-cleanup.webp', 'assets/uploads/gallery/gallery-pollution-cleanup.webp', 'assets/uploads/gallery/gallery-pollution-cleanup.webp', 'POLLUTION', 'Pollution Control', 'Mobilizing youth volunteers in Dhaka for riverbank plastic extraction and community waste segregation.']);
+        $stmtGallery->execute(['School Tree Plantation Drive', '/assets/uploads/gallery/gallery-tree-planting.webp', '/assets/uploads/gallery/gallery-tree-planting.webp', 'assets/uploads/gallery/gallery-tree-planting.webp', 'assets/uploads/gallery/gallery-tree-planting.webp', 'DEFORESTATION', 'Reforestation', 'Planting indigenous timber and fruit saplings in secondary schools across Dhaka district.']);
+        $stmtGallery->execute(['Coastal Mangrove Afforestation', '/assets/uploads/gallery/gallery-mangrove-forest.webp', '/assets/uploads/gallery/gallery-mangrove-forest.webp', 'assets/uploads/gallery/gallery-mangrove-forest.webp', 'assets/uploads/gallery/gallery-mangrove-forest.webp', 'ENVIRONMENT', 'Climate Adaptation', 'Lush Sundarbans mangrove green belt protecting tidal channels and delta biodiversity in Khulna.']);
+        $stmtGallery->execute(['Buriganga Water Quality Sampling', '/assets/uploads/gallery/gallery-water-testing.webp', '/assets/uploads/gallery/gallery-water-testing.webp', 'assets/uploads/gallery/gallery-water-testing.webp', 'assets/uploads/gallery/gallery-water-testing.webp', 'RESEARCH', 'Youth Mobilization', 'Field testing team recording pH, dissolved oxygen, and heavy metal levels in urban waterways.']);
+        $stmtGallery->execute(['Community Native Sapling Nursery', '/assets/uploads/gallery/gallery-nursery-saplings.webp', '/assets/uploads/gallery/gallery-nursery-saplings.webp', 'assets/uploads/gallery/gallery-nursery-saplings.webp', 'assets/uploads/gallery/gallery-nursery-saplings.webp', 'DEFORESTATION', 'Reforestation', 'Preparing 50,000 indigenous saplings for monsoon distribution across 64 districts.']);
+        $stmtGallery->execute(['Renewable Solar Micro-Grid Deployment', '/assets/uploads/gallery/gallery-solar-delta.webp', '/assets/uploads/gallery/gallery-solar-delta.webp', 'assets/uploads/gallery/gallery-solar-delta.webp', 'assets/uploads/gallery/gallery-solar-delta.webp', 'CLIMATE', 'Climate Adaptation', 'Clean solar energy arrays powering cyclone shelters and rural irrigation in coastal Bangladesh.']);
 
-        // 4b. Seed Hero Slides
+        // 4b. Seed Hero Slides (3 distinct high-res category WebP banners)
         $stmtSlides = $db->prepare("INSERT INTO hero_slides (title, subtitle, badge_text, image_path, cta_text, cta_url, secondary_cta_text, secondary_cta_url, sort_order, is_active) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, 1)");
         $stmtSlides->execute([
             'Nationwide Youth Climate March & Mangrove Defense Campaign',
             'Mobilizing over 1,420 youth advocates across Dhaka, Khulna, and Bagerhat to raise awareness on rising sea levels and demand sustainable coastal protection policies.',
             'Live Initiative',
-            'assets/brand/template-mockup.jpg',
+            'assets/uploads/slider/slide-climate-mangrove.webp',
             'Join This Action',
             BASE_URL . '/activities.php',
             'Become a Member',
@@ -481,7 +531,7 @@ class Database {
             'Buriganga River Waste Cleanup & Plastic-Free Cities Drive',
             'A grassroots mobilization removing 12.5 tons of non-biodegradable industrial and plastic waste from 8 high-density points along the Buriganga riverbank.',
             'Pollution Control',
-            'assets/brand/template-mockup.jpg',
+            'assets/uploads/slider/slide-river-cleanup.webp',
             'Read Field Research',
             BASE_URL . '/researches.php',
             'View Gallery',
@@ -492,7 +542,7 @@ class Database {
             'Youth Climate Mobilization Across 64 Districts',
             'Sofiq Organization grassroots network training students to lead environmental clubs, urban oxygen belts, and river audits.',
             'Nationwide Movement',
-            'assets/brand/template-mockup.jpg',
+            'assets/uploads/slider/slide-youth-planting.webp',
             'Become a Member',
             BASE_URL . '/join.php',
             'Contact Secretariat',

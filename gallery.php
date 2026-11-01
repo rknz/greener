@@ -62,14 +62,14 @@ require_once AGY_ROOT . '/views/partials/header.php';
             <?php foreach ($items as $item): ?>
                 <?php
                 $cat = $item['category'] ?? 'Reforestation';
-                $thumbSrc = !empty($item['thumbnail_path']) ? BASE_URL . '/' . ltrim($item['thumbnail_path'], '/') : BASE_URL . '/assets/brand/template-mockup.jpg';
+                $thumbSrc = !empty($item['thumbnail_path']) ? BASE_URL . '/' . ltrim($item['thumbnail_path'], '/') : BASE_URL . '/assets/uploads/gallery/gallery-tree-planting.webp';
                 $fullSrc = !empty($item['image_path']) ? BASE_URL . '/' . ltrim($item['image_path'], '/') : $thumbSrc;
                 $caption = $item['caption'] ?? 'Volunteer initiative in Bangladesh';
                 ?>
                 <div class="gallery-item" data-category="<?= htmlspecialchars($cat, ENT_QUOTES, 'UTF-8') ?>">
                     <a href="<?= htmlspecialchars($fullSrc, ENT_QUOTES, 'UTF-8') ?>" class="gallery-item-link lightbox-trigger" data-caption="<?= htmlspecialchars($caption, ENT_QUOTES, 'UTF-8') ?>">
                         <?= ImageOptimizer::renderLazy(
-                            $item['thumbnail_path'] ?? 'assets/brand/template-mockup.jpg',
+                            $item['thumbnail_path'] ?? 'assets/uploads/gallery/gallery-tree-planting.webp',
                             $caption,
                             'gallery-thumb-img',
                             480,

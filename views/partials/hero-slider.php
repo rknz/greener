@@ -25,7 +25,7 @@ if (empty($slides)) {
             'title' => 'Dhaka Urban Greening & Clean Air Initiative',
             'subtitle' => 'Mobilizing 2,500+ youth across Hatirpool and Dhanmondi to plant oxygen belts and lower surface temperatures.',
             'badge_text' => 'Live Initiative',
-            'image_path' => 'assets/brand/template-mockup.jpg',
+            'image_path' => 'assets/uploads/slider/slide-climate-mangrove.webp',
             'cta_text' => 'Join This Action',
             'cta_url' => BASE_URL . '/activities.php',
             'secondary_cta_text' => 'Become a Member',
@@ -36,7 +36,7 @@ if (empty($slides)) {
             'title' => 'Coastal Mangrove Restoration in Sundarbans Fringe',
             'subtitle' => 'Community-led wave barriers and saline-tolerant mangrove planting protecting 15,000 delta residents.',
             'badge_text' => 'Climate Adaptation',
-            'image_path' => 'assets/brand/template-mockup.jpg',
+            'image_path' => 'assets/uploads/slider/slide-river-cleanup.webp',
             'cta_text' => 'Read Field Research',
             'cta_url' => BASE_URL . '/researches.php',
             'secondary_cta_text' => 'Support Campaign',
@@ -47,7 +47,7 @@ if (empty($slides)) {
             'title' => 'Youth Climate Mobilization Across 64 Districts',
             'subtitle' => 'Sofiq Organization grassroots network training students to lead environmental clubs and river audits.',
             'badge_text' => 'Nationwide Movement',
-            'image_path' => 'assets/brand/template-mockup.jpg',
+            'image_path' => 'assets/uploads/slider/slide-youth-planting.webp',
             'cta_text' => 'Become a Member',
             'cta_url' => BASE_URL . '/join.php',
             'secondary_cta_text' => 'View Gallery',
@@ -61,7 +61,7 @@ if (empty($slides)) {
     <div class="hero-slider" id="heroSlider">
         <?php foreach ($slides as $index => $slide): ?>
             <?php
-            $bgImg = !empty($slide['image_path']) ? BASE_URL . '/' . ltrim($slide['image_path'], '/') : BASE_URL . '/assets/brand/template-mockup.jpg';
+            $bgImg = !empty($slide['image_path']) ? BASE_URL . '/' . ltrim($slide['image_path'], '/') : BASE_URL . '/assets/uploads/slider/slide-climate-mangrove.webp';
             $isActive = $index === 0 ? 'active' : '';
             $ctaUrl = $slide['cta_url'] ?? '';
             if (!empty($ctaUrl)) {
