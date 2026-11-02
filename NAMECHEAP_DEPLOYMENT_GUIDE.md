@@ -40,3 +40,4 @@ If you prefer to use a cPanel MySQL database instead of the portable SQLite engi
 - **Researcher / Member Account (`/dashboard/index.php`):**
   - **Username:** `sofiqul.alam`
   - **Password:** `Admin@1234`
+

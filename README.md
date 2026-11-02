@@ -1,7 +1,8 @@
-# A Greener Tomorrow (`greener2morow.org`) — Complete PHP Development Guideline & Roadmap
+# A Greener Tomorrow (`greener2morow.org`) — Official Release: Version 2
 
-> **Master Engineering & Product Guide for Frontend (Golden Ratio & Mobile UX), PHP Backend, Hybrid CDN + Minimized `assets/` Architecture, Security & Shared Hosting Standards, User Mini-Dashboard, and Dynamic Admin Dashboard**  
-> **Status:** Full Production Code Completed (Portable PHP 8+ MVC Architecture) — Ready for immediate shared hosting (cPanel), Apache, or Nginx deployment with zero-build compilation required.
+> **Release Name:** **Version 2 (`v2.0`)** — European Eco-Editorial Design System, Left-Sidebar Admin Governance Console, Threaded Member Comments & Replies, In-Place Authentication, and Namecheap cPanel Production Package  
+> **Designer & Developer:** [rknz](mailto:rukonuzzaman.dev@gmail.com) (`rukonuzzaman.dev@gmail.com`)  
+> **Status:** Version 2 Full Production Code Completed (Portable PHP 8+ MVC Architecture) — Ready for immediate Namecheap shared hosting (cPanel), Apache, or Nginx deployment with zero-build compilation required.
 
 ---
 

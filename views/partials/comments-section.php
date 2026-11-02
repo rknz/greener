@@ -205,3 +205,4 @@ $totalCommentCount = count($allComments);
         <?php endif; ?>
     </div>
 </section>
+

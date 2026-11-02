@@ -104,7 +104,7 @@ $siteName = $settings['site_name'] ?? 'A Greener Tomorrow';
             <!-- Footer Copyright & Developer Credit Strip -->
             <div class="footer-bottom">
                 <div class="footer-bottom-left">
-                    <p>&copy; 2026 <strong><?= htmlspecialchars($siteName, ENT_QUOTES, 'UTF-8') ?> Foundation</strong>. All Rights Reserved.</p>
+                    <p>&copy; 2026 <strong><?= htmlspecialchars($siteName, ENT_QUOTES, 'UTF-8') ?> Foundation</strong>. All Rights Reserved. <span class="badge badge-secondary" style="margin-left:0.4rem;">Version 2</span></p>
                 </div>
                 <div class="footer-bottom-right">
                     <span class="footer-credit-pill">

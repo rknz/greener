@@ -94,3 +94,4 @@ try {
 } catch (PDOException $e) {
     echo json_encode(['success' => false, 'error' => 'Could not save comment. Please try again.']);
 }
+

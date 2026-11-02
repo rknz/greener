@@ -21,3 +21,4 @@ return [
     'username'     => 'cpaneluser_admin',
     'password'     => 'YOUR_CPANEL_DB_PASSWORD',
 ];
+

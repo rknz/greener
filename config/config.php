@@ -45,7 +45,9 @@ if (!defined('AGY_ROOT')) {
     define('AGY_ROOT', ROOT_PATH);
 }
 
-// 5. Organization Identity Constants
+// 5. Organization Identity & Release Version Constants
+define('APP_VERSION', 'Version 2');
+define('APP_VERSION_TAG', 'v2.0');
 define('ORG_NAME', 'A Greener Tomorrow');
 define('ORG_LEGAL_MODEL', 'Sofiq Organization Action & Mobilization Model');
 define('ORG_TAGLINE', 'Youth-Based Environmental Advocacy & Independent Research Organization');
