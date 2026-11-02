@@ -1,0 +1,20 @@
+*.zip binary
+*.gz binary
+*.tgz binary
+*.sqlite binary
+*.db binary
+*.webp binary
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.ico binary
+*.woff binary
+*.woff2 binary
+.htaccess text eol=lf
+.user.ini text eol=lf
+*.php text eol=lf
+*.sql text eol=lf
+*.css text eol=lf
+*.js text eol=lf
+*.md text eol=lf
