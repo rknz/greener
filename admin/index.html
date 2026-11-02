@@ -1,0 +1,2044 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Central Governance Dashboard | A Greener Tomorrow</title>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="../assets/css/style.min.css?v=3.0.0">
+    <link rel="stylesheet" href="../assets/css/dashboard.min.css?v=3.0.0">
+</head>
+<body class="dashboard-body admin-layout-body">
+
+    <!-- Mobile Sidebar Backdrop -->
+    <div class="admin-sidebar-backdrop" id="adminSidebarBackdrop"></div>
+
+    <div class="admin-shell">
+        <!-- ================= LEFT SIDEBAR NAVIGATION ================= -->
+        <aside class="admin-sidebar" id="adminSidebar" aria-label="Admin Sidebar Navigation">
+            <div class="admin-sidebar-brand">
+                <a href="../index.php" class="admin-brand-link">
+                    <img src="../assets/brand/brand-logo.png" alt="Logo" class="admin-brand-img" width="40" height="40">
+                    <div>
+                        <span class="admin-brand-title">A Greener Tomorrow</span>
+                        <span class="admin-brand-sub">Governance Console &bull; Version 2</span>
+                    </div>
+                </a>
+                <button type="button" class="admin-sidebar-close d-lg-none" id="adminSidebarClose" aria-label="Close Sidebar">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+
+            <div class="admin-sidebar-user">
+                <img src="../assets/uploads/avatars/avatar-admin.webp" alt="Admin" class="admin-user-avatar" width="42" height="42">
+                <div class="admin-user-meta">
+                    <strong>A Greener Tomorrow Admin</strong>
+                    <span><i class="fa-solid fa-shield-halved"></i> Executive Admin</span>
+                </div>
+            </div>
+
+            <div class="admin-sidebar-group-label">Core Workspace</div>
+            <nav class="admin-tabs-nav" role="tablist">
+                <button type="button" class="tab-btn active" data-tab="overview" role="tab">
+                    <i class="fa-solid fa-chart-pie"></i>
+                    <span>Executive Overview</span>
+                </button>
+                <button type="button" class="tab-btn" data-tab="content" role="tab">
+                    <i class="fa-solid fa-pen-to-square"></i>
+                    <span>Posts &amp; Publishing</span>
+                    <span class="sidebar-count-pill">8</span>
+                </button>
+                <button type="button" class="tab-btn" data-tab="media" role="tab">
+                    <i class="fa-solid fa-images"></i>
+                    <span>Hero Slider &amp; Gallery</span>
+                    <span class="sidebar-count-pill">9</span>
+                </button>
+                <button type="button" class="tab-btn" data-tab="communications" role="tab">
+                    <i class="fa-solid fa-comments"></i>
+                    <span>Comments &amp; Inbox</span>
+                    <span class="sidebar-count-pill">32</span>
+                </button>
+
+                <div class="admin-sidebar-group-label mt-3">Administration &amp; System</div>
+                <button type="button" class="tab-btn" data-tab="users" role="tab">
+                    <i class="fa-solid fa-users-gear"></i>
+                    <span>Users &amp; Passwords</span>
+                    <span class="sidebar-count-pill">2</span>
+                </button>
+                <button type="button" class="tab-btn" data-tab="settings" role="tab">
+                    <i class="fa-solid fa-sliders"></i>
+                    <span>Site Info &amp; Logo MCQ</span>
+                </button>
+                <button type="button" class="tab-btn" data-tab="performance" role="tab">
+                    <i class="fa-solid fa-gauge-high"></i>
+                    <span>Analytics &amp; Server</span>
+                    <span class="sidebar-count-pill pill-emerald">99%</span>
+                </button>
+            </nav>
+
+            <div class="admin-sidebar-footer">
+                <a href="../dashboard/index.php" class="sidebar-footer-link">
+                    <i class="fa-solid fa-table-columns"></i> Contributor Portal
+                </a>
+                <a href="../index.php" target="_blank" class="sidebar-footer-link">
+                    <i class="fa-solid fa-arrow-up-right-from-square"></i> View Live Website
+                </a>
+                <a href="../logout.php" class="sidebar-footer-link text-danger">
+                    <i class="fa-solid fa-arrow-right-from-bracket"></i> Sign Out
+                </a>
+            </div>
+        </aside>
+
+        <!-- ================= MAIN WORKSPACE AREA ================= -->
+        <div class="admin-main-area">
+            <!-- Top Workspace Header Bar -->
+            <header class="admin-workspace-header">
+                <div class="d-flex align-items-center gap-3">
+                    <button type="button" class="admin-mobile-toggle d-lg-none" id="adminSidebarToggle" aria-label="Open Sidebar Menu">
+                        <i class="fa-solid fa-bars"></i>
+                    </button>
+                    <div>
+                        <h1 class="admin-page-heading" id="activeTabTitle">Executive Overview</h1>
+                        <p class="admin-page-subheading">Hatirpool Central Secretariat &bull; Real-time Database &amp; Content Control</p>
+                    </div>
+                </div>
+
+                <div class="admin-header-actions">
+                    <button type="button" class="btn btn-sm btn-primary js-jump-tab" data-target-tab="content">
+                        <i class="fa-solid fa-plus"></i> New Publication
+                    </button>
+                    <a href="../index.php" target="_blank" class="btn btn-sm btn-outline">
+                        <i class="fa-solid fa-globe"></i> Live Site
+                    </a>
+                </div>
+            </header>
+
+            <div class="admin-workspace-content">
+                <!-- Action Feedback Banner -->
+                
+                <!-- ================= TAB 1: EXECUTIVE OVERVIEW ================= -->
+                <section class="admin-tab-pane active" id="tab-overview" data-title="Executive Overview" role="tabpanel">
+                    <div class="admin-kpi-grid mb-4">
+                        <div class="admin-kpi-card">
+                            <div class="kpi-icon kpi-emerald"><i class="fa-solid fa-layer-group"></i></div>
+                            <div>
+                                <div class="kpi-value">8</div>
+                                <div class="kpi-label">Total Publications</div>
+                            </div>
+                        </div>
+                        <div class="admin-kpi-card">
+                            <div class="kpi-icon kpi-blue"><i class="fa-solid fa-eye"></i></div>
+                            <div>
+                                <div class="kpi-value">17,420</div>
+                                <div class="kpi-label">Cumulative Readership</div>
+                            </div>
+                        </div>
+                        <div class="admin-kpi-card">
+                            <div class="kpi-icon kpi-amber"><i class="fa-solid fa-comments"></i></div>
+                            <div>
+                                <div class="kpi-value">32</div>
+                                <div class="kpi-label">Member Comments</div>
+                            </div>
+                        </div>
+                        <div class="admin-kpi-card">
+                            <div class="kpi-icon kpi-purple"><i class="fa-solid fa-users"></i></div>
+                            <div>
+                                <div class="kpi-value">2</div>
+                                <div class="kpi-label">Registered Accounts</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Quick Action Cards -->
+                    <div class="card p-4 mb-4">
+                        <div class="d-flex justify-content-between align-items-center flex-wrap gap-2 mb-3">
+                            <div>
+                                <h3 class="mb-1"><i class="fa-solid fa-bolt text-accent"></i> Quick Management Launchpad</h3>
+                                <p class="text-muted small mb-0">Jump directly to any administrative module in the sidebar.</p>
+                            </div>
+                        </div>
+                        <div class="admin-quick-grid">
+                            <button type="button" class="quick-launch-card js-jump-tab" data-target-tab="content">
+                                <i class="fa-solid fa-file-circle-plus"></i>
+                                <strong>Publish Post / Research</strong>
+                                <span>Create Activities, Researches, Blogs &amp; Vlogs</span>
+                            </button>
+                            <button type="button" class="quick-launch-card js-jump-tab" data-target-tab="media">
+                                <i class="fa-solid fa-panorama"></i>
+                                <strong>Hero Banners &amp; Gallery</strong>
+                                <span>Manage homepage slider &amp; field photography</span>
+                            </button>
+                            <button type="button" class="quick-launch-card js-jump-tab" data-target-tab="communications">
+                                <i class="fa-solid fa-inbox"></i>
+                                <strong>Comments &amp; Inquiries</strong>
+                                <span>Moderate reader replies &amp; secretariat messages</span>
+                            </button>
+                            <button type="button" class="quick-launch-card js-jump-tab" data-target-tab="settings">
+                                <i class="fa-solid fa-building-shield"></i>
+                                <strong>Site Identity &amp; Logo MCQ</strong>
+                                <span>Update address, hotlines, stats &amp; brand logo</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Recent Publications Snapshot -->
+                    <div class="card p-4">
+                        <div class="d-flex justify-content-between align-items-center mb-3">
+                            <h3 class="mb-0"><i class="fa-solid fa-clock-rotate-left"></i> Latest Platform Publications</h3>
+                            <button type="button" class="btn btn-sm btn-outline js-jump-tab" data-target-tab="content">Manage All Posts</button>
+                        </div>
+                        <div class="table-responsive">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>Title</th>
+                                        <th>Format</th>
+                                        <th>Contributor</th>
+                                        <th>Views</th>
+                                        <th>Status</th>
+                                        <th class="text-right">View</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                                                                                                    <tr>
+                                            <td><strong>Inside Our 64-District Youth River Audit &amp; Zero-Plas...</strong></td>
+                                            <td><span class="badge badge-secondary">VLOG</span></td>
+                                            <td>Sofiqul Alam</td>
+                                            <td>1,950</td>
+                                            <td><span class="badge badge-success">Published</span></td>
+                                            <td class="text-right">
+                                                <a href="../blog.php?slug=inside-64-district-youth-river-audit-zero-plastic-movement" target="_blank" class="btn btn-sm btn-outline"><i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                                            </td>
+                                        </tr>
+                                                                                                                    <tr>
+                                            <td><strong>How Miyawaki Urban Micro-Forests Are Cooling Dhaka N...</strong></td>
+                                            <td><span class="badge badge-secondary">BLOG</span></td>
+                                            <td>A Greener Tomorrow Admin</td>
+                                            <td>2,280</td>
+                                            <td><span class="badge badge-success">Published</span></td>
+                                            <td class="text-right">
+                                                <a href="../blog.php?slug=miyawaki-urban-micro-forests-cooling-dhaka-neighborhoods" target="_blank" class="btn btn-sm btn-outline"><i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                                            </td>
+                                        </tr>
+                                                                                                                    <tr>
+                                            <td><strong>Coastal Embankment Erosion in Satkhira: Why Mangrove...</strong></td>
+                                            <td><span class="badge badge-secondary">BLOG</span></td>
+                                            <td>Sofiqul Alam</td>
+                                            <td>1,640</td>
+                                            <td><span class="badge badge-success">Published</span></td>
+                                            <td class="text-right">
+                                                <a href="../blog.php?slug=satkhira-coastal-embankment-mangrove-vs-concrete" target="_blank" class="btn btn-sm btn-outline"><i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                                            </td>
+                                        </tr>
+                                                                                                                    <tr>
+                                            <td><strong>Decentralized Solar Micro-Grids for Cyclone Shelters...</strong></td>
+                                            <td><span class="badge badge-secondary">RESEARCH</span></td>
+                                            <td>A Greener Tomorrow Admin</td>
+                                            <td>1,980</td>
+                                            <td><span class="badge badge-success">Published</span></td>
+                                            <td class="text-right">
+                                                <a href="../researches.php?slug=solar-micro-grids-cyclone-shelters-coastal-bangladesh" target="_blank" class="btn btn-sm btn-outline"><i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                                            </td>
+                                        </tr>
+                                                                                                                    <tr>
+                                            <td><strong>Assessing Industrial Heavy Metal Runoff into the Bur...</strong></td>
+                                            <td><span class="badge badge-secondary">RESEARCH</span></td>
+                                            <td>Sofiqul Alam</td>
+                                            <td>3,120</td>
+                                            <td><span class="badge badge-success">Published</span></td>
+                                            <td class="text-right">
+                                                <a href="../researches.php?slug=buriganga-heavy-metal-runoff-survey-2026" target="_blank" class="btn btn-sm btn-outline"><i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                                            </td>
+                                        </tr>
+                                                                    </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- ================= TAB 2: PUBLISH & CONTENT MODERATION ================= -->
+                <section class="admin-tab-pane" id="tab-content" data-title="Posts & Content Publishing" style="display:none;" role="tabpanel">
+                    <!-- Direct Post Creation Card -->
+                    <div class="card p-4 mb-4">
+                        <div class="card-header pb-3 mb-4 border-bottom">
+                            <h3><i class="fa-solid fa-feather-pointed"></i> Publish New Activity, Research Paper, Blog or Vlog</h3>
+                            <p class="text-muted mb-0">Publish directly to the live website with automatic WebP image optimization and PDF attachment support.</p>
+                        </div>
+
+                        <form action="../admin/actions.php" method="POST" enctype="multipart/form-data">
+                            <input type="hidden" name="csrf_token" value="ddaa1245ac3bccfa892527244a83cdff0de32bba39bd8f5c9c9b045803022cb3">                            <input type="hidden" name="action" value="admin_create_post">
+
+                            <div class="form-row-2 mb-3">
+                                <div class="form-group mb-0">
+                                    <label class="form-label">Publication Title *</label>
+                                    <input type="text" name="title" class="form-control" required placeholder="Enter headline...">
+                                </div>
+                                <div class="form-row-2">
+                                    <div class="form-group mb-0">
+                                        <label class="form-label">Content Format *</label>
+                                        <select name="post_type" class="form-control">
+                                            <option value="BLOG">Editorial Blog</option>
+                                            <option value="ACTIVITY">Field Activity / Drive</option>
+                                            <option value="RESEARCH">Scientific Research Paper</option>
+                                            <option value="VLOG">Video Vlog</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group mb-0">
+                                        <label class="form-label">Action Pillar *</label>
+                                        <select name="pillar" class="form-control">
+                                            <option value="CLIMATE">Climate Adaptation</option>
+                                            <option value="DEFORESTATION">Reforestation</option>
+                                            <option value="POLLUTION">Pollution Control</option>
+                                            <option value="DISASTER">Disaster Resilience</option>
+                                            <option value="ENVIRONMENT">Biodiversity</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-row-2 mb-3">
+                                <div class="form-group mb-0">
+                                    <label class="form-label">Executive Summary / Abstract</label>
+                                    <input type="text" name="excerpt" class="form-control" placeholder="Brief 1-2 sentence summary for post cards...">
+                                </div>
+                                <div class="form-group mb-0">
+                                    <label class="form-label">Field Location / District</label>
+                                    <input type="text" name="location" class="form-control" value="Hatirpool, Dhaka, Bangladesh">
+                                </div>
+                            </div>
+
+                            <div class="form-group mb-3">
+                                <label class="form-label">Full Article / Research Body (HTML or Plain Text) *</label>
+                                <textarea name="content" rows="5" class="form-control" required placeholder="Write the full article, field findings, or research methodology..."></textarea>
+                            </div>
+
+                            <div class="form-row-2 mb-4">
+                                <div class="form-group mb-0">
+                                    <label class="form-label">Cover Photograph (Auto-WebP &bull; Max 8MB)</label>
+                                    <input type="file" name="featured_image" class="form-control form-control-sm" accept="image/*" data-max-mb="8">
+                                </div>
+                                <div class="form-row-2">
+                                    <div class="form-group mb-0">
+                                        <label class="form-label">Research PDF / Doc (Optional)</label>
+                                        <input type="file" name="research_doc" class="form-control form-control-sm" accept=".pdf,.doc,.docx" data-max-mb="15">
+                                    </div>
+                                    <div class="form-group mb-0">
+                                        <label class="form-label">YouTube URL (For Vlogs)</label>
+                                        <input type="url" name="video_url" class="form-control form-control-sm" placeholder="https://youtube.com/watch?v=...">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <button type="submit" class="btn btn-primary"><i class="fa-solid fa-paper-plane"></i> Publish Now</button>
+                        </form>
+                    </div>
+
+                    <!-- Content Moderation Table -->
+                    <div class="card p-4">
+                        <div class="card-header pb-3 mb-4 border-bottom d-flex justify-content-between align-items-center flex-wrap gap-2">
+                            <div>
+                                <h3><i class="fa-solid fa-list-check"></i> All Publications &amp; Content Moderation</h3>
+                                <p class="text-muted mb-0">Approve, unpublish, flag offensive violations, or delete submissions.</p>
+                            </div>
+                            <div class="search-input-wrap">
+                                <input type="text" data-table-search="moderationTable" placeholder="Search posts by title or author..." class="form-control form-control-sm">
+                            </div>
+                        </div>
+
+                        <div class="table-responsive">
+                            <table class="table" id="moderationTable">
+                                <thead>
+                                    <tr>
+                                        <th>Post Title</th>
+                                        <th>Type</th>
+                                        <th>Contributor</th>
+                                        <th>Reads</th>
+                                        <th>Status</th>
+                                        <th>Date</th>
+                                        <th class="text-right">Moderation Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                                                                                                    <tr>
+                                            <td><strong>Inside Our 64-District Youth River Audit &amp; Zero-...</strong></td>
+                                            <td><span class="badge badge-secondary">Vlog</span></td>
+                                            <td>Sofiqul Alam</td>
+                                            <td><i class="fa-regular fa-eye"></i> 1,950</td>
+                                            <td><span class="badge badge-success">Published</span></td>
+                                            <td>02 Nov 2026</td>
+                                            <td class="text-right">
+                                                <a href="../blog.php?slug=inside-64-district-youth-river-audit-zero-plastic-movement" target="_blank" class="btn btn-sm btn-outline" title="View Details Page"><i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+
+                                                                                                    <form action="../admin/actions.php" method="POST" style="display:inline-block;">
+                                                        <input type="hidden" name="csrf_token" value="ddaa1245ac3bccfa892527244a83cdff0de32bba39bd8f5c9c9b045803022cb3">                                                        <input type="hidden" name="action" value="moderate_post">
+                                                        <input type="hidden" name="post_id" value="8">
+                                                        <input type="hidden" name="post_action" value="unpublish">
+                                                        <button type="submit" class="btn btn-sm btn-outline-secondary"><i class="fa-solid fa-eye-slash"></i> Draft</button>
+                                                    </form>
+                                                
+                                                                                                    <form action="../admin/actions.php" method="POST" style="display:inline-block;" onsubmit="return confirm('Flag and remove this post as offensive?');">
+                                                        <input type="hidden" name="csrf_token" value="ddaa1245ac3bccfa892527244a83cdff0de32bba39bd8f5c9c9b045803022cb3">                                                        <input type="hidden" name="action" value="moderate_post">
+                                                        <input type="hidden" name="post_id" value="8">
+                                                        <input type="hidden" name="post_action" value="offensive">
+                                                        <button type="submit" class="btn btn-sm btn-outline-warning" title="Flag Offensive"><i class="fa-solid fa-triangle-exclamation"></i></button>
+                                                    </form>
+                                                
+                                                <form action="../admin/actions.php" method="POST" style="display:inline-block;" onsubmit="return confirm('Permanently delete this post?');">
+                                                    <input type="hidden" name="csrf_token" value="ddaa1245ac3bccfa892527244a83cdff0de32bba39bd8f5c9c9b045803022cb3">                                                    <input type="hidden" name="action" value="moderate_post">
+                                                    <input type="hidden" name="post_id" value="8">
+                                                    <input type="hidden" name="post_action" value="delete">
+                                                    <button type="submit" class="btn btn-sm btn-outline-danger" title="Delete"><i class="fa-solid fa-trash"></i></button>
+                                                </form>
+                                            </td>
+                                        </tr>
+                                                                                                                    <tr>
+                                            <td><strong>How Miyawaki Urban Micro-Forests Are Cooling Dha...</strong></td>
+                                            <td><span class="badge badge-secondary">Blog</span></td>
+                                            <td>A Greener Tomorrow Admin</td>
+                                            <td><i class="fa-regular fa-eye"></i> 2,280</td>
+                                            <td><span class="badge badge-success">Published</span></td>
+                                            <td>02 Nov 2026</td>
+                                            <td class="text-right">
+                                                <a href="../blog.php?slug=miyawaki-urban-micro-forests-cooling-dhaka-neighborhoods" target="_blank" class="btn btn-sm btn-outline" title="View Details Page"><i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+
+                                                                                                    <form action="../admin/actions.php" method="POST" style="display:inline-block;">
+                                                        <input type="hidden" name="csrf_token" value="ddaa1245ac3bccfa892527244a83cdff0de32bba39bd8f5c9c9b045803022cb3">                                                        <input type="hidden" name="action" value="moderate_post">
+                                                        <input type="hidden" name="post_id" value="7">
+                                                        <input type="hidden" name="post_action" value="unpublish">
+                                                        <button type="submit" class="btn btn-sm btn-outline-secondary"><i class="fa-solid fa-eye-slash"></i> Draft</button>
+                                                    </form>
+                                                
+                                                                                                    <form action="../admin/actions.php" method="POST" style="display:inline-block;" onsubmit="return confirm('Flag and remove this post as offensive?');">
+                                                        <input type="hidden" name="csrf_token" value="ddaa1245ac3bccfa892527244a83cdff0de32bba39bd8f5c9c9b045803022cb3">                                                        <input type="hidden" name="action" value="moderate_post">
+                                                        <input type="hidden" name="post_id" value="7">
+                                                        <input type="hidden" name="post_action" value="offensive">
+                                                        <button type="submit" class="btn btn-sm btn-outline-warning" title="Flag Offensive"><i class="fa-solid fa-triangle-exclamation"></i></button>
+                                                    </form>
+                                                
+                                                <form action="../admin/actions.php" method="POST" style="display:inline-block;" onsubmit="return confirm('Permanently delete this post?');">
+                                                    <input type="hidden" name="csrf_token" value="ddaa1245ac3bccfa892527244a83cdff0de32bba39bd8f5c9c9b045803022cb3">                                                    <input type="hidden" name="action" value="moderate_post">
+                                                    <input type="hidden" name="post_id" value="7">
+                                                    <input type="hidden" name="post_action" value="delete">
+                                                    <button type="submit" class="btn btn-sm btn-outline-danger" title="Delete"><i class="fa-solid fa-trash"></i></button>
+                                                </form>
+                                            </td>
+                                        </tr>
+                                                                                                                    <tr>
+                                            <td><strong>Coastal Embankment Erosion in Satkhira: Why Mang...</strong></td>
+                                            <td><span class="badge badge-secondary">Blog</span></td>
+                                            <td>Sofiqul Alam</td>
+                                            <td><i class="fa-regular fa-eye"></i> 1,640</td>
+                                            <td><span class="badge badge-success">Published</span></td>
+                                            <td>02 Nov 2026</td>
+                                            <td class="text-right">
+                                                <a href="../blog.php?slug=satkhira-coastal-embankment-mangrove-vs-concrete" target="_blank" class="btn btn-sm btn-outline" title="View Details Page"><i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+
+                                                                                                    <form action="../admin/actions.php" method="POST" style="display:inline-block;">
+                                                        <input type="hidden" name="csrf_token" value="ddaa1245ac3bccfa892527244a83cdff0de32bba39bd8f5c9c9b045803022cb3">                                                        <input type="hidden" name="action" value="moderate_post">
+                                                        <input type="hidden" name="post_id" value="6">
+                                                        <input type="hidden" name="post_action" value="unpublish">
+                                                        <button type="submit" class="btn btn-sm btn-outline-secondary"><i class="fa-solid fa-eye-slash"></i> Draft</button>
+                                                    </form>
+                                                
+                                                                                                    <form action="../admin/actions.php" method="POST" style="display:inline-block;" onsubmit="return confirm('Flag and remove this post as offensive?');">
+                                                        <input type="hidden" name="csrf_token" value="ddaa1245ac3bccfa892527244a83cdff0de32bba39bd8f5c9c9b045803022cb3">                                                        <input type="hidden" name="action" value="moderate_post">
+                                                        <input type="hidden" name="post_id" value="6">
+                                                        <input type="hidden" name="post_action" value="offensive">
+                                                        <button type="submit" class="btn btn-sm btn-outline-warning" title="Flag Offensive"><i class="fa-solid fa-triangle-exclamation"></i></button>
+                                                    </form>
+                                                
+                                                <form action="../admin/actions.php" method="POST" style="display:inline-block;" onsubmit="return confirm('Permanently delete this post?');">
+                                                    <input type="hidden" name="csrf_token" value="ddaa1245ac3bccfa892527244a83cdff0de32bba39bd8f5c9c9b045803022cb3">                                                    <input type="hidden" name="action" value="moderate_post">
+                                                    <input type="hidden" name="post_id" value="6">
+                                                    <input type="hidden" name="post_action" value="delete">
+                                                    <button type="submit" class="btn btn-sm btn-outline-danger" title="Delete"><i class="fa-solid fa-trash"></i></button>
+                                                </form>
+                                            </td>
+                                        </tr>
+                                                                                                                    <tr>
+                                            <td><strong>Decentralized Solar Micro-Grids for Cyclone Shel...</strong></td>
+                                            <td><span class="badge badge-secondary">Research</span></td>
+                                            <td>A Greener Tomorrow Admin</td>
+                                            <td><i class="fa-regular fa-eye"></i> 1,980</td>
+                                            <td><span class="badge badge-success">Published</span></td>
+                                            <td>02 Nov 2026</td>
+                                            <td class="text-right">
+                                                <a href="../researches.php?slug=solar-micro-grids-cyclone-shelters-coastal-bangladesh" target="_blank" class="btn btn-sm btn-outline" title="View Details Page"><i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+
+                                                                                                    <form action="../admin/actions.php" method="POST" style="display:inline-block;">
+                                                        <input type="hidden" name="csrf_token" value="ddaa1245ac3bccfa892527244a83cdff0de32bba39bd8f5c9c9b045803022cb3">                                                        <input type="hidden" name="action" value="moderate_post">
+                                                        <input type="hidden" name="post_id" value="5">
+                                                        <input type="hidden" name="post_action" value="unpublish">
+                                                        <button type="submit" class="btn btn-sm btn-outline-secondary"><i class="fa-solid fa-eye-slash"></i> Draft</button>
+                                                    </form>
+                                                
+                                                                                                    <form action="../admin/actions.php" method="POST" style="display:inline-block;" onsubmit="return confirm('Flag and remove this post as offensive?');">
+                                                        <input type="hidden" name="csrf_token" value="ddaa1245ac3bccfa892527244a83cdff0de32bba39bd8f5c9c9b045803022cb3">                                                        <input type="hidden" name="action" value="moderate_post">
+                                                        <input type="hidden" name="post_id" value="5">
+                                                        <input type="hidden" name="post_action" value="offensive">
+                                                        <button type="submit" class="btn btn-sm btn-outline-warning" title="Flag Offensive"><i class="fa-solid fa-triangle-exclamation"></i></button>
+                                                    </form>
+                                                
+                                                <form action="../admin/actions.php" method="POST" style="display:inline-block;" onsubmit="return confirm('Permanently delete this post?');">
+                                                    <input type="hidden" name="csrf_token" value="ddaa1245ac3bccfa892527244a83cdff0de32bba39bd8f5c9c9b045803022cb3">                                                    <input type="hidden" name="action" value="moderate_post">
+                                                    <input type="hidden" name="post_id" value="5">
+                                                    <input type="hidden" name="post_action" value="delete">
+                                                    <button type="submit" class="btn btn-sm btn-outline-danger" title="Delete"><i class="fa-solid fa-trash"></i></button>
+                                                </form>
+                                            </td>
+                                        </tr>
+                                                                                                                    <tr>
+                                            <td><strong>Assessing Industrial Heavy Metal Runoff into the...</strong></td>
+                                            <td><span class="badge badge-secondary">Research</span></td>
+                                            <td>Sofiqul Alam</td>
+                                            <td><i class="fa-regular fa-eye"></i> 3,120</td>
+                                            <td><span class="badge badge-success">Published</span></td>
+                                            <td>02 Nov 2026</td>
+                                            <td class="text-right">
+                                                <a href="../researches.php?slug=buriganga-heavy-metal-runoff-survey-2026" target="_blank" class="btn btn-sm btn-outline" title="View Details Page"><i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+
+                                                                                                    <form action="../admin/actions.php" method="POST" style="display:inline-block;">
+                                                        <input type="hidden" name="csrf_token" value="ddaa1245ac3bccfa892527244a83cdff0de32bba39bd8f5c9c9b045803022cb3">                                                        <input type="hidden" name="action" value="moderate_post">
+                                                        <input type="hidden" name="post_id" value="4">
+                                                        <input type="hidden" name="post_action" value="unpublish">
+                                                        <button type="submit" class="btn btn-sm btn-outline-secondary"><i class="fa-solid fa-eye-slash"></i> Draft</button>
+                                                    </form>
+                                                
+                                                                                                    <form action="../admin/actions.php" method="POST" style="display:inline-block;" onsubmit="return confirm('Flag and remove this post as offensive?');">
+                                                        <input type="hidden" name="csrf_token" value="ddaa1245ac3bccfa892527244a83cdff0de32bba39bd8f5c9c9b045803022cb3">                                                        <input type="hidden" name="action" value="moderate_post">
+                                                        <input type="hidden" name="post_id" value="4">
+                                                        <input type="hidden" name="post_action" value="offensive">
+                                                        <button type="submit" class="btn btn-sm btn-outline-warning" title="Flag Offensive"><i class="fa-solid fa-triangle-exclamation"></i></button>
+                                                    </form>
+                                                
+                                                <form action="../admin/actions.php" method="POST" style="display:inline-block;" onsubmit="return confirm('Permanently delete this post?');">
+                                                    <input type="hidden" name="csrf_token" value="ddaa1245ac3bccfa892527244a83cdff0de32bba39bd8f5c9c9b045803022cb3">                                                    <input type="hidden" name="action" value="moderate_post">
+                                                    <input type="hidden" name="post_id" value="4">
+                                                    <input type="hidden" name="post_action" value="delete">
+                                                    <button type="submit" class="btn btn-sm btn-outline-danger" title="Delete"><i class="fa-solid fa-trash"></i></button>
+                                                </form>
+                                            </td>
+                                        </tr>
+                                                                                                                    <tr>
+                                            <td><strong>Dhaka Urban Reforestation &amp; 10,000 Native Saplin...</strong></td>
+                                            <td><span class="badge badge-secondary">Activity</span></td>
+                                            <td>A Greener Tomorrow Admin</td>
+                                            <td><i class="fa-regular fa-eye"></i> 2,110</td>
+                                            <td><span class="badge badge-success">Published</span></td>
+                                            <td>02 Nov 2026</td>
+                                            <td class="text-right">
+                                                <a href="../activities.php?slug=dhaka-urban-reforestation-native-saplings-drive" target="_blank" class="btn btn-sm btn-outline" title="View Details Page"><i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+
+                                                                                                    <form action="../admin/actions.php" method="POST" style="display:inline-block;">
+                                                        <input type="hidden" name="csrf_token" value="ddaa1245ac3bccfa892527244a83cdff0de32bba39bd8f5c9c9b045803022cb3">                                                        <input type="hidden" name="action" value="moderate_post">
+                                                        <input type="hidden" name="post_id" value="3">
+                                                        <input type="hidden" name="post_action" value="unpublish">
+                                                        <button type="submit" class="btn btn-sm btn-outline-secondary"><i class="fa-solid fa-eye-slash"></i> Draft</button>
+                                                    </form>
+                                                
+                                                                                                    <form action="../admin/actions.php" method="POST" style="display:inline-block;" onsubmit="return confirm('Flag and remove this post as offensive?');">
+                                                        <input type="hidden" name="csrf_token" value="ddaa1245ac3bccfa892527244a83cdff0de32bba39bd8f5c9c9b045803022cb3">                                                        <input type="hidden" name="action" value="moderate_post">
+                                                        <input type="hidden" name="post_id" value="3">
+                                                        <input type="hidden" name="post_action" value="offensive">
+                                                        <button type="submit" class="btn btn-sm btn-outline-warning" title="Flag Offensive"><i class="fa-solid fa-triangle-exclamation"></i></button>
+                                                    </form>
+                                                
+                                                <form action="../admin/actions.php" method="POST" style="display:inline-block;" onsubmit="return confirm('Permanently delete this post?');">
+                                                    <input type="hidden" name="csrf_token" value="ddaa1245ac3bccfa892527244a83cdff0de32bba39bd8f5c9c9b045803022cb3">                                                    <input type="hidden" name="action" value="moderate_post">
+                                                    <input type="hidden" name="post_id" value="3">
+                                                    <input type="hidden" name="post_action" value="delete">
+                                                    <button type="submit" class="btn btn-sm btn-outline-danger" title="Delete"><i class="fa-solid fa-trash"></i></button>
+                                                </form>
+                                            </td>
+                                        </tr>
+                                                                                                                    <tr>
+                                            <td><strong>Buriganga River Waste Cleanup &amp; Plastic-Free Cit...</strong></td>
+                                            <td><span class="badge badge-secondary">Activity</span></td>
+                                            <td>Sofiqul Alam</td>
+                                            <td><i class="fa-regular fa-eye"></i> 1,890</td>
+                                            <td><span class="badge badge-success">Published</span></td>
+                                            <td>02 Nov 2026</td>
+                                            <td class="text-right">
+                                                <a href="../activities.php?slug=buriganga-river-cleanup-plastic-free-cities" target="_blank" class="btn btn-sm btn-outline" title="View Details Page"><i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+
+                                                                                                    <form action="../admin/actions.php" method="POST" style="display:inline-block;">
+                                                        <input type="hidden" name="csrf_token" value="ddaa1245ac3bccfa892527244a83cdff0de32bba39bd8f5c9c9b045803022cb3">                                                        <input type="hidden" name="action" value="moderate_post">
+                                                        <input type="hidden" name="post_id" value="2">
+                                                        <input type="hidden" name="post_action" value="unpublish">
+                                                        <button type="submit" class="btn btn-sm btn-outline-secondary"><i class="fa-solid fa-eye-slash"></i> Draft</button>
+                                                    </form>
+                                                
+                                                                                                    <form action="../admin/actions.php" method="POST" style="display:inline-block;" onsubmit="return confirm('Flag and remove this post as offensive?');">
+                                                        <input type="hidden" name="csrf_token" value="ddaa1245ac3bccfa892527244a83cdff0de32bba39bd8f5c9c9b045803022cb3">                                                        <input type="hidden" name="action" value="moderate_post">
+                                                        <input type="hidden" name="post_id" value="2">
+                                                        <input type="hidden" name="post_action" value="offensive">
+                                                        <button type="submit" class="btn btn-sm btn-outline-warning" title="Flag Offensive"><i class="fa-solid fa-triangle-exclamation"></i></button>
+                                                    </form>
+                                                
+                                                <form action="../admin/actions.php" method="POST" style="display:inline-block;" onsubmit="return confirm('Permanently delete this post?');">
+                                                    <input type="hidden" name="csrf_token" value="ddaa1245ac3bccfa892527244a83cdff0de32bba39bd8f5c9c9b045803022cb3">                                                    <input type="hidden" name="action" value="moderate_post">
+                                                    <input type="hidden" name="post_id" value="2">
+                                                    <input type="hidden" name="post_action" value="delete">
+                                                    <button type="submit" class="btn btn-sm btn-outline-danger" title="Delete"><i class="fa-solid fa-trash"></i></button>
+                                                </form>
+                                            </td>
+                                        </tr>
+                                                                                                                    <tr>
+                                            <td><strong>Nationwide Youth Climate March &amp; Mangrove Defens...</strong></td>
+                                            <td><span class="badge badge-secondary">Activity</span></td>
+                                            <td>A Greener Tomorrow Admin</td>
+                                            <td><i class="fa-regular fa-eye"></i> 2,450</td>
+                                            <td><span class="badge badge-success">Published</span></td>
+                                            <td>02 Nov 2026</td>
+                                            <td class="text-right">
+                                                <a href="../activities.php?slug=nationwide-youth-climate-march-mangrove-defense" target="_blank" class="btn btn-sm btn-outline" title="View Details Page"><i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+
+                                                                                                    <form action="../admin/actions.php" method="POST" style="display:inline-block;">
+                                                        <input type="hidden" name="csrf_token" value="ddaa1245ac3bccfa892527244a83cdff0de32bba39bd8f5c9c9b045803022cb3">                                                        <input type="hidden" name="action" value="moderate_post">
+                                                        <input type="hidden" name="post_id" value="1">
+                                                        <input type="hidden" name="post_action" value="unpublish">
+                                                        <button type="submit" class="btn btn-sm btn-outline-secondary"><i class="fa-solid fa-eye-slash"></i> Draft</button>
+                                                    </form>
+                                                
+                                                                                                    <form action="../admin/actions.php" method="POST" style="display:inline-block;" onsubmit="return confirm('Flag and remove this post as offensive?');">
+                                                        <input type="hidden" name="csrf_token" value="ddaa1245ac3bccfa892527244a83cdff0de32bba39bd8f5c9c9b045803022cb3">                                                        <input type="hidden" name="action" value="moderate_post">
+                                                        <input type="hidden" name="post_id" value="1">
+                                                        <input type="hidden" name="post_action" value="offensive">
+                                                        <button type="submit" class="btn btn-sm btn-outline-warning" title="Flag Offensive"><i class="fa-solid fa-triangle-exclamation"></i></button>
+                                                    </form>
+                                                
+                                                <form action="../admin/actions.php" method="POST" style="display:inline-block;" onsubmit="return confirm('Permanently delete this post?');">
+                                                    <input type="hidden" name="csrf_token" value="ddaa1245ac3bccfa892527244a83cdff0de32bba39bd8f5c9c9b045803022cb3">                                                    <input type="hidden" name="action" value="moderate_post">
+                                                    <input type="hidden" name="post_id" value="1">
+                                                    <input type="hidden" name="post_action" value="delete">
+                                                    <button type="submit" class="btn btn-sm btn-outline-danger" title="Delete"><i class="fa-solid fa-trash"></i></button>
+                                                </form>
+                                            </td>
+                                        </tr>
+                                                                    </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- ================= TAB 3: HERO SLIDER & PHOTO GALLERY ================= -->
+                <section class="admin-tab-pane" id="tab-media" data-title="Hero Slider & Photo Gallery" style="display:none;" role="tabpanel">
+                    <div class="row g-4">
+                        <!-- Hero Slider Management -->
+                        <div class="col-lg-6">
+                            <div class="card p-4">
+                                <div class="card-header pb-3 mb-3 border-bottom">
+                                    <h3><i class="fa-solid fa-panorama"></i> Homepage Hero Slider</h3>
+                                    <p class="text-muted small mb-0">Manage full-width black-overlay hero banners on the homepage.</p>
+                                </div>
+
+                                <div class="slide-list mb-4">
+                                                                            <div class="slide-list-item d-flex justify-content-between align-items-center p-3 mb-2 bg-light rounded border">
+                                            <div class="d-flex align-items-center gap-3">
+                                                <img src="../assets/uploads/slider/slide-climate-mangrove.webp" alt="Slide" width="68" height="44" class="table-thumb">
+                                                <div>
+                                                    <span class="badge badge-accent badge-sm">Live Initiative</span>
+                                                    <div class="font-weight-bold small mt-1">Nationwide Youth Climate March &amp; Mangrove ...</div>
+                                                </div>
+                                            </div>
+                                            <form action="../admin/actions.php" method="POST" onsubmit="return confirm('Delete this hero slide?');">
+                                                <input type="hidden" name="csrf_token" value="ddaa1245ac3bccfa892527244a83cdff0de32bba39bd8f5c9c9b045803022cb3">                                                <input type="hidden" name="action" value="delete_hero_slide">
+                                                <input type="hidden" name="slide_id" value="1">
+                                                <button type="submit" class="btn btn-sm btn-outline-danger"><i class="fa-solid fa-trash"></i></button>
+                                            </form>
+                                        </div>
+                                                                            <div class="slide-list-item d-flex justify-content-between align-items-center p-3 mb-2 bg-light rounded border">
+                                            <div class="d-flex align-items-center gap-3">
+                                                <img src="../assets/uploads/slider/slide-river-cleanup.webp" alt="Slide" width="68" height="44" class="table-thumb">
+                                                <div>
+                                                    <span class="badge badge-accent badge-sm">Pollution Control</span>
+                                                    <div class="font-weight-bold small mt-1">Buriganga River Waste Cleanup &amp; Plastic-Fr...</div>
+                                                </div>
+                                            </div>
+                                            <form action="../admin/actions.php" method="POST" onsubmit="return confirm('Delete this hero slide?');">
+                                                <input type="hidden" name="csrf_token" value="ddaa1245ac3bccfa892527244a83cdff0de32bba39bd8f5c9c9b045803022cb3">                                                <input type="hidden" name="action" value="delete_hero_slide">
+                                                <input type="hidden" name="slide_id" value="2">
+                                                <button type="submit" class="btn btn-sm btn-outline-danger"><i class="fa-solid fa-trash"></i></button>
+                                            </form>
+                                        </div>
+                                                                            <div class="slide-list-item d-flex justify-content-between align-items-center p-3 mb-2 bg-light rounded border">
+                                            <div class="d-flex align-items-center gap-3">
+                                                <img src="../assets/uploads/slider/slide-youth-planting.webp" alt="Slide" width="68" height="44" class="table-thumb">
+                                                <div>
+                                                    <span class="badge badge-accent badge-sm">Nationwide Movement</span>
+                                                    <div class="font-weight-bold small mt-1">Youth Climate Mobilization Across 64 Distr...</div>
+                                                </div>
+                                            </div>
+                                            <form action="../admin/actions.php" method="POST" onsubmit="return confirm('Delete this hero slide?');">
+                                                <input type="hidden" name="csrf_token" value="ddaa1245ac3bccfa892527244a83cdff0de32bba39bd8f5c9c9b045803022cb3">                                                <input type="hidden" name="action" value="delete_hero_slide">
+                                                <input type="hidden" name="slide_id" value="3">
+                                                <button type="submit" class="btn btn-sm btn-outline-danger"><i class="fa-solid fa-trash"></i></button>
+                                            </form>
+                                        </div>
+                                                                    </div>
+
+                                <form action="../admin/actions.php" method="POST" enctype="multipart/form-data" class="p-3 bg-light rounded border">
+                                    <input type="hidden" name="csrf_token" value="ddaa1245ac3bccfa892527244a83cdff0de32bba39bd8f5c9c9b045803022cb3">                                    <input type="hidden" name="action" value="save_hero_slide">
+                                    <h4 class="mb-3"><i class="fa-solid fa-plus-circle"></i> Add New Hero Slide</h4>
+                                    <div class="form-group mb-2">
+                                        <input type="text" name="slide_title" class="form-control form-control-sm" required placeholder="Slide Headline *">
+                                    </div>
+                                    <div class="form-group mb-2">
+                                        <input type="text" name="slide_subtitle" class="form-control form-control-sm" placeholder="Subtitle / Campaign Description">
+                                    </div>
+                                    <div class="form-row-2 mb-2">
+                                        <input type="text" name="slide_badge" class="form-control form-control-sm" placeholder="Badge (e.g. Live Action)">
+                                        <input type="text" name="slide_cta_url" class="form-control form-control-sm" placeholder="CTA Link (e.g. /activities.php)">
+                                    </div>
+                                    <div class="form-group mb-3">
+                                        <label class="small text-muted">Banner Image (WebP/JPG &bull; Max 8MB)</label>
+                                        <input type="file" name="slide_image" class="form-control form-control-sm" accept="image/*" data-max-mb="8">
+                                    </div>
+                                    <button type="submit" class="btn btn-primary btn-sm"><i class="fa-solid fa-plus"></i> Add Hero Slide</button>
+                                </form>
+                            </div>
+                        </div>
+
+                        <!-- Photo Gallery Management -->
+                        <div class="col-lg-6">
+                            <div class="card p-4">
+                                <div class="card-header pb-3 mb-3 border-bottom">
+                                    <h3><i class="fa-solid fa-camera-retro"></i> Field Photo Gallery (6)</h3>
+                                    <p class="text-muted small mb-0">Add or remove category-filtered photographs in the Gallery.</p>
+                                </div>
+
+                                <div class="slide-list mb-4" style="max-height: 290px; overflow-y: auto;">
+                                                                            <div class="slide-list-item d-flex justify-content-between align-items-center p-2 mb-2 bg-light rounded border">
+                                            <div class="d-flex align-items-center gap-3">
+                                                <img src="../assets/uploads/gallery/gallery-solar-delta.webp" alt="Gallery" width="60" height="42" class="table-thumb">
+                                                <div>
+                                                    <span class="badge badge-secondary badge-sm">Climate Adaptation</span>
+                                                    <div class="font-weight-bold small mt-1">Renewable Solar Micro-Grid Deployment</div>
+                                                </div>
+                                            </div>
+                                            <form action="../admin/actions.php" method="POST" onsubmit="return confirm('Remove this photo from gallery?');">
+                                                <input type="hidden" name="csrf_token" value="ddaa1245ac3bccfa892527244a83cdff0de32bba39bd8f5c9c9b045803022cb3">                                                <input type="hidden" name="action" value="delete_gallery_item">
+                                                <input type="hidden" name="gallery_id" value="6">
+                                                <button type="submit" class="btn btn-sm btn-outline-danger"><i class="fa-solid fa-trash"></i></button>
+                                            </form>
+                                        </div>
+                                                                            <div class="slide-list-item d-flex justify-content-between align-items-center p-2 mb-2 bg-light rounded border">
+                                            <div class="d-flex align-items-center gap-3">
+                                                <img src="../assets/uploads/gallery/gallery-nursery-saplings.webp" alt="Gallery" width="60" height="42" class="table-thumb">
+                                                <div>
+                                                    <span class="badge badge-secondary badge-sm">Reforestation</span>
+                                                    <div class="font-weight-bold small mt-1">Community Native Sapling Nursery</div>
+                                                </div>
+                                            </div>
+                                            <form action="../admin/actions.php" method="POST" onsubmit="return confirm('Remove this photo from gallery?');">
+                                                <input type="hidden" name="csrf_token" value="ddaa1245ac3bccfa892527244a83cdff0de32bba39bd8f5c9c9b045803022cb3">                                                <input type="hidden" name="action" value="delete_gallery_item">
+                                                <input type="hidden" name="gallery_id" value="5">
+                                                <button type="submit" class="btn btn-sm btn-outline-danger"><i class="fa-solid fa-trash"></i></button>
+                                            </form>
+                                        </div>
+                                                                            <div class="slide-list-item d-flex justify-content-between align-items-center p-2 mb-2 bg-light rounded border">
+                                            <div class="d-flex align-items-center gap-3">
+                                                <img src="../assets/uploads/gallery/gallery-water-testing.webp" alt="Gallery" width="60" height="42" class="table-thumb">
+                                                <div>
+                                                    <span class="badge badge-secondary badge-sm">Youth Mobilization</span>
+                                                    <div class="font-weight-bold small mt-1">Buriganga Water Quality Sampling</div>
+                                                </div>
+                                            </div>
+                                            <form action="../admin/actions.php" method="POST" onsubmit="return confirm('Remove this photo from gallery?');">
+                                                <input type="hidden" name="csrf_token" value="ddaa1245ac3bccfa892527244a83cdff0de32bba39bd8f5c9c9b045803022cb3">                                                <input type="hidden" name="action" value="delete_gallery_item">
+                                                <input type="hidden" name="gallery_id" value="4">
+                                                <button type="submit" class="btn btn-sm btn-outline-danger"><i class="fa-solid fa-trash"></i></button>
+                                            </form>
+                                        </div>
+                                                                            <div class="slide-list-item d-flex justify-content-between align-items-center p-2 mb-2 bg-light rounded border">
+                                            <div class="d-flex align-items-center gap-3">
+                                                <img src="../assets/uploads/gallery/gallery-mangrove-forest.webp" alt="Gallery" width="60" height="42" class="table-thumb">
+                                                <div>
+                                                    <span class="badge badge-secondary badge-sm">Climate Adaptation</span>
+                                                    <div class="font-weight-bold small mt-1">Coastal Mangrove Afforestation</div>
+                                                </div>
+                                            </div>
+                                            <form action="../admin/actions.php" method="POST" onsubmit="return confirm('Remove this photo from gallery?');">
+                                                <input type="hidden" name="csrf_token" value="ddaa1245ac3bccfa892527244a83cdff0de32bba39bd8f5c9c9b045803022cb3">                                                <input type="hidden" name="action" value="delete_gallery_item">
+                                                <input type="hidden" name="gallery_id" value="3">
+                                                <button type="submit" class="btn btn-sm btn-outline-danger"><i class="fa-solid fa-trash"></i></button>
+                                            </form>
+                                        </div>
+                                                                            <div class="slide-list-item d-flex justify-content-between align-items-center p-2 mb-2 bg-light rounded border">
+                                            <div class="d-flex align-items-center gap-3">
+                                                <img src="../assets/uploads/gallery/gallery-tree-planting.webp" alt="Gallery" width="60" height="42" class="table-thumb">
+                                                <div>
+                                                    <span class="badge badge-secondary badge-sm">Reforestation</span>
+                                                    <div class="font-weight-bold small mt-1">School Tree Plantation Drive</div>
+                                                </div>
+                                            </div>
+                                            <form action="../admin/actions.php" method="POST" onsubmit="return confirm('Remove this photo from gallery?');">
+                                                <input type="hidden" name="csrf_token" value="ddaa1245ac3bccfa892527244a83cdff0de32bba39bd8f5c9c9b045803022cb3">                                                <input type="hidden" name="action" value="delete_gallery_item">
+                                                <input type="hidden" name="gallery_id" value="2">
+                                                <button type="submit" class="btn btn-sm btn-outline-danger"><i class="fa-solid fa-trash"></i></button>
+                                            </form>
+                                        </div>
+                                                                            <div class="slide-list-item d-flex justify-content-between align-items-center p-2 mb-2 bg-light rounded border">
+                                            <div class="d-flex align-items-center gap-3">
+                                                <img src="../assets/uploads/gallery/gallery-pollution-cleanup.webp" alt="Gallery" width="60" height="42" class="table-thumb">
+                                                <div>
+                                                    <span class="badge badge-secondary badge-sm">Pollution Control</span>
+                                                    <div class="font-weight-bold small mt-1">Hatirpool Youth Clean Movement</div>
+                                                </div>
+                                            </div>
+                                            <form action="../admin/actions.php" method="POST" onsubmit="return confirm('Remove this photo from gallery?');">
+                                                <input type="hidden" name="csrf_token" value="ddaa1245ac3bccfa892527244a83cdff0de32bba39bd8f5c9c9b045803022cb3">                                                <input type="hidden" name="action" value="delete_gallery_item">
+                                                <input type="hidden" name="gallery_id" value="1">
+                                                <button type="submit" class="btn btn-sm btn-outline-danger"><i class="fa-solid fa-trash"></i></button>
+                                            </form>
+                                        </div>
+                                                                    </div>
+
+                                <form action="../admin/actions.php" method="POST" enctype="multipart/form-data" class="p-3 bg-light rounded border">
+                                    <input type="hidden" name="csrf_token" value="ddaa1245ac3bccfa892527244a83cdff0de32bba39bd8f5c9c9b045803022cb3">                                    <input type="hidden" name="action" value="add_gallery_item">
+                                    <h4 class="mb-3"><i class="fa-solid fa-cloud-arrow-up"></i> Upload New Gallery Photo</h4>
+                                    <div class="form-row-2 mb-2">
+                                        <input type="text" name="gallery_title" class="form-control form-control-sm" required placeholder="Photo Title *">
+                                        <select name="gallery_category" class="form-control form-control-sm">
+                                            <option value="Reforestation">Reforestation</option>
+                                            <option value="Pollution Control">Pollution Control</option>
+                                            <option value="Youth Mobilization">Youth Mobilization</option>
+                                            <option value="Climate Adaptation">Climate Adaptation</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group mb-2">
+                                        <input type="text" name="gallery_caption" class="form-control form-control-sm" placeholder="Photo Caption & District Location">
+                                    </div>
+                                    <div class="form-group mb-3">
+                                        <input type="file" name="gallery_image" class="form-control form-control-sm" accept="image/*" data-max-mb="8">
+                                    </div>
+                                    <button type="submit" class="btn btn-primary btn-sm"><i class="fa-solid fa-upload"></i> Add to Gallery</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- ================= TAB 4: COMMENTS & CONTACT INBOX ================= -->
+                <section class="admin-tab-pane" id="tab-communications" data-title="Member Comments & Secretariat Inbox" style="display:none;" role="tabpanel">
+                    <div class="card p-4 mb-4">
+                        <div class="card-header pb-3 mb-3 border-bottom d-flex justify-content-between align-items-center">
+                            <div>
+                                <h3><i class="fa-solid fa-comments"></i> Community Comments &amp; Replies (32)</h3>
+                                <p class="text-muted small mb-0">Review and moderate opinions posted by members on Blog, Research, and Activity details pages.</p>
+                            </div>
+                        </div>
+                        <div class="table-responsive">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>Author</th>
+                                        <th>Comment / Reply</th>
+                                        <th>Target Publication</th>
+                                        <th>Type</th>
+                                        <th>Date</th>
+                                        <th class="text-right">Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                                                            <tr>
+                                            <td>
+                                                <strong>Sofiqul Alam</strong>
+                                                <div class="text-muted small">Lead Environmental Researcher</div>
+                                            </td>
+                                            <td>Absolutely, Nusrat! Sign in to your Member Dashboard or message the Central...</td>
+                                            <td><strong>Inside Our 64-District Youth River A...</strong></td>
+                                            <td>
+                                                                                                    <span class="badge badge-secondary">Reply</span>
+                                                                                            </td>
+                                            <td>02 Nov 2026</td>
+                                            <td class="text-right">
+                                                <form action="../admin/actions.php" method="POST" style="display:inline-block;" onsubmit="return confirm('Delete this comment?');">
+                                                    <input type="hidden" name="csrf_token" value="ddaa1245ac3bccfa892527244a83cdff0de32bba39bd8f5c9c9b045803022cb3">                                                    <input type="hidden" name="action" value="delete_comment">
+                                                    <input type="hidden" name="comment_id" value="32">
+                                                    <button type="submit" class="btn btn-sm btn-outline-danger"><i class="fa-solid fa-trash"></i></button>
+                                                </form>
+                                            </td>
+                                        </tr>
+                                                                            <tr>
+                                            <td>
+                                                <strong>Nusrat Jahan Mim</strong>
+                                                <div class="text-muted small">Youth Climate Member (Khulna)</div>
+                                            </td>
+                                            <td>This report is incredibly helpful for our university environmental club. Ca...</td>
+                                            <td><strong>Inside Our 64-District Youth River A...</strong></td>
+                                            <td>
+                                                                                                    <span class="badge badge-primary">Comment</span>
+                                                                                            </td>
+                                            <td>02 Nov 2026</td>
+                                            <td class="text-right">
+                                                <form action="../admin/actions.php" method="POST" style="display:inline-block;" onsubmit="return confirm('Delete this comment?');">
+                                                    <input type="hidden" name="csrf_token" value="ddaa1245ac3bccfa892527244a83cdff0de32bba39bd8f5c9c9b045803022cb3">                                                    <input type="hidden" name="action" value="delete_comment">
+                                                    <input type="hidden" name="comment_id" value="31">
+                                                    <button type="submit" class="btn btn-sm btn-outline-danger"><i class="fa-solid fa-trash"></i></button>
+                                                </form>
+                                            </td>
+                                        </tr>
+                                                                            <tr>
+                                            <td>
+                                                <strong>A Greener Tomorrow Admin</strong>
+                                                <div class="text-muted small">Central Executive Director</div>
+                                            </td>
+                                            <td>Appreciate the rigorous field work, Sofiqul! We have scheduled the next vol...</td>
+                                            <td><strong>Inside Our 64-District Youth River A...</strong></td>
+                                            <td>
+                                                                                                    <span class="badge badge-secondary">Reply</span>
+                                                                                            </td>
+                                            <td>02 Nov 2026</td>
+                                            <td class="text-right">
+                                                <form action="../admin/actions.php" method="POST" style="display:inline-block;" onsubmit="return confirm('Delete this comment?');">
+                                                    <input type="hidden" name="csrf_token" value="ddaa1245ac3bccfa892527244a83cdff0de32bba39bd8f5c9c9b045803022cb3">                                                    <input type="hidden" name="action" value="delete_comment">
+                                                    <input type="hidden" name="comment_id" value="30">
+                                                    <button type="submit" class="btn btn-sm btn-outline-danger"><i class="fa-solid fa-trash"></i></button>
+                                                </form>
+                                            </td>
+                                        </tr>
+                                                                            <tr>
+                                            <td>
+                                                <strong>Sofiqul Alam</strong>
+                                                <div class="text-muted small">Lead Environmental Researcher</div>
+                                            </td>
+                                            <td>Thank you to all the student volunteers and community coordinators who cont...</td>
+                                            <td><strong>Inside Our 64-District Youth River A...</strong></td>
+                                            <td>
+                                                                                                    <span class="badge badge-primary">Comment</span>
+                                                                                            </td>
+                                            <td>02 Nov 2026</td>
+                                            <td class="text-right">
+                                                <form action="../admin/actions.php" method="POST" style="display:inline-block;" onsubmit="return confirm('Delete this comment?');">
+                                                    <input type="hidden" name="csrf_token" value="ddaa1245ac3bccfa892527244a83cdff0de32bba39bd8f5c9c9b045803022cb3">                                                    <input type="hidden" name="action" value="delete_comment">
+                                                    <input type="hidden" name="comment_id" value="29">
+                                                    <button type="submit" class="btn btn-sm btn-outline-danger"><i class="fa-solid fa-trash"></i></button>
+                                                </form>
+                                            </td>
+                                        </tr>
+                                                                            <tr>
+                                            <td>
+                                                <strong>Sofiqul Alam</strong>
+                                                <div class="text-muted small">Lead Environmental Researcher</div>
+                                            </td>
+                                            <td>Absolutely, Nusrat! Sign in to your Member Dashboard or message the Central...</td>
+                                            <td><strong>How Miyawaki Urban Micro-Forests Are...</strong></td>
+                                            <td>
+                                                                                                    <span class="badge badge-secondary">Reply</span>
+                                                                                            </td>
+                                            <td>02 Nov 2026</td>
+                                            <td class="text-right">
+                                                <form action="../admin/actions.php" method="POST" style="display:inline-block;" onsubmit="return confirm('Delete this comment?');">
+                                                    <input type="hidden" name="csrf_token" value="ddaa1245ac3bccfa892527244a83cdff0de32bba39bd8f5c9c9b045803022cb3">                                                    <input type="hidden" name="action" value="delete_comment">
+                                                    <input type="hidden" name="comment_id" value="28">
+                                                    <button type="submit" class="btn btn-sm btn-outline-danger"><i class="fa-solid fa-trash"></i></button>
+                                                </form>
+                                            </td>
+                                        </tr>
+                                                                            <tr>
+                                            <td>
+                                                <strong>Nusrat Jahan Mim</strong>
+                                                <div class="text-muted small">Youth Climate Member (Khulna)</div>
+                                            </td>
+                                            <td>This report is incredibly helpful for our university environmental club. Ca...</td>
+                                            <td><strong>How Miyawaki Urban Micro-Forests Are...</strong></td>
+                                            <td>
+                                                                                                    <span class="badge badge-primary">Comment</span>
+                                                                                            </td>
+                                            <td>02 Nov 2026</td>
+                                            <td class="text-right">
+                                                <form action="../admin/actions.php" method="POST" style="display:inline-block;" onsubmit="return confirm('Delete this comment?');">
+                                                    <input type="hidden" name="csrf_token" value="ddaa1245ac3bccfa892527244a83cdff0de32bba39bd8f5c9c9b045803022cb3">                                                    <input type="hidden" name="action" value="delete_comment">
+                                                    <input type="hidden" name="comment_id" value="27">
+                                                    <button type="submit" class="btn btn-sm btn-outline-danger"><i class="fa-solid fa-trash"></i></button>
+                                                </form>
+                                            </td>
+                                        </tr>
+                                                                            <tr>
+                                            <td>
+                                                <strong>A Greener Tomorrow Admin</strong>
+                                                <div class="text-muted small">Central Executive Director</div>
+                                            </td>
+                                            <td>Appreciate the rigorous field work, Sofiqul! We have scheduled the next vol...</td>
+                                            <td><strong>How Miyawaki Urban Micro-Forests Are...</strong></td>
+                                            <td>
+                                                                                                    <span class="badge badge-secondary">Reply</span>
+                                                                                            </td>
+                                            <td>02 Nov 2026</td>
+                                            <td class="text-right">
+                                                <form action="../admin/actions.php" method="POST" style="display:inline-block;" onsubmit="return confirm('Delete this comment?');">
+                                                    <input type="hidden" name="csrf_token" value="ddaa1245ac3bccfa892527244a83cdff0de32bba39bd8f5c9c9b045803022cb3">                                                    <input type="hidden" name="action" value="delete_comment">
+                                                    <input type="hidden" name="comment_id" value="26">
+                                                    <button type="submit" class="btn btn-sm btn-outline-danger"><i class="fa-solid fa-trash"></i></button>
+                                                </form>
+                                            </td>
+                                        </tr>
+                                                                            <tr>
+                                            <td>
+                                                <strong>Sofiqul Alam</strong>
+                                                <div class="text-muted small">Lead Environmental Researcher</div>
+                                            </td>
+                                            <td>Thank you to all the student volunteers and community coordinators who cont...</td>
+                                            <td><strong>How Miyawaki Urban Micro-Forests Are...</strong></td>
+                                            <td>
+                                                                                                    <span class="badge badge-primary">Comment</span>
+                                                                                            </td>
+                                            <td>02 Nov 2026</td>
+                                            <td class="text-right">
+                                                <form action="../admin/actions.php" method="POST" style="display:inline-block;" onsubmit="return confirm('Delete this comment?');">
+                                                    <input type="hidden" name="csrf_token" value="ddaa1245ac3bccfa892527244a83cdff0de32bba39bd8f5c9c9b045803022cb3">                                                    <input type="hidden" name="action" value="delete_comment">
+                                                    <input type="hidden" name="comment_id" value="25">
+                                                    <button type="submit" class="btn btn-sm btn-outline-danger"><i class="fa-solid fa-trash"></i></button>
+                                                </form>
+                                            </td>
+                                        </tr>
+                                                                            <tr>
+                                            <td>
+                                                <strong>Sofiqul Alam</strong>
+                                                <div class="text-muted small">Lead Environmental Researcher</div>
+                                            </td>
+                                            <td>Absolutely, Nusrat! Sign in to your Member Dashboard or message the Central...</td>
+                                            <td><strong>Coastal Embankment Erosion in Satkhi...</strong></td>
+                                            <td>
+                                                                                                    <span class="badge badge-secondary">Reply</span>
+                                                                                            </td>
+                                            <td>02 Nov 2026</td>
+                                            <td class="text-right">
+                                                <form action="../admin/actions.php" method="POST" style="display:inline-block;" onsubmit="return confirm('Delete this comment?');">
+                                                    <input type="hidden" name="csrf_token" value="ddaa1245ac3bccfa892527244a83cdff0de32bba39bd8f5c9c9b045803022cb3">                                                    <input type="hidden" name="action" value="delete_comment">
+                                                    <input type="hidden" name="comment_id" value="24">
+                                                    <button type="submit" class="btn btn-sm btn-outline-danger"><i class="fa-solid fa-trash"></i></button>
+                                                </form>
+                                            </td>
+                                        </tr>
+                                                                            <tr>
+                                            <td>
+                                                <strong>Nusrat Jahan Mim</strong>
+                                                <div class="text-muted small">Youth Climate Member (Khulna)</div>
+                                            </td>
+                                            <td>This report is incredibly helpful for our university environmental club. Ca...</td>
+                                            <td><strong>Coastal Embankment Erosion in Satkhi...</strong></td>
+                                            <td>
+                                                                                                    <span class="badge badge-primary">Comment</span>
+                                                                                            </td>
+                                            <td>02 Nov 2026</td>
+                                            <td class="text-right">
+                                                <form action="../admin/actions.php" method="POST" style="display:inline-block;" onsubmit="return confirm('Delete this comment?');">
+                                                    <input type="hidden" name="csrf_token" value="ddaa1245ac3bccfa892527244a83cdff0de32bba39bd8f5c9c9b045803022cb3">                                                    <input type="hidden" name="action" value="delete_comment">
+                                                    <input type="hidden" name="comment_id" value="23">
+                                                    <button type="submit" class="btn btn-sm btn-outline-danger"><i class="fa-solid fa-trash"></i></button>
+                                                </form>
+                                            </td>
+                                        </tr>
+                                                                            <tr>
+                                            <td>
+                                                <strong>A Greener Tomorrow Admin</strong>
+                                                <div class="text-muted small">Central Executive Director</div>
+                                            </td>
+                                            <td>Appreciate the rigorous field work, Sofiqul! We have scheduled the next vol...</td>
+                                            <td><strong>Coastal Embankment Erosion in Satkhi...</strong></td>
+                                            <td>
+                                                                                                    <span class="badge badge-secondary">Reply</span>
+                                                                                            </td>
+                                            <td>02 Nov 2026</td>
+                                            <td class="text-right">
+                                                <form action="../admin/actions.php" method="POST" style="display:inline-block;" onsubmit="return confirm('Delete this comment?');">
+                                                    <input type="hidden" name="csrf_token" value="ddaa1245ac3bccfa892527244a83cdff0de32bba39bd8f5c9c9b045803022cb3">                                                    <input type="hidden" name="action" value="delete_comment">
+                                                    <input type="hidden" name="comment_id" value="22">
+                                                    <button type="submit" class="btn btn-sm btn-outline-danger"><i class="fa-solid fa-trash"></i></button>
+                                                </form>
+                                            </td>
+                                        </tr>
+                                                                            <tr>
+                                            <td>
+                                                <strong>Sofiqul Alam</strong>
+                                                <div class="text-muted small">Lead Environmental Researcher</div>
+                                            </td>
+                                            <td>Thank you to all the student volunteers and community coordinators who cont...</td>
+                                            <td><strong>Coastal Embankment Erosion in Satkhi...</strong></td>
+                                            <td>
+                                                                                                    <span class="badge badge-primary">Comment</span>
+                                                                                            </td>
+                                            <td>02 Nov 2026</td>
+                                            <td class="text-right">
+                                                <form action="../admin/actions.php" method="POST" style="display:inline-block;" onsubmit="return confirm('Delete this comment?');">
+                                                    <input type="hidden" name="csrf_token" value="ddaa1245ac3bccfa892527244a83cdff0de32bba39bd8f5c9c9b045803022cb3">                                                    <input type="hidden" name="action" value="delete_comment">
+                                                    <input type="hidden" name="comment_id" value="21">
+                                                    <button type="submit" class="btn btn-sm btn-outline-danger"><i class="fa-solid fa-trash"></i></button>
+                                                </form>
+                                            </td>
+                                        </tr>
+                                                                            <tr>
+                                            <td>
+                                                <strong>Sofiqul Alam</strong>
+                                                <div class="text-muted small">Lead Environmental Researcher</div>
+                                            </td>
+                                            <td>Absolutely, Nusrat! Sign in to your Member Dashboard or message the Central...</td>
+                                            <td><strong>Decentralized Solar Micro-Grids for ...</strong></td>
+                                            <td>
+                                                                                                    <span class="badge badge-secondary">Reply</span>
+                                                                                            </td>
+                                            <td>02 Nov 2026</td>
+                                            <td class="text-right">
+                                                <form action="../admin/actions.php" method="POST" style="display:inline-block;" onsubmit="return confirm('Delete this comment?');">
+                                                    <input type="hidden" name="csrf_token" value="ddaa1245ac3bccfa892527244a83cdff0de32bba39bd8f5c9c9b045803022cb3">                                                    <input type="hidden" name="action" value="delete_comment">
+                                                    <input type="hidden" name="comment_id" value="20">
+                                                    <button type="submit" class="btn btn-sm btn-outline-danger"><i class="fa-solid fa-trash"></i></button>
+                                                </form>
+                                            </td>
+                                        </tr>
+                                                                            <tr>
+                                            <td>
+                                                <strong>Nusrat Jahan Mim</strong>
+                                                <div class="text-muted small">Youth Climate Member (Khulna)</div>
+                                            </td>
+                                            <td>This report is incredibly helpful for our university environmental club. Ca...</td>
+                                            <td><strong>Decentralized Solar Micro-Grids for ...</strong></td>
+                                            <td>
+                                                                                                    <span class="badge badge-primary">Comment</span>
+                                                                                            </td>
+                                            <td>02 Nov 2026</td>
+                                            <td class="text-right">
+                                                <form action="../admin/actions.php" method="POST" style="display:inline-block;" onsubmit="return confirm('Delete this comment?');">
+                                                    <input type="hidden" name="csrf_token" value="ddaa1245ac3bccfa892527244a83cdff0de32bba39bd8f5c9c9b045803022cb3">                                                    <input type="hidden" name="action" value="delete_comment">
+                                                    <input type="hidden" name="comment_id" value="19">
+                                                    <button type="submit" class="btn btn-sm btn-outline-danger"><i class="fa-solid fa-trash"></i></button>
+                                                </form>
+                                            </td>
+                                        </tr>
+                                                                            <tr>
+                                            <td>
+                                                <strong>A Greener Tomorrow Admin</strong>
+                                                <div class="text-muted small">Central Executive Director</div>
+                                            </td>
+                                            <td>Appreciate the rigorous field work, Sofiqul! We have scheduled the next vol...</td>
+                                            <td><strong>Decentralized Solar Micro-Grids for ...</strong></td>
+                                            <td>
+                                                                                                    <span class="badge badge-secondary">Reply</span>
+                                                                                            </td>
+                                            <td>02 Nov 2026</td>
+                                            <td class="text-right">
+                                                <form action="../admin/actions.php" method="POST" style="display:inline-block;" onsubmit="return confirm('Delete this comment?');">
+                                                    <input type="hidden" name="csrf_token" value="ddaa1245ac3bccfa892527244a83cdff0de32bba39bd8f5c9c9b045803022cb3">                                                    <input type="hidden" name="action" value="delete_comment">
+                                                    <input type="hidden" name="comment_id" value="18">
+                                                    <button type="submit" class="btn btn-sm btn-outline-danger"><i class="fa-solid fa-trash"></i></button>
+                                                </form>
+                                            </td>
+                                        </tr>
+                                                                            <tr>
+                                            <td>
+                                                <strong>Sofiqul Alam</strong>
+                                                <div class="text-muted small">Lead Environmental Researcher</div>
+                                            </td>
+                                            <td>Thank you to all the student volunteers and community coordinators who cont...</td>
+                                            <td><strong>Decentralized Solar Micro-Grids for ...</strong></td>
+                                            <td>
+                                                                                                    <span class="badge badge-primary">Comment</span>
+                                                                                            </td>
+                                            <td>02 Nov 2026</td>
+                                            <td class="text-right">
+                                                <form action="../admin/actions.php" method="POST" style="display:inline-block;" onsubmit="return confirm('Delete this comment?');">
+                                                    <input type="hidden" name="csrf_token" value="ddaa1245ac3bccfa892527244a83cdff0de32bba39bd8f5c9c9b045803022cb3">                                                    <input type="hidden" name="action" value="delete_comment">
+                                                    <input type="hidden" name="comment_id" value="17">
+                                                    <button type="submit" class="btn btn-sm btn-outline-danger"><i class="fa-solid fa-trash"></i></button>
+                                                </form>
+                                            </td>
+                                        </tr>
+                                                                            <tr>
+                                            <td>
+                                                <strong>Sofiqul Alam</strong>
+                                                <div class="text-muted small">Lead Environmental Researcher</div>
+                                            </td>
+                                            <td>Absolutely, Nusrat! Sign in to your Member Dashboard or message the Central...</td>
+                                            <td><strong>Assessing Industrial Heavy Metal Run...</strong></td>
+                                            <td>
+                                                                                                    <span class="badge badge-secondary">Reply</span>
+                                                                                            </td>
+                                            <td>02 Nov 2026</td>
+                                            <td class="text-right">
+                                                <form action="../admin/actions.php" method="POST" style="display:inline-block;" onsubmit="return confirm('Delete this comment?');">
+                                                    <input type="hidden" name="csrf_token" value="ddaa1245ac3bccfa892527244a83cdff0de32bba39bd8f5c9c9b045803022cb3">                                                    <input type="hidden" name="action" value="delete_comment">
+                                                    <input type="hidden" name="comment_id" value="16">
+                                                    <button type="submit" class="btn btn-sm btn-outline-danger"><i class="fa-solid fa-trash"></i></button>
+                                                </form>
+                                            </td>
+                                        </tr>
+                                                                            <tr>
+                                            <td>
+                                                <strong>Nusrat Jahan Mim</strong>
+                                                <div class="text-muted small">Youth Climate Member (Khulna)</div>
+                                            </td>
+                                            <td>This report is incredibly helpful for our university environmental club. Ca...</td>
+                                            <td><strong>Assessing Industrial Heavy Metal Run...</strong></td>
+                                            <td>
+                                                                                                    <span class="badge badge-primary">Comment</span>
+                                                                                            </td>
+                                            <td>02 Nov 2026</td>
+                                            <td class="text-right">
+                                                <form action="../admin/actions.php" method="POST" style="display:inline-block;" onsubmit="return confirm('Delete this comment?');">
+                                                    <input type="hidden" name="csrf_token" value="ddaa1245ac3bccfa892527244a83cdff0de32bba39bd8f5c9c9b045803022cb3">                                                    <input type="hidden" name="action" value="delete_comment">
+                                                    <input type="hidden" name="comment_id" value="15">
+                                                    <button type="submit" class="btn btn-sm btn-outline-danger"><i class="fa-solid fa-trash"></i></button>
+                                                </form>
+                                            </td>
+                                        </tr>
+                                                                            <tr>
+                                            <td>
+                                                <strong>A Greener Tomorrow Admin</strong>
+                                                <div class="text-muted small">Central Executive Director</div>
+                                            </td>
+                                            <td>Appreciate the rigorous field work, Sofiqul! We have scheduled the next vol...</td>
+                                            <td><strong>Assessing Industrial Heavy Metal Run...</strong></td>
+                                            <td>
+                                                                                                    <span class="badge badge-secondary">Reply</span>
+                                                                                            </td>
+                                            <td>02 Nov 2026</td>
+                                            <td class="text-right">
+                                                <form action="../admin/actions.php" method="POST" style="display:inline-block;" onsubmit="return confirm('Delete this comment?');">
+                                                    <input type="hidden" name="csrf_token" value="ddaa1245ac3bccfa892527244a83cdff0de32bba39bd8f5c9c9b045803022cb3">                                                    <input type="hidden" name="action" value="delete_comment">
+                                                    <input type="hidden" name="comment_id" value="14">
+                                                    <button type="submit" class="btn btn-sm btn-outline-danger"><i class="fa-solid fa-trash"></i></button>
+                                                </form>
+                                            </td>
+                                        </tr>
+                                                                            <tr>
+                                            <td>
+                                                <strong>Sofiqul Alam</strong>
+                                                <div class="text-muted small">Lead Environmental Researcher</div>
+                                            </td>
+                                            <td>Thank you to all the student volunteers and community coordinators who cont...</td>
+                                            <td><strong>Assessing Industrial Heavy Metal Run...</strong></td>
+                                            <td>
+                                                                                                    <span class="badge badge-primary">Comment</span>
+                                                                                            </td>
+                                            <td>02 Nov 2026</td>
+                                            <td class="text-right">
+                                                <form action="../admin/actions.php" method="POST" style="display:inline-block;" onsubmit="return confirm('Delete this comment?');">
+                                                    <input type="hidden" name="csrf_token" value="ddaa1245ac3bccfa892527244a83cdff0de32bba39bd8f5c9c9b045803022cb3">                                                    <input type="hidden" name="action" value="delete_comment">
+                                                    <input type="hidden" name="comment_id" value="13">
+                                                    <button type="submit" class="btn btn-sm btn-outline-danger"><i class="fa-solid fa-trash"></i></button>
+                                                </form>
+                                            </td>
+                                        </tr>
+                                                                            <tr>
+                                            <td>
+                                                <strong>Sofiqul Alam</strong>
+                                                <div class="text-muted small">Lead Environmental Researcher</div>
+                                            </td>
+                                            <td>Absolutely, Nusrat! Sign in to your Member Dashboard or message the Central...</td>
+                                            <td><strong>Dhaka Urban Reforestation &amp; 10,000 N...</strong></td>
+                                            <td>
+                                                                                                    <span class="badge badge-secondary">Reply</span>
+                                                                                            </td>
+                                            <td>02 Nov 2026</td>
+                                            <td class="text-right">
+                                                <form action="../admin/actions.php" method="POST" style="display:inline-block;" onsubmit="return confirm('Delete this comment?');">
+                                                    <input type="hidden" name="csrf_token" value="ddaa1245ac3bccfa892527244a83cdff0de32bba39bd8f5c9c9b045803022cb3">                                                    <input type="hidden" name="action" value="delete_comment">
+                                                    <input type="hidden" name="comment_id" value="12">
+                                                    <button type="submit" class="btn btn-sm btn-outline-danger"><i class="fa-solid fa-trash"></i></button>
+                                                </form>
+                                            </td>
+                                        </tr>
+                                                                            <tr>
+                                            <td>
+                                                <strong>Nusrat Jahan Mim</strong>
+                                                <div class="text-muted small">Youth Climate Member (Khulna)</div>
+                                            </td>
+                                            <td>This report is incredibly helpful for our university environmental club. Ca...</td>
+                                            <td><strong>Dhaka Urban Reforestation &amp; 10,000 N...</strong></td>
+                                            <td>
+                                                                                                    <span class="badge badge-primary">Comment</span>
+                                                                                            </td>
+                                            <td>02 Nov 2026</td>
+                                            <td class="text-right">
+                                                <form action="../admin/actions.php" method="POST" style="display:inline-block;" onsubmit="return confirm('Delete this comment?');">
+                                                    <input type="hidden" name="csrf_token" value="ddaa1245ac3bccfa892527244a83cdff0de32bba39bd8f5c9c9b045803022cb3">                                                    <input type="hidden" name="action" value="delete_comment">
+                                                    <input type="hidden" name="comment_id" value="11">
+                                                    <button type="submit" class="btn btn-sm btn-outline-danger"><i class="fa-solid fa-trash"></i></button>
+                                                </form>
+                                            </td>
+                                        </tr>
+                                                                            <tr>
+                                            <td>
+                                                <strong>A Greener Tomorrow Admin</strong>
+                                                <div class="text-muted small">Central Executive Director</div>
+                                            </td>
+                                            <td>Appreciate the rigorous field work, Sofiqul! We have scheduled the next vol...</td>
+                                            <td><strong>Dhaka Urban Reforestation &amp; 10,000 N...</strong></td>
+                                            <td>
+                                                                                                    <span class="badge badge-secondary">Reply</span>
+                                                                                            </td>
+                                            <td>02 Nov 2026</td>
+                                            <td class="text-right">
+                                                <form action="../admin/actions.php" method="POST" style="display:inline-block;" onsubmit="return confirm('Delete this comment?');">
+                                                    <input type="hidden" name="csrf_token" value="ddaa1245ac3bccfa892527244a83cdff0de32bba39bd8f5c9c9b045803022cb3">                                                    <input type="hidden" name="action" value="delete_comment">
+                                                    <input type="hidden" name="comment_id" value="10">
+                                                    <button type="submit" class="btn btn-sm btn-outline-danger"><i class="fa-solid fa-trash"></i></button>
+                                                </form>
+                                            </td>
+                                        </tr>
+                                                                            <tr>
+                                            <td>
+                                                <strong>Sofiqul Alam</strong>
+                                                <div class="text-muted small">Lead Environmental Researcher</div>
+                                            </td>
+                                            <td>Thank you to all the student volunteers and community coordinators who cont...</td>
+                                            <td><strong>Dhaka Urban Reforestation &amp; 10,000 N...</strong></td>
+                                            <td>
+                                                                                                    <span class="badge badge-primary">Comment</span>
+                                                                                            </td>
+                                            <td>02 Nov 2026</td>
+                                            <td class="text-right">
+                                                <form action="../admin/actions.php" method="POST" style="display:inline-block;" onsubmit="return confirm('Delete this comment?');">
+                                                    <input type="hidden" name="csrf_token" value="ddaa1245ac3bccfa892527244a83cdff0de32bba39bd8f5c9c9b045803022cb3">                                                    <input type="hidden" name="action" value="delete_comment">
+                                                    <input type="hidden" name="comment_id" value="9">
+                                                    <button type="submit" class="btn btn-sm btn-outline-danger"><i class="fa-solid fa-trash"></i></button>
+                                                </form>
+                                            </td>
+                                        </tr>
+                                                                            <tr>
+                                            <td>
+                                                <strong>Sofiqul Alam</strong>
+                                                <div class="text-muted small">Lead Environmental Researcher</div>
+                                            </td>
+                                            <td>Absolutely, Nusrat! Sign in to your Member Dashboard or message the Central...</td>
+                                            <td><strong>Buriganga River Waste Cleanup &amp; Plas...</strong></td>
+                                            <td>
+                                                                                                    <span class="badge badge-secondary">Reply</span>
+                                                                                            </td>
+                                            <td>02 Nov 2026</td>
+                                            <td class="text-right">
+                                                <form action="../admin/actions.php" method="POST" style="display:inline-block;" onsubmit="return confirm('Delete this comment?');">
+                                                    <input type="hidden" name="csrf_token" value="ddaa1245ac3bccfa892527244a83cdff0de32bba39bd8f5c9c9b045803022cb3">                                                    <input type="hidden" name="action" value="delete_comment">
+                                                    <input type="hidden" name="comment_id" value="8">
+                                                    <button type="submit" class="btn btn-sm btn-outline-danger"><i class="fa-solid fa-trash"></i></button>
+                                                </form>
+                                            </td>
+                                        </tr>
+                                                                            <tr>
+                                            <td>
+                                                <strong>Nusrat Jahan Mim</strong>
+                                                <div class="text-muted small">Youth Climate Member (Khulna)</div>
+                                            </td>
+                                            <td>This report is incredibly helpful for our university environmental club. Ca...</td>
+                                            <td><strong>Buriganga River Waste Cleanup &amp; Plas...</strong></td>
+                                            <td>
+                                                                                                    <span class="badge badge-primary">Comment</span>
+                                                                                            </td>
+                                            <td>02 Nov 2026</td>
+                                            <td class="text-right">
+                                                <form action="../admin/actions.php" method="POST" style="display:inline-block;" onsubmit="return confirm('Delete this comment?');">
+                                                    <input type="hidden" name="csrf_token" value="ddaa1245ac3bccfa892527244a83cdff0de32bba39bd8f5c9c9b045803022cb3">                                                    <input type="hidden" name="action" value="delete_comment">
+                                                    <input type="hidden" name="comment_id" value="7">
+                                                    <button type="submit" class="btn btn-sm btn-outline-danger"><i class="fa-solid fa-trash"></i></button>
+                                                </form>
+                                            </td>
+                                        </tr>
+                                                                            <tr>
+                                            <td>
+                                                <strong>A Greener Tomorrow Admin</strong>
+                                                <div class="text-muted small">Central Executive Director</div>
+                                            </td>
+                                            <td>Appreciate the rigorous field work, Sofiqul! We have scheduled the next vol...</td>
+                                            <td><strong>Buriganga River Waste Cleanup &amp; Plas...</strong></td>
+                                            <td>
+                                                                                                    <span class="badge badge-secondary">Reply</span>
+                                                                                            </td>
+                                            <td>02 Nov 2026</td>
+                                            <td class="text-right">
+                                                <form action="../admin/actions.php" method="POST" style="display:inline-block;" onsubmit="return confirm('Delete this comment?');">
+                                                    <input type="hidden" name="csrf_token" value="ddaa1245ac3bccfa892527244a83cdff0de32bba39bd8f5c9c9b045803022cb3">                                                    <input type="hidden" name="action" value="delete_comment">
+                                                    <input type="hidden" name="comment_id" value="6">
+                                                    <button type="submit" class="btn btn-sm btn-outline-danger"><i class="fa-solid fa-trash"></i></button>
+                                                </form>
+                                            </td>
+                                        </tr>
+                                                                            <tr>
+                                            <td>
+                                                <strong>Sofiqul Alam</strong>
+                                                <div class="text-muted small">Lead Environmental Researcher</div>
+                                            </td>
+                                            <td>Thank you to all the student volunteers and community coordinators who cont...</td>
+                                            <td><strong>Buriganga River Waste Cleanup &amp; Plas...</strong></td>
+                                            <td>
+                                                                                                    <span class="badge badge-primary">Comment</span>
+                                                                                            </td>
+                                            <td>02 Nov 2026</td>
+                                            <td class="text-right">
+                                                <form action="../admin/actions.php" method="POST" style="display:inline-block;" onsubmit="return confirm('Delete this comment?');">
+                                                    <input type="hidden" name="csrf_token" value="ddaa1245ac3bccfa892527244a83cdff0de32bba39bd8f5c9c9b045803022cb3">                                                    <input type="hidden" name="action" value="delete_comment">
+                                                    <input type="hidden" name="comment_id" value="5">
+                                                    <button type="submit" class="btn btn-sm btn-outline-danger"><i class="fa-solid fa-trash"></i></button>
+                                                </form>
+                                            </td>
+                                        </tr>
+                                                                            <tr>
+                                            <td>
+                                                <strong>Sofiqul Alam</strong>
+                                                <div class="text-muted small">Lead Environmental Researcher</div>
+                                            </td>
+                                            <td>Absolutely, Nusrat! Sign in to your Member Dashboard or message the Central...</td>
+                                            <td><strong>Nationwide Youth Climate March &amp; Man...</strong></td>
+                                            <td>
+                                                                                                    <span class="badge badge-secondary">Reply</span>
+                                                                                            </td>
+                                            <td>02 Nov 2026</td>
+                                            <td class="text-right">
+                                                <form action="../admin/actions.php" method="POST" style="display:inline-block;" onsubmit="return confirm('Delete this comment?');">
+                                                    <input type="hidden" name="csrf_token" value="ddaa1245ac3bccfa892527244a83cdff0de32bba39bd8f5c9c9b045803022cb3">                                                    <input type="hidden" name="action" value="delete_comment">
+                                                    <input type="hidden" name="comment_id" value="4">
+                                                    <button type="submit" class="btn btn-sm btn-outline-danger"><i class="fa-solid fa-trash"></i></button>
+                                                </form>
+                                            </td>
+                                        </tr>
+                                                                            <tr>
+                                            <td>
+                                                <strong>Nusrat Jahan Mim</strong>
+                                                <div class="text-muted small">Youth Climate Member (Khulna)</div>
+                                            </td>
+                                            <td>This report is incredibly helpful for our university environmental club. Ca...</td>
+                                            <td><strong>Nationwide Youth Climate March &amp; Man...</strong></td>
+                                            <td>
+                                                                                                    <span class="badge badge-primary">Comment</span>
+                                                                                            </td>
+                                            <td>02 Nov 2026</td>
+                                            <td class="text-right">
+                                                <form action="../admin/actions.php" method="POST" style="display:inline-block;" onsubmit="return confirm('Delete this comment?');">
+                                                    <input type="hidden" name="csrf_token" value="ddaa1245ac3bccfa892527244a83cdff0de32bba39bd8f5c9c9b045803022cb3">                                                    <input type="hidden" name="action" value="delete_comment">
+                                                    <input type="hidden" name="comment_id" value="3">
+                                                    <button type="submit" class="btn btn-sm btn-outline-danger"><i class="fa-solid fa-trash"></i></button>
+                                                </form>
+                                            </td>
+                                        </tr>
+                                                                            <tr>
+                                            <td>
+                                                <strong>A Greener Tomorrow Admin</strong>
+                                                <div class="text-muted small">Central Executive Director</div>
+                                            </td>
+                                            <td>Appreciate the rigorous field work, Sofiqul! We have scheduled the next vol...</td>
+                                            <td><strong>Nationwide Youth Climate March &amp; Man...</strong></td>
+                                            <td>
+                                                                                                    <span class="badge badge-secondary">Reply</span>
+                                                                                            </td>
+                                            <td>02 Nov 2026</td>
+                                            <td class="text-right">
+                                                <form action="../admin/actions.php" method="POST" style="display:inline-block;" onsubmit="return confirm('Delete this comment?');">
+                                                    <input type="hidden" name="csrf_token" value="ddaa1245ac3bccfa892527244a83cdff0de32bba39bd8f5c9c9b045803022cb3">                                                    <input type="hidden" name="action" value="delete_comment">
+                                                    <input type="hidden" name="comment_id" value="2">
+                                                    <button type="submit" class="btn btn-sm btn-outline-danger"><i class="fa-solid fa-trash"></i></button>
+                                                </form>
+                                            </td>
+                                        </tr>
+                                                                            <tr>
+                                            <td>
+                                                <strong>Sofiqul Alam</strong>
+                                                <div class="text-muted small">Lead Environmental Researcher</div>
+                                            </td>
+                                            <td>Thank you to all the student volunteers and community coordinators who cont...</td>
+                                            <td><strong>Nationwide Youth Climate March &amp; Man...</strong></td>
+                                            <td>
+                                                                                                    <span class="badge badge-primary">Comment</span>
+                                                                                            </td>
+                                            <td>02 Nov 2026</td>
+                                            <td class="text-right">
+                                                <form action="../admin/actions.php" method="POST" style="display:inline-block;" onsubmit="return confirm('Delete this comment?');">
+                                                    <input type="hidden" name="csrf_token" value="ddaa1245ac3bccfa892527244a83cdff0de32bba39bd8f5c9c9b045803022cb3">                                                    <input type="hidden" name="action" value="delete_comment">
+                                                    <input type="hidden" name="comment_id" value="1">
+                                                    <button type="submit" class="btn btn-sm btn-outline-danger"><i class="fa-solid fa-trash"></i></button>
+                                                </form>
+                                            </td>
+                                        </tr>
+                                                                    </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <!-- Contact Messages Inbox -->
+                    <div class="card p-4">
+                        <div class="card-header pb-3 mb-3 border-bottom">
+                            <h3><i class="fa-solid fa-envelope-open-text"></i> Central Secretariat Contact Inquiries (0)</h3>
+                            <p class="text-muted small mb-0">Direct dispatches submitted through the Contact Secretariat form.</p>
+                        </div>
+                                                    <p class="text-muted mb-0">No contact inquiries in the inbox yet.</p>
+                                            </div>
+                </section>
+
+                <!-- ================= TAB 5: USERS, ROLES & BCRYPT PASSWORDS ================= -->
+                <section class="admin-tab-pane" id="tab-users" data-title="User Directory & Credential Oversight" style="display:none;" role="tabpanel">
+                    <div class="card p-4 mb-4">
+                        <div class="card-header pb-3 mb-3 border-bottom">
+                            <h3><i class="fa-solid fa-user-plus"></i> Register New Team Member / Researcher / Admin</h3>
+                        </div>
+                        <form action="../admin/actions.php" method="POST">
+                            <input type="hidden" name="csrf_token" value="ddaa1245ac3bccfa892527244a83cdff0de32bba39bd8f5c9c9b045803022cb3">                            <input type="hidden" name="action" value="admin_create_user">
+                            <div class="form-row-2 mb-3">
+                                <input type="text" name="name" class="form-control form-control-sm" required placeholder="Full Name *">
+                                <input type="email" name="email" class="form-control form-control-sm" required placeholder="Email Address *">
+                            </div>
+                            <div class="form-row-2 mb-3">
+                                <input type="text" name="username" class="form-control form-control-sm" required placeholder="Username *">
+                                <input type="password" name="password" class="form-control form-control-sm" required placeholder="Initial Password (Min 6 chars) *">
+                            </div>
+                            <div class="form-row-2 mb-3">
+                                <select name="role" class="form-control form-control-sm">
+                                    <option value="USER">Registered Member</option>
+                                    <option value="RESEARCHER">Environmental Researcher</option>
+                                    <option value="ADMIN">Administrator</option>
+                                </select>
+                                <input type="text" name="district" class="form-control form-control-sm" value="Dhaka" placeholder="District / Chapter">
+                            </div>
+                            <button type="submit" class="btn btn-primary btn-sm"><i class="fa-solid fa-user-check"></i> Create Account</button>
+                        </form>
+                    </div>
+
+                    <div class="card p-4">
+                        <div class="card-header pb-3 mb-4 border-bottom d-flex justify-content-between align-items-center flex-wrap gap-2">
+                            <div>
+                                <h3><i class="fa-solid fa-users-shield"></i> User Credential Management &amp; Bcrypt Resets</h3>
+                                <p class="text-muted mb-0">Manage roles, suspend accounts, or execute Bcrypt cost 12 password resets.</p>
+                            </div>
+                            <div class="search-input-wrap">
+                                <input type="text" data-table-search="adminUsersTable" placeholder="Search users..." class="form-control form-control-sm">
+                            </div>
+                        </div>
+
+                        <div class="table-responsive">
+                            <table class="table" id="adminUsersTable">
+                                <thead>
+                                    <tr>
+                                        <th>User</th>
+                                        <th>Email</th>
+                                        <th>Role</th>
+                                        <th>District</th>
+                                        <th>Status</th>
+                                        <th class="text-right">Credential Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                                                                                                    <tr>
+                                            <td>
+                                                <div class="d-flex align-items-center gap-2">
+                                                    <span class="user-table-avatar"><i class="fa-solid fa-user"></i></span>
+                                                    <div>
+                                                        <strong>Sofiqul Alam</strong>
+                                                        <div class="text-muted small">@sofiqul.alam</div>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td>sofiqul@greener2morow.org</td>
+                                            <td><span class="badge badge-secondary">User</span></td>
+                                            <td>Dhaka</td>
+                                            <td><span class="badge badge-success">Active</span></td>
+                                            <td class="text-right">
+                                                <button type="button" class="btn btn-sm btn-outline-primary btn-reset-user-pwd" data-user-id="2" data-username="sofiqul.alam">
+                                                    <i class="fa-solid fa-key"></i> Reset Password
+                                                </button>
+                                                                                                    <form action="../admin/actions.php" method="POST" style="display:inline-block;" onsubmit="return confirm('Toggle account status?');">
+                                                        <input type="hidden" name="csrf_token" value="ddaa1245ac3bccfa892527244a83cdff0de32bba39bd8f5c9c9b045803022cb3">                                                        <input type="hidden" name="action" value="toggle_user_status">
+                                                        <input type="hidden" name="target_user_id" value="2">
+                                                        <input type="hidden" name="current_status" value="1">
+                                                        <button type="submit" class="btn btn-sm btn-outline-danger">
+                                                            <i class="fa-solid fa-ban"></i>
+                                                        </button>
+                                                    </form>
+                                                                                            </td>
+                                        </tr>
+                                                                                                                    <tr>
+                                            <td>
+                                                <div class="d-flex align-items-center gap-2">
+                                                    <span class="user-table-avatar"><i class="fa-solid fa-user"></i></span>
+                                                    <div>
+                                                        <strong>A Greener Tomorrow Admin</strong>
+                                                        <div class="text-muted small">@admin</div>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td>greener2morow@gmail.com</td>
+                                            <td><span class="badge badge-primary">Admin</span></td>
+                                            <td>Dhaka</td>
+                                            <td><span class="badge badge-success">Active</span></td>
+                                            <td class="text-right">
+                                                <button type="button" class="btn btn-sm btn-outline-primary btn-reset-user-pwd" data-user-id="1" data-username="admin">
+                                                    <i class="fa-solid fa-key"></i> Reset Password
+                                                </button>
+                                                                                            </td>
+                                        </tr>
+                                                                    </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- ================= TAB 6: SITE IDENTITY, STATS & LOGO MCQ ================= -->
+                <section class="admin-tab-pane" id="tab-settings" data-title="Site Identity & Logo MCQ Placement" style="display:none;" role="tabpanel">
+                    <div class="card p-4">
+                        <div class="card-header pb-3 mb-4 border-bottom">
+                            <h3><i class="fa-solid fa-building-ngo"></i> Organization Configuration, Impact Counters &amp; MCQ Logo Placement</h3>
+                            <p class="text-muted mb-0">Control global branding, Dhaka Hatirpool HQ contact details, and where the brand logo appears.</p>
+                        </div>
+
+                        <form action="../admin/actions.php" method="POST" enctype="multipart/form-data">
+                            <input type="hidden" name="csrf_token" value="ddaa1245ac3bccfa892527244a83cdff0de32bba39bd8f5c9c9b045803022cb3">                            <input type="hidden" name="action" value="save_site_settings">
+
+                            <div class="form-row-2 mb-3">
+                                <div class="form-group mb-0">
+                                    <label class="form-label">Organization / Website Name</label>
+                                    <input type="text" name="site_name" class="form-control" value="A Greener Tomorrow" required>
+                                </div>
+                                <div class="form-group mb-0">
+                                    <label class="form-label">Official Tagline</label>
+                                    <input type="text" name="site_tagline" class="form-control" value="Youth-Based Environmental Advocacy &amp; Independent Research Organization">
+                                </div>
+                            </div>
+
+                            <div class="form-row-2 mb-3">
+                                <div class="form-group mb-0">
+                                    <label class="form-label">Secretariat Public Email</label>
+                                    <input type="email" name="contact_email" class="form-control" value="greener2morow@gmail.com" required>
+                                </div>
+                                <div class="form-group mb-0">
+                                    <label class="form-label">Secretariat Hotline / Phone</label>
+                                    <input type="text" name="contact_phone" class="form-control" value="+880 1712-345678">
+                                </div>
+                            </div>
+
+                            <div class="form-group mb-4">
+                                <label class="form-label">Central Secretariat Physical Address</label>
+                                <input type="text" name="contact_address" class="form-control" value="36, Bir Uttam C.R Dutta Road, Hatirpool, Dhaka-1205, Bangladesh" required>
+                            </div>
+
+                            <!-- Impact Counters -->
+                            <div class="card p-3 mb-4 bg-light">
+                                <h4 class="mb-3"><i class="fa-solid fa-chart-simple"></i> Homepage Impact Metrics</h4>
+                                <div class="form-row-2">
+                                    <div class="form-group mb-2">
+                                        <label class="form-label small">Trees Planted</label>
+                                        <input type="number" name="stat_trees" class="form-control form-control-sm" value="50000">
+                                    </div>
+                                    <div class="form-group mb-2">
+                                        <label class="form-label small">Youth Mobilized</label>
+                                        <input type="number" name="stat_members" class="form-control form-control-sm" value="1850">
+                                    </div>
+                                    <div class="form-group mb-0">
+                                        <label class="form-label small">Active Districts</label>
+                                        <input type="number" name="stat_districts" class="form-control form-control-sm" value="48">
+                                    </div>
+                                    <div class="form-group mb-0">
+                                        <label class="form-label small">Published Researches</label>
+                                        <input type="number" name="stat_researches" class="form-control form-control-sm" value="24">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-row-2 mb-4">
+                                <!-- MCQ Logo Placement Matrix -->
+                                <div class="card p-3 bg-light">
+                                    <h4 class="mb-2"><i class="fa-solid fa-bullseye"></i> MCQ Logo Placement Matrix</h4>
+                                    <p class="text-muted small mb-3">Choose where the official brand logo is displayed:</p>
+                                    <div class="mcq-checkbox-group">
+                                        <label class="checkbox-label mb-2">
+                                            <input type="checkbox" name="logo_use_navbar" value="1" checked>
+                                            <strong>Navbar Header</strong> (Top navigation bar)
+                                        </label>
+                                        <label class="checkbox-label mb-2">
+                                            <input type="checkbox" name="logo_use_footer" value="1" checked>
+                                            <strong>Global Footer</strong> (Bottom brand column)
+                                        </label>
+                                        <label class="checkbox-label">
+                                            <input type="checkbox" name="logo_use_section" value="1" checked>
+                                            <strong>Content Sections</strong> (Internal callouts)
+                                        </label>
+                                    </div>
+                                </div>
+
+                                <!-- Brand Logo Upload -->
+                                <div class="card p-3 bg-light">
+                                    <h4 class="mb-2"><i class="fa-solid fa-image"></i> Brand Logo Asset</h4>
+                                    <div class="d-flex align-items-center gap-3 mt-2">
+                                        <div class="logo-preview-box">
+                                            <img src="../assets/brand/brand-logo.png" alt="Logo" width="60" height="60">
+                                        </div>
+                                        <div class="flex-grow-1">
+                                            <input type="file" name="site_logo" class="form-control form-control-sm mb-2" accept="image/*" data-max-mb="2">
+                                            <input type="text" name="logo_alt" class="form-control form-control-sm" placeholder="Logo Alt Text" value="A Greener Tomorrow">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <button type="submit" class="btn btn-primary btn-lg"><i class="fa-solid fa-floppy-disk"></i> Save All Site Settings</button>
+                        </form>
+                    </div>
+                </section>
+
+                <!-- ================= TAB 7: ANALYTICS, PERFORMANCE & SERVER ================= -->
+                <section class="admin-tab-pane" id="tab-performance" data-title="Visitor Analytics & Dynamic Performance" style="display:none;" role="tabpanel">
+                    <div class="row g-4 mb-4">
+                        <div class="col-lg-7">
+                            <div class="card p-4">
+                                <div class="card-header pb-3 mb-4 border-bottom d-flex justify-content-between align-items-center">
+                                    <div>
+                                        <h3><i class="fa-solid fa-sliders"></i> Dynamic Performance Sliders</h3>
+                                        <p class="text-muted small mb-0">Fine-tune WebP compression, browser cache TTL, and lazy loading.</p>
+                                    </div>
+                                    <span class="badge badge-success badge-lg" id="livePerformanceScore">99/100 A+</span>
+                                </div>
+
+                                <form id="performanceSettingsForm" action="../admin/actions.php" method="POST">
+                                    <input type="hidden" name="csrf_token" value="ddaa1245ac3bccfa892527244a83cdff0de32bba39bd8f5c9c9b045803022cb3">                                    <input type="hidden" name="action" value="save_performance_settings">
+
+                                    <div class="slider-group mb-3">
+                                        <div class="d-flex justify-content-between align-items-center mb-1">
+                                            <label class="form-label mb-0">WebP Image Compression Quality</label>
+                                            <span class="slider-val-badge" id="webp_quality_val">80%</span>
+                                        </div>
+                                        <input type="range" class="form-range" id="webp_quality" name="webp_quality" min="60" max="95" value="80" data-unit="%">
+                                    </div>
+
+                                    <div class="slider-group mb-3">
+                                        <div class="d-flex justify-content-between align-items-center mb-1">
+                                            <label class="form-label mb-0">Browser Cache Expiry Duration</label>
+                                            <span class="slider-val-badge" id="cache_expiry_days_val">30 Days</span>
+                                        </div>
+                                        <input type="range" class="form-range" id="cache_expiry_days" name="cache_expiry_days" min="7" max="90" value="30" data-unit=" Days">
+                                    </div>
+
+                                    <div class="slider-group mb-3">
+                                        <div class="d-flex justify-content-between align-items-center mb-1">
+                                            <label class="form-label mb-0">Lazy Loading Aggressiveness</label>
+                                            <span class="slider-val-badge" id="lazy_aggressiveness_val">85%</span>
+                                        </div>
+                                        <input type="range" class="form-range" id="lazy_aggressiveness" name="lazy_aggressiveness" min="50" max="100" value="85" data-unit="%">
+                                    </div>
+
+                                    <button type="submit" class="btn btn-primary"><i class="fa-solid fa-floppy-disk"></i> Save Performance Rules</button>
+                                </form>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-5">
+                            <div class="card p-4">
+                                <div class="card-header pb-2 mb-3 border-bottom">
+                                    <h4><i class="fa-solid fa-server"></i> Namecheap / cPanel Hosting Diagnostics</h4>
+                                </div>
+                                <ul class="meta-list">
+                                    <li><strong>Upload Max Filesize:</strong> <code>32M</code></li>
+                                    <li><strong>Post Max Size:</strong> <code>32M</code></li>
+                                    <li><strong>Memory Limit:</strong> <code>128M</code></li>
+                                    <li><strong>PHP Version:</strong> <code>8.3.36</code></li>
+                                    <li><strong>Active Database Driver:</strong> <code>sqlite</code></li>
+                                    <li><strong>Execution Guard:</strong> <span class="badge badge-success">Active (.htaccess)</span></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Granular Visitor Logs -->
+                    <div class="card p-4">
+                        <div class="card-header pb-3 mb-3 border-bottom d-flex justify-content-between align-items-center flex-wrap gap-2">
+                            <div>
+                                <h3><i class="fa-solid fa-chart-line"></i> Recent Visitor Logs &amp; Device Telemetry</h3>
+                            </div>
+                            <div class="search-input-wrap">
+                                <input type="text" data-table-search="visitorLogsTable" placeholder="Search IP, OS, browser..." class="form-control form-control-sm">
+                            </div>
+                        </div>
+                        <div class="table-responsive">
+                            <table class="table" id="visitorLogsTable">
+                                <thead>
+                                    <tr>
+                                        <th>Masked IP</th>
+                                        <th>Device</th>
+                                        <th>OS</th>
+                                        <th>Browser</th>
+                                        <th>Page Target</th>
+                                        <th>Timestamp</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                                                            <tr>
+                                            <td><code>103.205.132.***</code></td>
+                                            <td><span class="badge badge-secondary">desktop</span></td>
+                                            <td>Windows 11</td>
+                                            <td>Safari Mobile</td>
+                                            <td><code>/researches</code></td>
+                                            <td>31 Oct 2026</td>
+                                        </tr>
+                                                                            <tr>
+                                            <td><code>103.205.132.***</code></td>
+                                            <td><span class="badge badge-secondary">mobile</span></td>
+                                            <td>iOS 18</td>
+                                            <td>Chrome Mobile</td>
+                                            <td><code>/researches</code></td>
+                                            <td>31 Oct 2026</td>
+                                        </tr>
+                                                                            <tr>
+                                            <td><code>103.205.132.***</code></td>
+                                            <td><span class="badge badge-secondary">mobile</span></td>
+                                            <td>Android 14</td>
+                                            <td>Firefox Desktop</td>
+                                            <td><code>/researches</code></td>
+                                            <td>31 Oct 2026</td>
+                                        </tr>
+                                                                            <tr>
+                                            <td><code>103.205.132.***</code></td>
+                                            <td><span class="badge badge-secondary">desktop</span></td>
+                                            <td>Windows 11</td>
+                                            <td>Chrome Desktop</td>
+                                            <td><code>/researches</code></td>
+                                            <td>31 Oct 2026</td>
+                                        </tr>
+                                                                            <tr>
+                                            <td><code>103.205.132.***</code></td>
+                                            <td><span class="badge badge-secondary">mobile</span></td>
+                                            <td>iOS 18</td>
+                                            <td>Safari Mobile</td>
+                                            <td><code>/researches</code></td>
+                                            <td>31 Oct 2026</td>
+                                        </tr>
+                                                                            <tr>
+                                            <td><code>103.205.132.***</code></td>
+                                            <td><span class="badge badge-secondary">mobile</span></td>
+                                            <td>Android 14</td>
+                                            <td>Chrome Mobile</td>
+                                            <td><code>/researches</code></td>
+                                            <td>31 Oct 2026</td>
+                                        </tr>
+                                                                            <tr>
+                                            <td><code>103.205.132.***</code></td>
+                                            <td><span class="badge badge-secondary">desktop</span></td>
+                                            <td>Windows 11</td>
+                                            <td>Firefox Desktop</td>
+                                            <td><code>/researches</code></td>
+                                            <td>31 Oct 2026</td>
+                                        </tr>
+                                                                            <tr>
+                                            <td><code>103.205.132.***</code></td>
+                                            <td><span class="badge badge-secondary">mobile</span></td>
+                                            <td>iOS 18</td>
+                                            <td>Chrome Desktop</td>
+                                            <td><code>/researches</code></td>
+                                            <td>31 Oct 2026</td>
+                                        </tr>
+                                                                            <tr>
+                                            <td><code>103.205.132.***</code></td>
+                                            <td><span class="badge badge-secondary">mobile</span></td>
+                                            <td>Android 14</td>
+                                            <td>Safari Mobile</td>
+                                            <td><code>/researches</code></td>
+                                            <td>01 Nov 2026</td>
+                                        </tr>
+                                                                            <tr>
+                                            <td><code>103.205.132.***</code></td>
+                                            <td><span class="badge badge-secondary">desktop</span></td>
+                                            <td>Windows 11</td>
+                                            <td>Chrome Mobile</td>
+                                            <td><code>/researches</code></td>
+                                            <td>01 Nov 2026</td>
+                                        </tr>
+                                                                            <tr>
+                                            <td><code>103.205.132.***</code></td>
+                                            <td><span class="badge badge-secondary">mobile</span></td>
+                                            <td>iOS 18</td>
+                                            <td>Firefox Desktop</td>
+                                            <td><code>/researches</code></td>
+                                            <td>01 Nov 2026</td>
+                                        </tr>
+                                                                            <tr>
+                                            <td><code>103.205.132.***</code></td>
+                                            <td><span class="badge badge-secondary">mobile</span></td>
+                                            <td>Android 14</td>
+                                            <td>Chrome Desktop</td>
+                                            <td><code>/researches</code></td>
+                                            <td>01 Nov 2026</td>
+                                        </tr>
+                                                                            <tr>
+                                            <td><code>103.205.132.***</code></td>
+                                            <td><span class="badge badge-secondary">desktop</span></td>
+                                            <td>Windows 11</td>
+                                            <td>Safari Mobile</td>
+                                            <td><code>/researches</code></td>
+                                            <td>01 Nov 2026</td>
+                                        </tr>
+                                                                            <tr>
+                                            <td><code>103.205.132.***</code></td>
+                                            <td><span class="badge badge-secondary">mobile</span></td>
+                                            <td>iOS 18</td>
+                                            <td>Chrome Mobile</td>
+                                            <td><code>/researches</code></td>
+                                            <td>01 Nov 2026</td>
+                                        </tr>
+                                                                            <tr>
+                                            <td><code>103.205.132.***</code></td>
+                                            <td><span class="badge badge-secondary">mobile</span></td>
+                                            <td>Android 14</td>
+                                            <td>Firefox Desktop</td>
+                                            <td><code>/researches</code></td>
+                                            <td>01 Nov 2026</td>
+                                        </tr>
+                                                                            <tr>
+                                            <td><code>103.205.132.***</code></td>
+                                            <td><span class="badge badge-secondary">desktop</span></td>
+                                            <td>Windows 11</td>
+                                            <td>Chrome Desktop</td>
+                                            <td><code>/researches</code></td>
+                                            <td>01 Nov 2026</td>
+                                        </tr>
+                                                                            <tr>
+                                            <td><code>103.205.132.***</code></td>
+                                            <td><span class="badge badge-secondary">mobile</span></td>
+                                            <td>iOS 18</td>
+                                            <td>Safari Mobile</td>
+                                            <td><code>/researches</code></td>
+                                            <td>01 Nov 2026</td>
+                                        </tr>
+                                                                            <tr>
+                                            <td><code>103.205.132.***</code></td>
+                                            <td><span class="badge badge-secondary">mobile</span></td>
+                                            <td>Android 14</td>
+                                            <td>Chrome Mobile</td>
+                                            <td><code>/researches</code></td>
+                                            <td>01 Nov 2026</td>
+                                        </tr>
+                                                                            <tr>
+                                            <td><code>103.205.132.***</code></td>
+                                            <td><span class="badge badge-secondary">desktop</span></td>
+                                            <td>Windows 11</td>
+                                            <td>Firefox Desktop</td>
+                                            <td><code>/researches</code></td>
+                                            <td>01 Nov 2026</td>
+                                        </tr>
+                                                                            <tr>
+                                            <td><code>103.205.132.***</code></td>
+                                            <td><span class="badge badge-secondary">mobile</span></td>
+                                            <td>iOS 18</td>
+                                            <td>Chrome Desktop</td>
+                                            <td><code>/researches</code></td>
+                                            <td>01 Nov 2026</td>
+                                        </tr>
+                                                                            <tr>
+                                            <td><code>103.205.132.***</code></td>
+                                            <td><span class="badge badge-secondary">mobile</span></td>
+                                            <td>Android 14</td>
+                                            <td>Safari Mobile</td>
+                                            <td><code>/researches</code></td>
+                                            <td>02 Nov 2026</td>
+                                        </tr>
+                                                                            <tr>
+                                            <td><code>103.205.132.***</code></td>
+                                            <td><span class="badge badge-secondary">desktop</span></td>
+                                            <td>Windows 11</td>
+                                            <td>Chrome Mobile</td>
+                                            <td><code>/researches</code></td>
+                                            <td>02 Nov 2026</td>
+                                        </tr>
+                                                                            <tr>
+                                            <td><code>103.205.132.***</code></td>
+                                            <td><span class="badge badge-secondary">mobile</span></td>
+                                            <td>iOS 18</td>
+                                            <td>Firefox Desktop</td>
+                                            <td><code>/researches</code></td>
+                                            <td>02 Nov 2026</td>
+                                        </tr>
+                                                                            <tr>
+                                            <td><code>103.205.132.***</code></td>
+                                            <td><span class="badge badge-secondary">mobile</span></td>
+                                            <td>Android 14</td>
+                                            <td>Chrome Desktop</td>
+                                            <td><code>/researches</code></td>
+                                            <td>02 Nov 2026</td>
+                                        </tr>
+                                                                            <tr>
+                                            <td><code>103.205.132.***</code></td>
+                                            <td><span class="badge badge-secondary">desktop</span></td>
+                                            <td>Windows 11</td>
+                                            <td>Safari Mobile</td>
+                                            <td><code>/researches</code></td>
+                                            <td>02 Nov 2026</td>
+                                        </tr>
+                                                                            <tr>
+                                            <td><code>103.205.132.***</code></td>
+                                            <td><span class="badge badge-secondary">mobile</span></td>
+                                            <td>iOS 18</td>
+                                            <td>Chrome Mobile</td>
+                                            <td><code>/researches</code></td>
+                                            <td>02 Nov 2026</td>
+                                        </tr>
+                                                                            <tr>
+                                            <td><code>103.205.132.***</code></td>
+                                            <td><span class="badge badge-secondary">mobile</span></td>
+                                            <td>Android 14</td>
+                                            <td>Firefox Desktop</td>
+                                            <td><code>/researches</code></td>
+                                            <td>02 Nov 2026</td>
+                                        </tr>
+                                                                            <tr>
+                                            <td><code>103.205.132.***</code></td>
+                                            <td><span class="badge badge-secondary">desktop</span></td>
+                                            <td>Windows 11</td>
+                                            <td>Chrome Desktop</td>
+                                            <td><code>/researches</code></td>
+                                            <td>02 Nov 2026</td>
+                                        </tr>
+                                                                            <tr>
+                                            <td><code>103.205.132.***</code></td>
+                                            <td><span class="badge badge-secondary">mobile</span></td>
+                                            <td>iOS 18</td>
+                                            <td>Safari Mobile</td>
+                                            <td><code>/researches</code></td>
+                                            <td>02 Nov 2026</td>
+                                        </tr>
+                                                                            <tr>
+                                            <td><code>103.205.132.***</code></td>
+                                            <td><span class="badge badge-secondary">mobile</span></td>
+                                            <td>Android 14</td>
+                                            <td>Chrome Mobile</td>
+                                            <td><code>/researches</code></td>
+                                            <td>02 Nov 2026</td>
+                                        </tr>
+                                                                    </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bcrypt Password Override Modal -->
+    <div class="modal" id="passwordResetModal" role="dialog" aria-modal="true" aria-labelledby="modalPwdTitle">
+        <div class="modal-backdrop" data-dismiss="modal"></div>
+        <div class="modal-dialog">
+            <div class="modal-content card p-4">
+                <div class="d-flex justify-content-between align-items-center mb-3">
+                    <h3 id="modalPwdTitle"><i class="fa-solid fa-key"></i> Admin Bcrypt Password Reset</h3>
+                    <button type="button" class="btn btn-sm btn-icon" data-dismiss="modal">&times;</button>
+                </div>
+                <p class="text-muted small">Setting a new password will immediately revoke active sessions for: <strong id="modal_username_display">user</strong>.</p>
+
+                <form action="../admin/actions.php" method="POST">
+                    <input type="hidden" name="csrf_token" value="ddaa1245ac3bccfa892527244a83cdff0de32bba39bd8f5c9c9b045803022cb3">                    <input type="hidden" name="action" value="reset_user_password">
+                    <input type="hidden" name="target_user_id" id="modal_user_id" value="0">
+
+                    <div class="form-group mb-3">
+                        <label for="modal_new_password" class="form-label font-weight-bold">New Password</label>
+                        <div class="input-group">
+                            <input type="text" id="modal_new_password" name="new_password" class="form-control" required placeholder="Enter or generate strong password">
+                            <button type="button" class="btn btn-outline" id="btnGeneratePassword"><i class="fa-solid fa-wand-magic-sparkles"></i> Generate</button>
+                        </div>
+                    </div>
+
+                    <div class="d-flex justify-content-end gap-2 mt-4">
+                        <button type="button" class="btn btn-outline" data-dismiss="modal">Cancel</button>
+                        <button type="submit" class="btn btn-primary"><i class="fa-solid fa-shield"></i> Set Bcrypt Password</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="../assets/js/dashboard.min.js?v=3.0.0"></script>
+</body>
+</html>

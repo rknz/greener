@@ -1,0 +1,53 @@
+// ==============================================================================
+// Responsive Mixins & Golden Ratio Helpers
+// ==============================================================================
+
+@mixin mobile-only {
+  @media (max-width: #{$bp-tablet - 1px}) {
+    @content;
+  }
+}
+
+@mixin tablet-up {
+  @media (min-width: #{$bp-tablet}) {
+    @content;
+  }
+}
+
+@mixin desktop-up {
+  @media (min-width: #{$bp-desktop}) {
+    @content;
+  }
+}
+
+// Fluid safe horizontal margin for Android & iPhone
+@mixin container-safe-padding {
+  padding-inline: clamp(1.25rem, 5.5vw, 2.5rem);
+}
+
+// Golden Ratio Two-Column Layout (61.8% : 38.2%)
+@mixin golden-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: $space-md;
+
+  @include desktop-up {
+    grid-template-columns: 1.618fr 1fr;
+    gap: $space-lg;
+  }
+}
+
+// Touch Friendly Target Size (48px minimum)
+@mixin touch-target {
+  min-height: 48px;
+  min-width: 48px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+// Transition helper
+@mixin smooth-transition($prop: all, $time: 0.3s) {
+  transition: $prop $time cubic-bezier(0.22, 1, 0.36, 1);
+}
+

@@ -1,0 +1,23 @@
+# ==============================================================================
+# Security Barrier: Block Script Execution in Uploads Directory
+# ==============================================================================
+
+# Disable directory listing
+Options -Indexes -ExecCGI
+
+# Deny direct execution of scripts
+<FilesMatch "\.(php|phtml|php3|php4|php5|php7|php8|phps|pl|py|cgi|sh|bash|exe|bat|cmd|jsp|asp|aspx)$">
+    Order Deny,Allow
+    Deny from all
+</FilesMatch>
+
+# Turn off PHP engine if supported
+<IfModule mod_php.c>
+    php_flag engine off
+</IfModule>
+
+# Force download headers on documents rather than direct inline browser execution
+<FilesMatch "\.(pdf|docx|xlsx|csv|zip)$">
+    Header set Content-Disposition "attachment"
+    Header set X-Content-Type-Options "nosniff"
+</FilesMatch>
