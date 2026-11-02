@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A Greener Tomorrow (Version 2) — Official User & Admin Guide</title>
+    <style>
+        :root {
+            --forest: #0F291E;
+            --emerald: #15803D;
+            --mint: #10B981;
+            --slate: #0F172A;
+            --muted: #475569;
+            --border: #E2E8F0;
+            --bg: #F8FAFC;
+        }
+        * { box-sizing: border-box; }
+        body {
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            color: var(--slate);
+            background: var(--bg);
+            line-height: 1.65;
+            margin: 0;
+            padding: 32px 20px;
+        }
+        .guide-container {
+            max-width: 920px;
+            margin: 0 auto;
+            background: #FFFFFF;
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 44px 52px;
+            box-shadow: 0 12px 32px rgba(15, 41, 30, 0.06);
+        }
+        .print-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: var(--forest);
+            color: #FFFFFF;
+            padding: 14px 24px;
+            border-radius: 12px;
+            margin-bottom: 32px;
+        }
+        .print-btn {
+            background: var(--mint);
+            color: #052E16;
+            border: none;
+            padding: 10px 18px;
+            border-radius: 8px;
+            font-weight: 700;
+            cursor: pointer;
+            font-size: 0.9rem;
+        }
+        h1 { font-size: 2rem; color: var(--forest); margin: 0 0 8px; }
+        h2 { font-size: 1.38rem; color: var(--forest); border-bottom: 2px solid #DCFCE7; padding-bottom: 8px; margin-top: 34px; }
+        h3 { font-size: 1.1rem; color: var(--emerald); margin-top: 22px; }
+        p, li { font-size: 0.96rem; color: #1E293B; }
+        code {
+            background: #F1F5F9;
+            color: #0F766E;
+            padding: 2px 6px;
+            border-radius: 5px;
+            font-family: Consolas, monospace;
+            font-size: 0.88rem;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 16px 0 24px;
+            font-size: 0.92rem;
+        }
+        th, td {
+            border: 1px solid var(--border);
+            padding: 11px 14px;
+            text-align: left;
+        }
+        th {
+            background: #F0FDF4;
+            color: var(--forest);
+            font-weight: 700;
+        }
+        .cred-box {
+            background: #F0FDF4;
+            border: 1px solid #86EFAC;
+            border-left: 5px solid var(--emerald);
+            border-radius: 10px;
+            padding: 18px 22px;
+            margin: 18px 0;
+        }
+        .step-badge {
+            display: inline-block;
+            background: var(--forest);
+            color: #fff;
+            font-size: 0.78rem;
+            font-weight: 700;
+            padding: 2px 9px;
+            border-radius: 99px;
+            margin-right: 6px;
+        }
+        @media print {
+            body { background: #fff; padding: 0; }
+            .guide-container { box-shadow: none; border: none; padding: 0; }
+            .print-bar { display: none; }
+        }
+    </style>
+</head>
+<body>
+<div class="guide-container">
+    <div class="print-bar">
+        <div><strong>A Greener Tomorrow (Version 2)</strong> — Official User &amp; Administrator Manual</div>
+        <button class="print-btn" onclick="window.print()">🖨️ Print / Save as PDF</button>
+    </div>
+
+    <h1>🌿 A Greener Tomorrow — User &amp; Admin Guide (Version 2)</h1>
+    <p>Complete reference manual covering where to find the login portal, usernames &amp; passwords, how to navigate the 7-tab Left-Sidebar Admin Dashboard, and how to operate every feature on the website.</p>
+
+    <h2>1. Where to Log In &amp; Exact Login Credentials</h2>
+    <div class="cred-box">
+        <strong>📍 Where is the Login Page Located?</strong>
+        <ul>
+            <li><strong>Live Production Login URL (Namecheap):</strong> <a href="https://greener2morrow.org/login.php">https://greener2morrow.org/login.php</a></li>
+            <li><strong>Live Production Admin Dashboard URL:</strong> <a href="https://greener2morrow.org/admin/index.php">https://greener2morrow.org/admin/index.php</a></li>
+            <li><strong>GitHub Preview Login URL:</strong> <a href="https://rknz.github.io/greener/login.html">https://rknz.github.io/greener/login.html</a></li>
+            <li><strong>From Any Page on Desktop:</strong> Click the green <strong>"Sign In"</strong> button in the <strong>top-right corner</strong> of the header on <a href="https://greener2morrow.org/index.php">https://greener2morrow.org/index.php</a>.</li>
+            <li><strong>From Any Page on Mobile:</strong> Tap the <strong>3-line Hamburger Menu icon (<code>☰</code>)</strong> in the top-right corner of the header to open the slide-out menu drawer, then tap <strong>"Sign In to Portal"</strong> at the bottom of the drawer.</li>
+        </ul>
+    </div>
+
+    <h3>🔑 Username (Email) &amp; Password Credentials</h3>
+    <p>This website uses your <strong>Email Address as your Username</strong>. Below are the 3 built-in accounts (you can also click the 1-click Demo Credential pills directly on the Login page to auto-fill them):</p>
+    <table>
+        <thead>
+            <tr>
+                <th>Account Role</th>
+                <th>Username (Email Address)</th>
+                <th>Password</th>
+                <th>What This Account Can Do</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><strong>Administrator (Master)</strong></td>
+                <td><code>admin@greener2morow.org</code></td>
+                <td><code>Greener@2026!</code></td>
+                <td>Full access to the <strong>Admin Dashboard</strong> (all 7 sidebar tabs), publishing posts, managing hero slides, gallery, users, comments, inbox, and site settings.</td>
+            </tr>
+            <tr>
+                <td><strong>Editorial Lead</strong></td>
+                <td><code>editor@greener2morow.org</code></td>
+                <td><code>Editor@2026!</code></td>
+                <td>Can submit articles/research reports and post comments &amp; replies on articles.</td>
+            </tr>
+            <tr>
+                <td><strong>Registered Member</strong></td>
+                <td><code>member@greener2morow.org</code></td>
+                <td><code>Member@2026!</code></td>
+                <td>Can submit community posts and post opinions/replies in article comment threads.</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h3>💡 How the Same-Page Login Works (No Page Redirect)</h3>
+    <ol>
+        <li>Open <a href="https://rknz.github.io/greener/login.html">https://rknz.github.io/greener/login.html</a> (or <code>/login.php</code>).</li>
+        <li>Type the <strong>Username (Email)</strong> into the <em>"Email Address"</em> box and the <strong>Password</strong> into the <em>"Password"</em> box (or click one of the quick-fill demo buttons on the left panel of the login page).</li>
+        <li>Click <strong>"Sign In to Portal"</strong>.</li>
+        <li><strong>What happens next:</strong> The page does <strong>not</strong> redirect away. Instead, a notification banner appears <strong>directly below the Sign In button</strong>:
+            <ul>
+                <li>If the password is wrong, a <strong>Red Error Notification</strong> appears below the button.</li>
+                <li>If the password is correct, a <strong>Green Success Notification</strong> appears below the button along with action buttons: <strong>"Open Admin Dashboard"</strong>, <strong>"Community Workspace"</strong>, and <strong>"Return to Home Page"</strong>.</li>
+            </ul>
+        </li>
+    </ol>
+
+    <h2>2. All Public Website Pages &amp; Links</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Page Name</th>
+                <th>GitHub Live Link</th>
+                <th>Namecheap PHP Path</th>
+                <th>Key Features on This Page</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><strong>Home Page</strong></td>
+                <td><a href="https://rknz.github.io/greener/index.html">index.html</a></td>
+                <td><code>/index.php</code></td>
+                <td>Black-overlay Hero Slider, 4 Live Impact Counters, Core Pillars, Featured Research &amp; Blog cards, Gallery preview.</td>
+            </tr>
+            <tr>
+                <td><strong>Activities</strong></td>
+                <td><a href="https://rknz.github.io/greener/activities.html">activities.html</a></td>
+                <td><code>/activities.php</code></td>
+                <td>Filterable field campaigns; clicking any card opens its Dedicated Details Page with readership metrics &amp; comments.</td>
+            </tr>
+            <tr>
+                <td><strong>Researches</strong></td>
+                <td><a href="https://rknz.github.io/greener/researches.html">researches.html</a></td>
+                <td><code>/researches.php</code></td>
+                <td>Scientific studies &amp; ecological audits with dedicated reading view, metrics, and threaded comments.</td>
+            </tr>
+            <tr>
+                <td><strong>Blog &amp; Vlogs</strong></td>
+                <td><a href="https://rknz.github.io/greener/blog.html">blog.html</a></td>
+                <td><code>/blog.php</code></td>
+                <td>Articles &amp; video vlogs with category filter, search bar, readership telemetry, and nested comment replies.</td>
+            </tr>
+            <tr>
+                <td><strong>Field Gallery</strong></td>
+                <td><a href="https://rknz.github.io/greener/gallery.html">gallery.html</a></td>
+                <td><code>/gallery.php</code></td>
+                <td>Category-filterable WebP photo grid with full-screen Lightbox zoom.</td>
+            </tr>
+            <tr>
+                <td><strong>Join Us</strong></td>
+                <td><a href="https://rknz.github.io/greener/join.html">join.html</a></td>
+                <td><code>/join.php</code></td>
+                <td>New Member/Volunteer registration form + Community Article Submission form for logged-in members.</td>
+            </tr>
+            <tr>
+                <td><strong>Contact Us</strong></td>
+                <td><a href="https://rknz.github.io/greener/contact.html">contact.html</a></td>
+                <td><code>/contact.php</code></td>
+                <td>Secretariat contact details &amp; inquiry form connected to the Admin Inbox.</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h2>3. Navigating the Admin Dashboard (Left-Sidebar Tabs)</h2>
+    <p>Open <a href="https://rknz.github.io/greener/admin/index.html">https://rknz.github.io/greener/admin/index.html</a> (or <code>/admin/index.php</code>). All management tools are organized in the <strong>Left Sidebar</strong> into 7 tabs:</p>
+
+    <h3><span class="step-badge">Tab 1</span> Executive Overview (<code>#overview</code>)</h3>
+    <ul>
+        <li><strong>Location:</strong> Left Sidebar → <em>Executive Overview</em></li>
+        <li><strong>Features:</strong> Displays 7 live KPI summary cards (Published Posts, Pending Queue, Users, Gallery Photos, Total Views, Member Comments, Unread Inbox Messages), Quick-Action shortcut buttons, and the Recent Platform Activity table.</li>
+    </ul>
+
+    <h3><span class="step-badge">Tab 2</span> Content &amp; Posts (<code>#content</code>)</h3>
+    <ul>
+        <li><strong>Location:</strong> Left Sidebar → <em>Content &amp; Posts</em></li>
+        <li><strong>How to Publish a New Post:</strong> Fill out the top form (Post Title, Content Type: <code>Activity</code> / <code>Research</code> / <code>Blog</code> / <code>Vlog</code>, Category, Read Time, Cover Image, Excerpt, and Full Article Body) and click <strong>"Publish Content Now"</strong>.</li>
+        <li><strong>How to Moderate or Feature Existing Posts:</strong> Scroll to the <em>All Posts &amp; Moderation Queue</em> table below the form. Use the buttons on any row to <strong>Approve</strong>, <strong>Set Pending</strong>, <strong>Feature on Homepage (<code>★</code>)</strong>, <strong>View Live</strong>, or <strong>Delete</strong>.</li>
+    </ul>
+
+    <h3><span class="step-badge">Tab 3</span> Hero &amp; Media Gallery (<code>#media</code>)</h3>
+    <ul>
+        <li><strong>Location:</strong> Left Sidebar → <em>Hero &amp; Media Gallery</em></li>
+        <li><strong>Homepage Hero Slider Manager:</strong> Add new rotating homepage banners with custom Badge text, Headline, Sub-caption, Button links, and Background Image, or toggle existing slides Active/Hidden.</li>
+        <li><strong>Field Photo Gallery Manager:</strong> Upload new photos with Title &amp; Category to the Gallery page, or delete existing photos.</li>
+    </ul>
+
+    <h3><span class="step-badge">Tab 4</span> Comments &amp; Inbox (<code>#communications</code>)</h3>
+    <ul>
+        <li><strong>Location:</strong> Left Sidebar → <em>Comments &amp; Inbox</em></li>
+        <li><strong>Member Comments &amp; Replies Moderation:</strong> View all comments and nested replies posted on articles, jump to the article page, or delete inappropriate comments.</li>
+        <li><strong>Secretariat Contact Inbox:</strong> Read inquiries submitted via the Contact page, mark them as <strong>Read</strong>, click <strong>Reply</strong> to email the sender, or <strong>Delete</strong> messages.</li>
+    </ul>
+
+    <h3><span class="step-badge">Tab 5</span> Users &amp; Access Control (<code>#users</code>)</h3>
+    <ul>
+        <li><strong>Location:</strong> Left Sidebar → <em>Users &amp; Access Control</em></li>
+        <li><strong>Create New Accounts:</strong> Use the left form to add a new Member, Editor, or Administrator.</li>
+        <li><strong>Manage Users &amp; Reset Passwords:</strong> In the user table, use the dropdown to change a user's Role, click <strong><code>🔑 Reset Pass</code></strong> to set a new password for any user, or click <strong><code>Ban</code> / <code>Activate</code></strong> to suspend or restore access.</li>
+    </ul>
+
+    <h3><span class="step-badge">Tab 6</span> Brand &amp; Site Settings (<code>#settings</code>)</h3>
+    <ul>
+        <li><strong>Location:</strong> Left Sidebar → <em>Brand &amp; Site Settings</em></li>
+        <li><strong>Where to Change Site Info &amp; Impact Numbers:</strong> Edit the Organization Title, Tagline, Mission Statement, Contact Email/Phone/Address, Social Media links, the <strong>4 Homepage Impact Counters</strong> (<em>Trees Planted, Plastic Removed, Active Volunteers, Communities Reached</em>), and the <strong>Logo Placement Checkboxes</strong>. Click <strong>"Save All Site Settings"</strong> at the bottom.</li>
+    </ul>
+
+    <h3><span class="step-badge">Tab 7</span> Performance &amp; Logs (<code>#performance</code>)</h3>
+    <ul>
+        <li><strong>Location:</strong> Left Sidebar → <em>Performance &amp; Logs</em></li>
+        <li><strong>Features:</strong> Adjust the WebP Image Compression slider (<code>40%–95%</code>), Browser Cache TTL slider, and Lazy-Load Margin slider; purge runtime cache; trigger a 1-click SQLite database backup; and inspect the Visitor Telemetry Log.</li>
+    </ul>
+
+    <h2>4. How to Read Articles, View Metrics &amp; Post Comments/Replies</h2>
+    <ol>
+        <li>Go to <a href="https://rknz.github.io/greener/blog.html">Blog &amp; Vlogs</a>, <a href="https://rknz.github.io/greener/researches.html">Researches</a>, or <a href="https://rknz.github.io/greener/activities.html">Activities</a> and click <strong>"Read Full Article"</strong> on any post (for example: <a href="https://rknz.github.io/greener/post-youth-climate-action-summit-2026-empowering-next-gen-eco-leaders.html">Youth Climate Action Summit 2026</a>).</li>
+        <li>At the top of the article, view the <strong>Readership Telemetry Bar</strong> showing <em>Total Views</em>, <em>Verified Readers</em>, <em>Reading Time</em>, and <em>Member Opinions</em>.</li>
+        <li>Scroll to the bottom of the article to find the <strong>Community Discussion &amp; Member Opinions</strong> section.</li>
+        <li>Once signed in, type your opinion into the comment box and click <strong>"Post Opinion"</strong>, or click <strong>"↩ Reply"</strong> beneath any existing comment to post a nested reply directly under that comment.</li>
+    </ol>
+
+    <hr style="border:none; border-top:1px solid var(--border); margin:32px 0 16px;">
+    <p style="font-size:0.85rem; color:var(--muted); text-align:center;">
+        © 2026 A Greener Tomorrow Foundation. All Rights Reserved. Version 2 — Designed &amp; Developed by <a href="mailto:rukonuzzaman.dev@gmail.com">rknz</a>.
+    </p>
+</div>
+</body>
+</html>

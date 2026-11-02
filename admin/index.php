@@ -94,7 +94,7 @@ $pageTitle = 'Central Governance Dashboard | A Greener Tomorrow';
                     <img src="<?= BASE_URL ?>/assets/brand/brand-logo.png" alt="Logo" class="admin-brand-img" width="40" height="40">
                     <div>
                         <span class="admin-brand-title">A Greener Tomorrow</span>
-                        <span class="admin-brand-sub">Governance Console &bull; Version 2</span>
+                        <span class="admin-brand-sub">Governance Console</span>
                     </div>
                 </a>
                 <button type="button" class="admin-sidebar-close d-lg-none" id="adminSidebarClose" aria-label="Close Sidebar">
