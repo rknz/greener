@@ -59,6 +59,8 @@ if ($singleResearch) {
             <div class="post-meta-strip">
                 <span><i class="fa-regular fa-calendar"></i> Published: <?= format_bangladesh_date($singleResearch['created_at']) ?></span>
                 <span><i class="fa-regular fa-eye"></i> <?= number_format($singleResearch['view_count']) ?> Reads</span>
+                <span><i class="fa-solid fa-book-open-reader"></i> <?= number_format($singleResearch['unique_read_count'] ?? round($singleResearch['view_count'] * 0.78)) ?> Total Readership</span>
+                <span><i class="fa-regular fa-clock"></i> <?= (int)($singleResearch['reading_time'] ?? 5) ?> Min Study</span>
                 <span><i class="fa-solid fa-tag"></i> <?= htmlspecialchars($singleResearch['category'] ?? 'Climate Policy', ENT_QUOTES, 'UTF-8') ?></span>
             </div>
         </div>
@@ -90,14 +92,14 @@ if ($singleResearch) {
                 <?php endif; ?>
 
                 <div class="single-post-content rich-text-body">
-                    <?= nl2br(htmlspecialchars($singleResearch['content'], ENT_QUOTES, 'UTF-8')) ?>
+                    <?= render_post_body_html($singleResearch['content']) ?>
                 </div>
 
                 <!-- Academic Citation Box -->
                 <div class="citation-box mt-5">
                     <div class="citation-header">
                         <h4><i class="fa-solid fa-graduation-cap"></i> Cite This Publication</h4>
-                        <button class="btn btn-sm btn-outline-light" id="btnCopyCitation">
+                        <button class="btn btn-sm btn-outline" id="btnCopyCitation">
                             <i class="fa-regular fa-copy"></i> Copy Citation
                         </button>
                     </div>
@@ -120,6 +122,12 @@ if ($singleResearch) {
                     require AGY_ROOT . '/views/partials/contributor-box.php';
                     ?>
                 </div>
+
+                <!-- Readership Metrics & Threaded Member Comments -->
+                <?php
+                $activePost = $singleResearch;
+                require AGY_ROOT . '/views/partials/comments-section.php';
+                ?>
             </div>
 
             <!-- Minor Column: Document Download & Meta (38.2%) -->

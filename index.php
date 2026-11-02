@@ -32,6 +32,7 @@ $featuredResearches = PostRepository::getAll([
 
 // 3. Featured Blogs & Vlogs (limit 3)
 $recentBlogs = PostRepository::getAll([
+    'post_type' => 'blog_and_vlog',
     'status' => 'published',
     'limit' => 3
 ]);

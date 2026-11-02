@@ -121,11 +121,17 @@ class PostRepository {
     public static function getAll(array $filters = []): array {
         $mapped = [];
         if (!empty($filters['post_type'])) {
-            $t = strtoupper($filters['post_type']);
-            if ($t === 'BLOG') {
-                $mapped['type'] = ['BLOG', 'RESEARCH_BLOG'];
+            if (is_array($filters['post_type'])) {
+                $mapped['type'] = array_map('strtoupper', $filters['post_type']);
             } else {
-                $mapped['type'] = $t;
+                $t = strtoupper($filters['post_type']);
+                if ($t === 'BLOG') {
+                    $mapped['type'] = ['BLOG', 'RESEARCH_BLOG'];
+                } elseif ($t === 'BLOG_AND_VLOG') {
+                    $mapped['type'] = ['BLOG', 'RESEARCH_BLOG', 'VLOG'];
+                } else {
+                    $mapped['type'] = $t;
+                }
             }
         }
         if (!empty($filters['search'])) {

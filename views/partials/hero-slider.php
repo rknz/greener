@@ -78,7 +78,7 @@ if (empty($slides)) {
                 }
             }
             ?>
-            <div class="hero-slide <?= $isActive ?>" style="background-image: linear-gradient(135deg, rgba(20, 40, 13, 0.88) 0%, rgba(42, 124, 19, 0.72) 100%), url('<?= htmlspecialchars($bgImg, ENT_QUOTES, 'UTF-8') ?>');" data-index="<?= $index ?>">
+            <div class="hero-slide <?= $isActive ?>" style="background-image: linear-gradient(135deg, rgba(0, 0, 0, 0.80) 0%, rgba(0, 0, 0, 0.58) 100%), url('<?= htmlspecialchars($bgImg, ENT_QUOTES, 'UTF-8') ?>');" data-index="<?= $index ?>">
                 <div class="container hero-container">
                     <div class="hero-content">
                         <?php if (!empty($slide['badge_text'])): ?>

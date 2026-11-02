@@ -1,8 +1,9 @@
 <?php
 /**
- * A Greener Tomorrow - Admin Action Processor
- * Handles Settings, MCQ Logo Placement, Bcrypt Password Overrides,
- * Content Moderation, Hero Sliders, and Dynamic Performance Tweaks.
+ * A Greener Tomorrow - Complete Admin Governance Action Processor
+ * Handles Site Identity, MCQ Logo Matrix, Impact Stats, Content Publishing & Moderation,
+ * Hero Sliders, Photo Gallery, Comments & Contact Inbox, User Roles & Bcrypt Passwords,
+ * and Dynamic Performance Sliders.
  */
 
 require_once __DIR__ . '/../config/config.php';
@@ -26,7 +27,7 @@ if (!verify_csrf_token($_POST['csrf_token'] ?? '')) {
 $action = $_POST['action'] ?? '';
 
 switch ($action) {
-    // ---------------- 1. CORE SITE INFO & MCQ LOGO PLACEMENT ----------------
+    // ---------------- 1. CORE SITE INFO, STATS & MCQ LOGO PLACEMENT ----------------
     case 'save_site_settings':
         $siteName = sanitize_text($_POST['site_name'] ?? 'A Greener Tomorrow');
         $siteTagline = sanitize_text($_POST['site_tagline'] ?? '');
@@ -50,6 +51,17 @@ switch ($action) {
         set_setting('logo_use_footer', $useFooter);
         set_setting('logo_use_section', $useSection);
 
+        // Update impact counters if provided
+        if (isset($_POST['stat_trees'])) {
+            $stmtStats = $db->prepare("UPDATE site_settings SET stat_trees = ?, stat_members = ?, stat_districts = ?, stat_researches = ? WHERE id = 1");
+            $stmtStats->execute([
+                (int)$_POST['stat_trees'],
+                (int)($_POST['stat_members'] ?? 18500),
+                (int)($_POST['stat_districts'] ?? 64),
+                (int)($_POST['stat_researches'] ?? 32)
+            ]);
+        }
+
         // Handle Logo Upload if provided
         if (isset($_FILES['site_logo']) && $_FILES['site_logo']['error'] === UPLOAD_ERR_OK) {
             $upRes = UploadManager::uploadLogo($_FILES['site_logo']);
@@ -58,10 +70,61 @@ switch ($action) {
             }
         }
 
-        redirect(BASE_URL . '/admin/index.php?msg=settings_saved#info');
+        redirect(BASE_URL . '/admin/index.php?msg=settings_saved#settings');
         break;
 
-    // ---------------- 2. USER CREDENTIAL OVERSIGHT (ADMIN RESET) ----------------
+    // ---------------- 2. ADMIN DIRECT POST CREATION ----------------
+    case 'admin_create_post':
+        $title = sanitize_text($_POST['title'] ?? '');
+        $postType = strtoupper(sanitize_text($_POST['post_type'] ?? 'BLOG'));
+        $pillar = strtoupper(sanitize_text($_POST['pillar'] ?? 'CLIMATE'));
+        $excerptText = sanitize_text($_POST['excerpt'] ?? '');
+        $content = trim($_POST['content'] ?? '');
+        $videoUrl = sanitize_text($_POST['video_url'] ?? '');
+        $location = sanitize_text($_POST['location'] ?? 'Hatirpool, Dhaka');
+
+        $coverPath = '/assets/uploads/posts/post-climate-march.webp';
+        if (isset($_FILES['featured_image']) && $_FILES['featured_image']['error'] === UPLOAD_ERR_OK) {
+            $upImg = UploadManager::uploadImage($_FILES['featured_image'], 'posts');
+            if ($upImg['success']) {
+                $coverPath = '/assets/uploads/posts/' . $upImg['filename'];
+            }
+        }
+
+        $attachments = [];
+        if (isset($_FILES['research_doc']) && $_FILES['research_doc']['error'] === UPLOAD_ERR_OK) {
+            $upDoc = UploadManager::uploadDocument($_FILES['research_doc']);
+            if ($upDoc['success']) {
+                $attachments[] = [
+                    'file_name' => $upDoc['filename'],
+                    'file_path' => '/assets/uploads/docs/' . $upDoc['filename'],
+                    'file_type' => 'PDF',
+                    'size_kb' => (int)round(($_FILES['research_doc']['size'] ?? 102400) / 1024)
+                ];
+            }
+        }
+
+        $res = PostRepository::create([
+            'title' => $title,
+            'type' => $postType,
+            'pillar' => $pillar,
+            'excerpt' => $excerptText,
+            'content' => $content,
+            'cover_image' => $coverPath,
+            'thumb_image' => $coverPath,
+            'video_type' => !empty($videoUrl) ? 'YOUTUBE' : 'NONE',
+            'video_embed_url' => $videoUrl,
+            'location' => $location
+        ], $attachments);
+
+        if ($res['success']) {
+            redirect(BASE_URL . '/admin/index.php?msg=post_created#content');
+        } else {
+            redirect(BASE_URL . '/admin/index.php?err=post_create_failed#content');
+        }
+        break;
+
+    // ---------------- 3. USER CREDENTIAL OVERSIGHT & CREATION ----------------
     case 'reset_user_password':
         $targetUserId = (int)($_POST['target_user_id'] ?? 0);
         $newPlainPassword = $_POST['new_password'] ?? '';
@@ -94,15 +157,37 @@ switch ($action) {
 
     case 'change_user_role':
         $targetUserId = (int)($_POST['target_user_id'] ?? 0);
-        $newRole = sanitize_text($_POST['role'] ?? 'member');
-        if (in_array($newRole, ['admin', 'researcher', 'member'], true)) {
+        $newRole = strtoupper(sanitize_text($_POST['role'] ?? 'USER'));
+        if (in_array($newRole, ['ADMIN', 'RESEARCHER', 'USER', 'MEMBER'], true)) {
             $stmt = $db->prepare("UPDATE users SET role = ?, session_version = session_version + 1 WHERE id = ?");
             $stmt->execute([$newRole, $targetUserId]);
         }
         redirect(BASE_URL . '/admin/index.php?msg=role_updated#users');
         break;
 
-    // ---------------- 3. CONTENT MODERATION & OFFENSIVE REMOVAL ----------------
+    case 'admin_create_user':
+        $name = sanitize_text($_POST['name'] ?? '');
+        $username = slugify($_POST['username'] ?? $name);
+        $email = strtolower(trim($_POST['email'] ?? ''));
+        $password = $_POST['password'] ?? '';
+        $role = strtoupper(sanitize_text($_POST['role'] ?? 'USER'));
+        $district = sanitize_text($_POST['district'] ?? 'Dhaka');
+        $designation = sanitize_text($_POST['designation'] ?? 'Youth Advocate');
+
+        if (!empty($name) && !empty($email) && strlen($password) >= 6) {
+            $hash = password_hash($password, PASSWORD_BCRYPT, ['cost' => 12]);
+            try {
+                $stmt = $db->prepare("INSERT INTO users (username, name, full_name, email, password_hash, designation, district, city, avatar_url, avatar, role, control_mode, member_status, is_active) VALUES (?, ?, ?, ?, ?, ?, ?, ?, 'avatar-researcher.webp', 'avatar-researcher.webp', ?, 'AUTO', 'APPROVED', 1)");
+                $stmt->execute([$username, $name, $name, $email, $hash, $designation, $district, $district, $role]);
+                redirect(BASE_URL . '/admin/index.php?msg=user_created#users');
+            } catch (PDOException $e) {
+                redirect(BASE_URL . '/admin/index.php?err=user_exists#users');
+            }
+        }
+        redirect(BASE_URL . '/admin/index.php?err=pwd_short#users');
+        break;
+
+    // ---------------- 4. CONTENT MODERATION & OFFENSIVE REMOVAL ----------------
     case 'moderate_post':
         $postId = (int)($_POST['post_id'] ?? 0);
         $postAction = $_POST['post_action'] ?? '';
@@ -118,10 +203,9 @@ switch ($action) {
             PostRepository::updateStatus($postId, 'draft');
             redirect(BASE_URL . '/admin/index.php?msg=post_drafted#content');
         } elseif ($postAction === 'offensive') {
-            // Unpublish and tag title/content with offensive marker
             $post = PostRepository::getById($postId);
             if ($post) {
-                $db->prepare("UPDATE posts SET status = 'offensive', excerpt = '[Content Removed by Moderation: Inappropriate / Offensive violation]' WHERE id = ?")->execute([$postId]);
+                $db->prepare("UPDATE posts SET status = 'OFFENSIVE', excerpt = '[Content Removed by Moderation: Inappropriate / Offensive violation]' WHERE id = ?")->execute([$postId]);
             }
             redirect(BASE_URL . '/admin/index.php?msg=post_flagged_offensive#content');
         } elseif ($postAction === 'delete') {
@@ -130,7 +214,86 @@ switch ($action) {
         }
         break;
 
-    // ---------------- 4. DYNAMIC PERFORMANCE SLIDERS ----------------
+    // ---------------- 5. HERO SLIDE & GALLERY MANAGEMENT ----------------
+    case 'save_hero_slide':
+        $slideId = (int)($_POST['slide_id'] ?? 0);
+        $title = sanitize_text($_POST['slide_title'] ?? '');
+        $subtitle = sanitize_text($_POST['slide_subtitle'] ?? '');
+        $badge = sanitize_text($_POST['slide_badge'] ?? 'Live Initiative');
+        $ctaText = sanitize_text($_POST['slide_cta_text'] ?? 'Join This Action');
+        $ctaUrl = sanitize_text($_POST['slide_cta_url'] ?? '/activities.php');
+        $sortOrder = (int)($_POST['sort_order'] ?? 1);
+
+        $imagePath = 'assets/uploads/slider/slide-climate-mangrove.webp';
+        if (isset($_FILES['slide_image']) && $_FILES['slide_image']['error'] === UPLOAD_ERR_OK) {
+            $upRes = UploadManager::uploadImage($_FILES['slide_image'], 'slider');
+            if ($upRes['success']) {
+                $imagePath = 'assets/uploads/slider/' . $upRes['filename'];
+            }
+        }
+
+        if ($slideId > 0) {
+            $stmt = $db->prepare("UPDATE hero_slides SET title = ?, subtitle = ?, badge_text = ?, cta_text = ?, cta_url = ?, sort_order = ? WHERE id = ?");
+            $stmt->execute([$title, $subtitle, $badge, $ctaText, $ctaUrl, $sortOrder, $slideId]);
+        } else {
+            $stmt = $db->prepare("INSERT INTO hero_slides (title, subtitle, badge_text, image_path, cta_text, cta_url, sort_order, is_active, created_at) VALUES (?, ?, ?, ?, ?, ?, ?, 1, CURRENT_TIMESTAMP)");
+            $stmt->execute([$title, $subtitle, $badge, $imagePath, $ctaText, $ctaUrl, $sortOrder]);
+        }
+        redirect(BASE_URL . '/admin/index.php?msg=slide_saved#media');
+        break;
+
+    case 'delete_hero_slide':
+        $slideId = (int)($_POST['slide_id'] ?? 0);
+        if ($slideId > 0) {
+            $db->prepare("DELETE FROM hero_slides WHERE id = ?")->execute([$slideId]);
+        }
+        redirect(BASE_URL . '/admin/index.php?msg=slide_deleted#media');
+        break;
+
+    case 'add_gallery_item':
+        $title = sanitize_text($_POST['gallery_title'] ?? 'Field Action Photo');
+        $category = sanitize_text($_POST['gallery_category'] ?? 'Reforestation');
+        $caption = sanitize_text($_POST['gallery_caption'] ?? $title);
+
+        $imgPath = 'assets/uploads/gallery/gallery-tree-planting.webp';
+        if (isset($_FILES['gallery_image']) && $_FILES['gallery_image']['error'] === UPLOAD_ERR_OK) {
+            $upRes = UploadManager::uploadImage($_FILES['gallery_image'], 'gallery');
+            if ($upRes['success']) {
+                $imgPath = 'assets/uploads/gallery/' . $upRes['filename'];
+            }
+        }
+
+        $stmt = $db->prepare("INSERT INTO gallery_items (title, image_url, thumb_url, image_path, thumbnail_path, pillar, category, caption) VALUES (?, ?, ?, ?, ?, 'ENVIRONMENT', ?, ?)");
+        $stmt->execute([$title, '/' . $imgPath, '/' . $imgPath, $imgPath, $imgPath, $category, $caption]);
+        redirect(BASE_URL . '/admin/index.php?msg=gallery_added#media');
+        break;
+
+    case 'delete_gallery_item':
+        $itemId = (int)($_POST['gallery_id'] ?? 0);
+        if ($itemId > 0) {
+            $db->prepare("DELETE FROM gallery_items WHERE id = ?")->execute([$itemId]);
+        }
+        redirect(BASE_URL . '/admin/index.php?msg=gallery_deleted#media');
+        break;
+
+    // ---------------- 6. COMMENTS & CONTACT INBOX MODERATION ----------------
+    case 'delete_comment':
+        $commentId = (int)($_POST['comment_id'] ?? 0);
+        if ($commentId > 0) {
+            $db->prepare("DELETE FROM post_comments WHERE id = ? OR parent_id = ?")->execute([$commentId, $commentId]);
+        }
+        redirect(BASE_URL . '/admin/index.php?msg=comment_deleted#communications');
+        break;
+
+    case 'delete_contact_message':
+        $msgId = (int)($_POST['message_id'] ?? 0);
+        if ($msgId > 0) {
+            $db->prepare("DELETE FROM contact_messages WHERE id = ?")->execute([$msgId]);
+        }
+        redirect(BASE_URL . '/admin/index.php?msg=message_deleted#communications');
+        break;
+
+    // ---------------- 7. DYNAMIC PERFORMANCE SLIDERS ----------------
     case 'save_performance_settings':
         $webpQuality = (int)($_POST['webp_quality'] ?? 82);
         $cacheDays = (int)($_POST['cache_expiry_days'] ?? 30);
@@ -147,44 +310,7 @@ switch ($action) {
         redirect(BASE_URL . '/admin/index.php?msg=perf_saved#performance');
         break;
 
-    // ---------------- 5. HERO SLIDE MANAGEMENT ----------------
-    case 'save_hero_slide':
-        $slideId = (int)($_POST['slide_id'] ?? 0);
-        $title = sanitize_text($_POST['slide_title'] ?? '');
-        $subtitle = sanitize_text($_POST['slide_subtitle'] ?? '');
-        $badge = sanitize_text($_POST['slide_badge'] ?? '');
-        $ctaText = sanitize_text($_POST['slide_cta_text'] ?? '');
-        $ctaUrl = sanitize_text($_POST['slide_cta_url'] ?? '');
-        $sortOrder = (int)($_POST['sort_order'] ?? 0);
-
-        $imagePath = 'assets/brand/template-mockup.jpg';
-        if (isset($_FILES['slide_image']) && $_FILES['slide_image']['error'] === UPLOAD_ERR_OK) {
-            $upRes = UploadManager::uploadImage($_FILES['slide_image'], 'slider');
-            if ($upRes['success']) {
-                $imagePath = 'assets/uploads/slider/' . $upRes['filename'];
-            }
-        }
-
-        if ($slideId > 0) {
-            $stmt = $db->prepare("UPDATE hero_slides SET title = ?, subtitle = ?, badge_text = ?, cta_text = ?, cta_url = ?, sort_order = ? WHERE id = ?");
-            $stmt->execute([$title, $subtitle, $badge, $ctaText, $ctaUrl, $sortOrder, $slideId]);
-        } else {
-            $stmt = $db->prepare("INSERT INTO hero_slides (title, subtitle, badge_text, image_path, cta_text, cta_url, sort_order, is_active, created_at) VALUES (?, ?, ?, ?, ?, ?, ?, 1, datetime('now'))");
-            $stmt->execute([$title, $subtitle, $badge, $imagePath, $ctaText, $ctaUrl, $sortOrder]);
-        }
-        redirect(BASE_URL . '/admin/index.php?msg=slide_saved#info');
-        break;
-
-    case 'delete_hero_slide':
-        $slideId = (int)($_POST['slide_id'] ?? 0);
-        if ($slideId > 0) {
-            $db->prepare("DELETE FROM hero_slides WHERE id = ?")->execute([$slideId]);
-        }
-        redirect(BASE_URL . '/admin/index.php?msg=slide_deleted#info');
-        break;
-
     default:
         redirect(BASE_URL . '/admin/index.php');
         break;
 }
-

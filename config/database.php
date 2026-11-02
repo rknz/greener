@@ -31,6 +31,22 @@ class Database {
     }
 
     private static function connect(): void {
+        // Optional Namecheap cPanel MySQL credentials override file
+        $credFile = __DIR__ . '/db-credentials.php';
+        if (file_exists($credFile)) {
+            $creds = include $credFile;
+            if (is_array($creds)) {
+                self::$dbHost = $creds['host'] ?? self::$dbHost;
+                self::$dbName = $creds['dbname'] ?? self::$dbName;
+                self::$dbUser = $creds['username'] ?? self::$dbUser;
+                self::$dbPass = $creds['password'] ?? self::$dbPass;
+                self::$dbPort = (int)($creds['port'] ?? self::$dbPort);
+                if (!empty($creds['enable_mysql'])) {
+                    putenv('USE_MYSQL=true');
+                }
+            }
+        }
+
         // 1. Attempt MySQL connection if configured
         $useMysql = getenv('DB_CONNECTION') === 'mysql' || (!empty(self::$dbName) && getenv('USE_MYSQL') === 'true');
         
@@ -265,11 +281,27 @@ class Database {
             created_at $datetimeType DEFAULT CURRENT_TIMESTAMP
         );");
 
-        // 10. post_views Alias View / Table for compatibility
+        // 10. post_comments Table (Threaded Comments & Replies for Blog/Research/Activity Details)
+        $db->exec("CREATE TABLE IF NOT EXISTS post_comments (
+            id $autoIncrement,
+            post_id INTEGER NOT NULL,
+            user_id INTEGER,
+            parent_id INTEGER DEFAULT 0,
+            author_name $textType NOT NULL,
+            author_role $textType DEFAULT 'Registered Member',
+            author_avatar $textType,
+            comment_text $textType NOT NULL,
+            status $textType DEFAULT 'APPROVED',
+            created_at $datetimeType DEFAULT CURRENT_TIMESTAMP
+        );");
+        $db->exec("CREATE INDEX IF NOT EXISTS idx_comments_post ON post_comments(post_id, status, created_at);");
+
+        // 11. post_views Alias View / Table for compatibility
         $db->exec("CREATE VIEW IF NOT EXISTS post_views AS SELECT id, post_id, page_url, visitor_hash, user_id, LOWER(device_type) as device_type, browser_info as browser, os_info as os, ip_masked, referrer_source, created_at FROM post_view_logs;");
 
         // Seed Data if Fresh Install
         self::seedDefaultData($db);
+        self::seedDefaultComments($db);
     }
 
     private static function seedDefaultData(PDO $db): void {
@@ -491,7 +523,7 @@ class Database {
             'DISASTER',
             0,
             'Field observations and ecological data demonstrating that community-planted mangrove belts reduce storm-surge wave impact by 66% compared to bare earthen embankments.',
-            "<h3>Field Commentary & Research Insights</h3><p>Coastal Bangladesh faces intensified cyclone frequencies and tidal flooding. Drawing from comparative surveys conducted in Shyamnagar, Satkhira, this research-based blog analyzes why natural mangrove buffer zones provide superior long-term flood resilience compared to costly concrete sea walls.</p><p>Watch the on-the-ground video documentation below where local community elders and youth forestry teams share empirical evidence from the 2026 cyclone season.</p>",
+            "<h3>Field Commentary & Research Insights</h3><p>Coastal Bangladesh faces intensified cyclone frequencies and tidal flooding. Drawing from comparative surveys conducted in Shyamnagar, Satkhira, this research-based blog analyzes why natural mangrove buffer zones provide superior long-term flood resilience compared to costly concrete sea walls.</p><h4>Key Ecological Findings</h4><ul><li>Dense Sundari and Keora pneumatophore root networks dissipate tidal wave energy by up to 66% within the first 100 meters of coastline.</li><li>Natural sediment trapping raises coastal mudflat elevation by 1.8 cm annually, counteracting relative sea-level rise.</li><li>Community co-management creates sustainable non-timber livelihoods for coastal families.</li></ul><p>Watch the on-the-ground video documentation where local community elders and youth forestry teams share empirical evidence from the 2026 cyclone season.</p>",
             '/assets/uploads/posts/post-coastal-mangrove.webp',
             '/assets/uploads/posts/post-coastal-mangrove.webp',
             'YOUTUBE',
@@ -501,6 +533,50 @@ class Database {
             'COMPLETED',
             1640,
             1190,
+            4,
+            $contributorId
+        ]);
+
+        // Post 7: Editorial Blog (Urban Heat Islands & Micro-Forests)
+        $stmtPost->execute([
+            'How Miyawaki Urban Micro-Forests Are Cooling Dhaka Neighborhoods by 3.4°C',
+            'miyawaki-urban-micro-forests-cooling-dhaka-neighborhoods',
+            'BLOG',
+            'DEFORESTATION',
+            0,
+            'A deep dive into how ultra-dense native pocket forests in Hatirpool, Dhanmondi, and Uttara are restoring urban biodiversity and lowering ambient street temperatures.',
+            "<h3>Reclaiming Concrete Spaces for Native Canopy</h3><p>Over the past two decades, rapid unplanned urbanization in Dhaka has replaced wetlands and tree cover with heat-absorbing concrete and asphalt. Surface temperature readings recorded by our youth volunteers in Hatirpool and Farmgate regularly exceed surrounding rural areas by 4.5°C during pre-monsoon heatwaves.</p><h4>The Miyawaki Pocket Forest Method</h4><p>By planting 3 to 4 native saplings per square meter using multi-layered indigenous species—including Hijol, Jarul, Neem, and Bahera—our urban forestry cells have established fast-growing micro-forests on school corners and public plots as small as 600 square feet.</p><ul><li><strong>3.4°C Temperature Drop:</strong> Infrared thermal sensors confirm a 3.4°C reduction in canopy-level air temperature within 14 months of planting.</li><li><strong>10x Faster Growth:</strong> Symbiotic mycorrhizal soil preparation accelerates vertical growth and carbon sequestration.</li><li><strong>Stormwater Absorption:</strong> Porous forest floors absorb monsoon runoff 8x faster than compacted turf grass.</li></ul>",
+            '/assets/uploads/posts/post-tree-planting.webp',
+            '/assets/uploads/posts/post-tree-planting.webp',
+            'NONE',
+            null,
+            'Hatirpool & Dhanmondi, Dhaka',
+            '2026-11-01 15:00:00',
+            'COMPLETED',
+            2280,
+            1740,
+            5,
+            $adminId
+        ]);
+
+        // Post 8: Video Vlog (Youth River Audit & Plastic Interception)
+        $stmtPost->execute([
+            'Inside Our 64-District Youth River Audit & Zero-Plastic Campus Movement',
+            'inside-64-district-youth-river-audit-zero-plastic-movement',
+            'VLOG',
+            'POLLUTION',
+            0,
+            'Follow our student volunteer brigades across Dhaka, Chattogram, and Sylhet as they deploy floating trash booms and audit urban canal discharge points.',
+            "<h3>Documentary Dispatch & Field Guide</h3><p>In this field dispatch, our student coordinators demonstrate how grassroots citizen science is holding polluters accountable while cleaning Bangladesh's lifeline waterways. Equipped with portable multiparameter water quality meters and GPS mapping kits, over 1,800 youth members have cataloged 140+ plastic choke points.</p><h4>3-Step Campus & Community Blueprint</h4><ul><li><strong>Source Segregation:</strong> Eliminating single-use plastic sachets and bottles across 45 university and college campuses.</li><li><strong>Floating Canal Barriers:</strong> Low-cost bamboo and mesh interception booms trapping floating macro-plastics before they enter major rivers.</li><li><strong>Open Data Advocacy:</strong> Publishing monthly ward-by-ward pollution scorecards shared directly with municipal authorities.</li></ul>",
+            '/assets/uploads/posts/post-river-cleanup.webp',
+            '/assets/uploads/posts/post-river-cleanup.webp',
+            'YOUTUBE',
+            'https://www.youtube.com/watch?v=dQw4w9WgXcQ',
+            'Buriganga & Turag Basin, Dhaka',
+            '2026-11-02 09:30:00',
+            'COMPLETED',
+            1950,
+            1480,
             4,
             $contributorId
         ]);
@@ -570,6 +646,75 @@ class Database {
                 $sources[$i % count($sources)],
                 date('Y-m-d H:i:s', strtotime('-' . ($i * 2) . ' hours'))
             ]);
+        }
+    }
+
+    private static function seedDefaultComments(PDO $db): void {
+        try {
+            $count = (int)$db->query("SELECT COUNT(*) FROM post_comments")->fetchColumn();
+            if ($count > 0) {
+                return;
+            }
+            $posts = $db->query("SELECT id FROM posts ORDER BY id ASC")->fetchAll(PDO::FETCH_COLUMN);
+            if (empty($posts)) {
+                return;
+            }
+
+            $stmt = $db->prepare("INSERT INTO post_comments (post_id, user_id, parent_id, author_name, author_role, author_avatar, comment_text, status, created_at) VALUES (?, ?, ?, ?, ?, ?, ?, 'APPROVED', ?)");
+
+            foreach ($posts as $idx => $pId) {
+                // Top-level comment 1
+                $stmt->execute([
+                    $pId,
+                    2,
+                    0,
+                    'Sofiqul Alam',
+                    'Lead Environmental Researcher',
+                    'avatar-researcher.webp',
+                    'Thank you to all the student volunteers and community coordinators who contributed field measurements for this initiative. Our dataset from the Hatirpool secretariat is now open for district-level replication.',
+                    date('Y-m-d H:i:s', strtotime('-18 hours'))
+                ]);
+                $parent1 = (int)$db->lastInsertId();
+
+                // Reply to comment 1
+                $stmt->execute([
+                    $pId,
+                    1,
+                    $parent1,
+                    'A Greener Tomorrow Admin',
+                    'Central Executive Director',
+                    'avatar-admin.webp',
+                    'Appreciate the rigorous field work, Sofiqul! We have scheduled the next volunteer briefing at our Hatirpool HQ this Thursday at 4:00 PM for any registered members who want to join the upcoming phase.',
+                    date('Y-m-d H:i:s', strtotime('-12 hours'))
+                ]);
+
+                // Top-level comment 2
+                $stmt->execute([
+                    $pId,
+                    null,
+                    0,
+                    'Nusrat Jahan Mim',
+                    'Youth Climate Member (Khulna)',
+                    'avatar-researcher.webp',
+                    'This report is incredibly helpful for our university environmental club. Can our district chapter request the field sampling toolkit for our local river canal audit next month?',
+                    date('Y-m-d H:i:s', strtotime('-6 hours'))
+                ]);
+                $parent2 = (int)$db->lastInsertId();
+
+                // Reply to comment 2
+                $stmt->execute([
+                    $pId,
+                    2,
+                    $parent2,
+                    'Sofiqul Alam',
+                    'Lead Environmental Researcher',
+                    'avatar-researcher.webp',
+                    'Absolutely, Nusrat! Sign in to your Member Dashboard or message the Central Secretariat and we will dispatch the water testing protocol and sapling allocation list to your Khulna chapter.',
+                    date('Y-m-d H:i:s', strtotime('-3 hours'))
+                ]);
+            }
+        } catch (PDOException $e) {
+            error_log("Seed comments error: " . $e->getMessage());
         }
     }
 }

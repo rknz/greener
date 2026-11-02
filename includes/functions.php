@@ -240,4 +240,14 @@ function redirect(string $url): void {
     exit;
 }
 
+function render_post_body_html(?string $content): string {
+    if (empty($content)) return '';
+    // If content already contains HTML structural tags, allow safe editorial tags
+    if (preg_match('/<(h[1-6]|p|ul|ol|li|strong|em|blockquote|br)\b/i', $content)) {
+        return strip_tags($content, '<h2><h3><h4><h5><p><ul><ol><li><strong><b><em><i><blockquote><br><a><span>');
+    }
+    return '<p>' . nl2br(htmlspecialchars($content, ENT_QUOTES, 'UTF-8')) . '</p>';
+}
+
+
 

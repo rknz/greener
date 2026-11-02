@@ -49,6 +49,7 @@ if ($singleActivity) {
             <div class="post-meta-strip">
                 <span><i class="fa-regular fa-clock"></i> <?= format_bangladesh_date($singleActivity['created_at']) ?></span>
                 <span><i class="fa-regular fa-eye"></i> <?= number_format($singleActivity['view_count']) ?> Views</span>
+                <span><i class="fa-solid fa-book-open-reader"></i> <?= number_format($singleActivity['unique_read_count'] ?? round($singleActivity['view_count'] * 0.75)) ?> Total Readers</span>
                 <span><i class="fa-solid fa-location-dot"></i> <?= htmlspecialchars($singleActivity['category'] ?? 'Dhaka, Bangladesh', ENT_QUOTES, 'UTF-8') ?></span>
             </div>
         </div>
@@ -72,7 +73,7 @@ if ($singleActivity) {
                 <?php endif; ?>
 
                 <div class="single-post-content rich-text-body">
-                    <?= nl2br(htmlspecialchars($singleActivity['content'], ENT_QUOTES, 'UTF-8')) ?>
+                    <?= render_post_body_html($singleActivity['content']) ?>
                 </div>
 
                 <!-- Verified Contributor Box -->
@@ -91,6 +92,12 @@ if ($singleActivity) {
                     require AGY_ROOT . '/views/partials/contributor-box.php';
                     ?>
                 </div>
+
+                <!-- Readership Metrics & Threaded Member Comments -->
+                <?php
+                $activePost = $singleActivity;
+                require AGY_ROOT . '/views/partials/comments-section.php';
+                ?>
             </div>
 
             <!-- Minor Column: Action Sidebar & RSVP (38.2%) -->

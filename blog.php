@@ -69,6 +69,8 @@ if ($singlePost) {
             <div class="post-meta-strip">
                 <span><i class="fa-regular fa-calendar"></i> <?= format_bangladesh_date($singlePost['created_at']) ?></span>
                 <span><i class="fa-regular fa-eye"></i> <?= number_format($singlePost['view_count']) ?> Views</span>
+                <span><i class="fa-solid fa-book-open-reader"></i> <?= number_format($singlePost['unique_read_count'] ?? round($singlePost['view_count'] * 0.76)) ?> Total Readers</span>
+                <span><i class="fa-regular fa-clock"></i> <?= (int)($singlePost['reading_time'] ?? 4) ?> Min Read</span>
                 <span><i class="fa-solid fa-folder"></i> <?= htmlspecialchars($singlePost['category'] ?? 'Community Story', ENT_QUOTES, 'UTF-8') ?></span>
             </div>
         </div>
@@ -104,7 +106,7 @@ if ($singlePost) {
                 <?php endif; ?>
 
                 <div class="single-post-content rich-text-body">
-                    <?= nl2br(htmlspecialchars($singlePost['content'], ENT_QUOTES, 'UTF-8')) ?>
+                    <?= render_post_body_html($singlePost['content']) ?>
                 </div>
 
                 <!-- Verified Contributor Box -->
@@ -123,6 +125,12 @@ if ($singlePost) {
                     require AGY_ROOT . '/views/partials/contributor-box.php';
                     ?>
                 </div>
+
+                <!-- Readership Metrics & Threaded Member Comments -->
+                <?php
+                $activePost = $singlePost;
+                require AGY_ROOT . '/views/partials/comments-section.php';
+                ?>
             </div>
 
             <!-- Minor Column: Sidebar (38.2%) -->
